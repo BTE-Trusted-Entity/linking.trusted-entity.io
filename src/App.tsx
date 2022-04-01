@@ -5,6 +5,7 @@ import {
   web3Enable,
   web3FromAddress,
 } from '@polkadot/extension-dapp'
+import { encodeAddress } from '@polkadot/util-crypto'
 import { authorizeLinkWithAccount, connect } from './Utilts/linking-helpers'
 
 const Button = styled.button`
@@ -16,12 +17,14 @@ export const App = () => {
     const allInjected = await web3Enable('web3name-promo by BTE')
     const allAccounts = await web3Accounts()
     const didIdentifier = '4sSroywtBCByPzA1fsAH6d9wuVuCpQxgYrLaSbHu6KUNBSUU'
-    const SENDER = allAccounts[1].address
+    const SENDER = allAccounts[0].address
     const injector = await web3FromAddress(SENDER)
     const api = await connect()
+    const ss58Prefix = api.registry.chainSS58
+    const addressForChain = encodeAddress(SENDER, ss58Prefix)
     const extrinsic = await authorizeLinkWithAccount(
       api,
-      SENDER,
+      addressForChain,
       didIdentifier,
       async (payload, address) => {
         if (!injector.signer.signRaw)
