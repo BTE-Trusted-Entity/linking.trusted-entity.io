@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import styled from 'styled-components'
+import {
+  web3Accounts,
+  web3Enable,
+  web3FromAddress,
+} from '@polkadot/extension-dapp'
+import { authorizeLinkWithAccount, connect } from './Utilts/linking-helpers'
 
-function App() {
+const Button = styled.button`
+  height: 30px;
+  width: 120px;
+`
+export const App = () => {
+  const handleClick = async () => {
+    const allInjected = await web3Enable('web3name-promo by BTE')
+    const allAccounts = await web3Accounts()
+    const didIdentifier = '4sSroywtBCByPzA1fsAH6d9wuVuCpQxgYrLaSbHu6KUNBSUU'
+    const SENDER = allAccounts[1].address
+    const injector = await web3FromAddress(SENDER)
+    const api = await connect()
+    const extrinsic = await authorizeLinkWithAccount(
+      api,
+      SENDER,
+      didIdentifier,
+      async (payload, address) => {
+        if (!injector.signer.signRaw)
+          throw Error("Extension doesn't support signRaw")
+        const result = await injector.signer.signRaw({
+          data: payload,
+          address,
+          type: 'bytes',
+        })
+        return result.signature
+      }
+    )
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Button onClick={() => handleClick()}>Click Here</Button>
+      <div></div>
     </div>
-  );
+  )
 }
-
-export default App;
