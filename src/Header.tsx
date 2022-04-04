@@ -8,6 +8,7 @@ const StyledHeader = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
+  margin-bottom: 20px;
 `
 const HeaderContainer = styled.div`
   max-width: 1100px;
