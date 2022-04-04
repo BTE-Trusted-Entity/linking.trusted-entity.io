@@ -15,6 +15,7 @@ import { Guides } from './Guides'
 const Button = styled.button`
   height: 30px;
   width: 120px;
+  margin-bottom: 20px;
 `
 const StyledBody = styled.div`
   min-height: 100vh;
@@ -29,11 +30,17 @@ const StyledBody = styled.div`
   justify-content: flex-start;
   font-family: 'Overpass';
 `
+const StyledInput = styled.input`
+  width: 260px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+`
 export const App = () => {
   const [enabled, setEnabled] = useState(false)
   const [api, setApi] = useState<ApiPromise | null>(null)
   const [accounts, setAccounts] = useState<string[]>([])
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null)
+  const [didIdentifier, setDidIdentifier] = useState<string>('')
 
   const enable = async () => {
     await web3Enable('web3name-promo by BTE')
@@ -63,17 +70,13 @@ export const App = () => {
 
   const handleClick = async () => {
     if (!api || !selectedAccount) return
-
-    console.log(selectedAccount)
-
-    const didIdentifier = '4sSroywtBCByPzA1fsAH6d9wuVuCpQxgYrLaSbHu6KUNBSUU'
-
     const injector = await web3FromAddress(selectedAccount)
-
+    const didID = didIdentifier.split(':').pop()
+    if (!didID) throw 'DID Address Undefined'
     const extrinsic = await authorizeLinkWithAccount(
       api,
       selectedAccount,
-      didIdentifier,
+      didID,
       async (payload, address) => {
         if (!injector.signer.signRaw)
           throw Error("Extension doesn't support signRaw")
@@ -91,7 +94,8 @@ export const App = () => {
     const extrinsicHex = extrinsic.toHex()
     const outputFromSporran = await window.kilt.sporran.signExtrinsicWithDid(
       extrinsicHex,
-      selectedAccount
+      // TODO: get selectedAccount from backend, has to be submitter (https://peregrine-did-promo.sporran.org/promo_status)
+      '4rzEE3upVsb75J2GXsQiRAKZJWe27r1m4PBbQGbx5KzcxMhK'
     )
     const submittableExtrinsic = api.createType(
       'Extrinsic',
@@ -101,9 +105,8 @@ export const App = () => {
       call: submittableExtrinsic.args[0].toHex(),
       signature: submittableExtrinsic.args[1].toHex(),
     }
-    console.log(input)
     const backendApi = ky.create({
-      prefixUrl: 'https://testnet-did-promo.sporran.org/',
+      prefixUrl: 'https://peregrine-did-promo.sporran.org/',
     })
 
     const json = await backendApi
@@ -113,15 +116,18 @@ export const App = () => {
     let paramsObj: any = json
     let searchParams = new URLSearchParams(paramsObj)
     let response = await fetch(
-      `https://testnet-did-promo.sporran.org/wait_finalized?${searchParams.toString()}`
+      `https://peregrine-did-promo.sporran.org/wait_finalized?${searchParams.toString()}`
     )
     let body = await response.text()
+    console.log(body)
   }
   return (
     <StyledBody>
       <Header />
-      <Guides />
+      {/*<Guides />*/}
+
       <Button onClick={enable}>Enable Wallets</Button>
+
       <select
         onChange={(e) => {
           setSelectedAccount(e.target.value)
@@ -131,6 +137,12 @@ export const App = () => {
           return <option key={account}>{account}</option>
         })}
       </select>
+      <StyledInput
+        type="text"
+        value={didIdentifier}
+        onInput={(e) => setDidIdentifier((e.target as HTMLInputElement).value)}
+        placeholder="Enter DID"
+      ></StyledInput>
       <Button onClick={() => handleClick()}>Click Here</Button>
     </StyledBody>
   )
