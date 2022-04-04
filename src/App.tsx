@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import {
   web3Accounts,
@@ -8,7 +8,10 @@ import {
 import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types'
 import { encodeAddress } from '@polkadot/util-crypto'
 import { ApiPromise } from '@polkadot/api'
+import type { Extrinsic } from '@polkadot/types/interfaces'
 import { authorizeLinkWithAccount, connect } from './Utilts/linking-helpers'
+import ky from 'ky'
+import { SubmittableExtrinsic } from '@polkadot/api-base/types'
 
 const Button = styled.button`
   height: 30px;
@@ -21,24 +24,16 @@ export const App = () => {
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null)
 
   const enable = async () => {
-    const allInjected = await web3Enable('web3name-promo by BTE')
+    await web3Enable('web3name-promo by BTE')
+    setApi(await connect())
     setEnabled(true)
   }
 
   useEffect(() => {
-    if (!enabled) return
-    ;(async () => {
-      setApi(await connect())
-    })()
-
-    return () => {
-      if (api) api.disconnect()
-    }
-  }, [enabled])
-
-  useEffect(() => {
     if (!api || !enabled) return
     ;(async () => {
+      // @ts-ignore
+      window.api = api
       const genesisHash = api.genesisHash.toHex()
       const allAccounts = await web3Accounts()
       const filteredAccounts = allAccounts.filter(
@@ -78,6 +73,19 @@ export const App = () => {
         return result.signature
       }
     )
+    api.disconnect()
+    //TODO: Did Sign with Sporran
+    // Result is "SubmittableExtrinsic" as hex
+    const extrinsicHex = extrinsic.toHex()
+    const outputFromSporran = await window.kilt.sporran.signExtrinsicWithDid(
+      extrinsicHex,
+      selectedAccount
+    )
+
+    const submittableExtrinsic = api.createType<
+      SubmittableExtrinsic<'promise'>
+    >('SubmittableExtrinsic', outputFromSporran)
+    console.log(submittableExtrinsic.args)
   }
 
   return (
