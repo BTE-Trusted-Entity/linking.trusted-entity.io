@@ -1,21 +1,33 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import {
   web3Accounts,
   web3Enable,
   web3FromAddress,
 } from '@polkadot/extension-dapp'
-import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types'
 import { encodeAddress } from '@polkadot/util-crypto'
 import { ApiPromise } from '@polkadot/api'
-import type { Extrinsic } from '@polkadot/types/interfaces'
 import { authorizeLinkWithAccount, connect } from './Utilts/linking-helpers'
 import ky from 'ky'
-import { SubmittableExtrinsic } from '@polkadot/api-base/types'
+import { Header } from './Header'
+import { Guides } from './Guides'
 
 const Button = styled.button`
   height: 30px;
   width: 120px;
+`
+const StyledBody = styled.div`
+  min-height: 100vh;
+  max-width: 100vw;
+  background: linear-gradient(180deg, #fefefe 0%, rgba(52, 14, 32, 0.3) 100%),
+    linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: 'Overpass';
 `
 export const App = () => {
   const [enabled, setEnabled] = useState(false)
@@ -81,15 +93,34 @@ export const App = () => {
       extrinsicHex,
       selectedAccount
     )
+    const submittableExtrinsic = api.createType(
+      'Extrinsic',
+      outputFromSporran.signed
+    )
+    const input = {
+      call: submittableExtrinsic.args[0].toHex(),
+      signature: submittableExtrinsic.args[1].toHex(),
+    }
+    console.log(input)
+    const backendApi = ky.create({
+      prefixUrl: 'https://testnet-did-promo.sporran.org/',
+    })
 
-    const submittableExtrinsic = api.createType<
-      SubmittableExtrinsic<'promise'>
-    >('SubmittableExtrinsic', outputFromSporran)
-    console.log(submittableExtrinsic.args)
+    const json = await backendApi
+      .post('submit_did_call', { json: input })
+      .json()
+
+    let paramsObj: any = json
+    let searchParams = new URLSearchParams(paramsObj)
+    let response = await fetch(
+      `https://testnet-did-promo.sporran.org/wait_finalized?${searchParams.toString()}`
+    )
+    let body = await response.text()
   }
-
   return (
-    <div>
+    <StyledBody>
+      <Header />
+      <Guides />
       <Button onClick={enable}>Enable Wallets</Button>
       <select
         onChange={(e) => {
@@ -101,7 +132,6 @@ export const App = () => {
         })}
       </select>
       <Button onClick={() => handleClick()}>Click Here</Button>
-      <div></div>
-    </div>
+    </StyledBody>
   )
 }
