@@ -15,7 +15,7 @@ type LinkingSignerCallback = (
 ) => Promise<HexString>
 
 export const connect = async () => {
-  const ENDPOINT_URL = 'wss://sporran-testnet.kilt.io'
+  const ENDPOINT_URL = process.env.REACT_APP_CHAIN_ENDPOINT
   const provider = new WsProvider(ENDPOINT_URL)
   return await ApiPromise.create({
     provider,
