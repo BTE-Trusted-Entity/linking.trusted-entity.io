@@ -24,6 +24,11 @@ const LogoContainer = styled.div`
   display: flex;
   max-width: 433px;
   width: 70%;
+  @media (max-width: 500px) {
+    svg {
+      height: 95%;
+    }
+  }
 `
 const HeaderTextContainer = styled.div`
   display: flex;
@@ -44,7 +49,7 @@ const HeaderHeading = styled.span`
   line-height: 52px;
 
   @media (max-width: 500px) {
-    font-size: 38px;
+    font-size: 28px;
   }
 `
 const HeaderText = styled.span`
@@ -65,10 +70,8 @@ export const Header = () => {
         <HeaderTextContainer>
           <HeaderHeading>Guide to your DID</HeaderHeading>
           <HeaderText>
-            Eget mauris pharetra et ultrices neque ornare aenean. Porttitor leo
-            a diam sollicitudin tempor id eu. Tortor at auctor urna nunc id
-            cursus. Eros in cursus turpis massa. Massa tincidunt nunc pulvinar
-            sapien et ligula ullamcorper. Dui accumsan sit amet nulla.
+            For a limited time, you can create your web3name and your on-chain
+            DID for free.
           </HeaderText>
         </HeaderTextContainer>
       </HeaderContainer>
