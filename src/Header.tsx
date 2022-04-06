@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ReactComponent as HeaderBigLogo } from './ImageAssets/header_bte_logo_left.svg'
+import { ReactComponent as HeaderRight } from './ImageAssets/BG Header right.svg'
+import { ReactComponent as Kilt } from './ImageAssets/kilt_logo_header.svg'
 
 const StyledHeader = styled.div`
   width: 100vw;
   background: radial-gradient(
-    circle,
+    circle at top right,
     ${(props) => props.theme.headerpink} 0%,
     black 100%
   );
@@ -13,11 +15,13 @@ const StyledHeader = styled.div`
   align-content: center;
   justify-content: center;
   margin-bottom: 20px;
+  position: relative;
 `
 const HeaderContainer = styled.div`
   max-width: 1100px;
   width: 90%;
   display: flex;
+  position: relative;
   justify-content: flex-start;
   flex-wrap: wrap;
   @media (max-width: 900px) {
@@ -64,6 +68,21 @@ const HeaderText = styled.span`
   text-align: justify;
   word-break: break-all;
 `
+const HeaderRightBg = styled(HeaderRight)`
+  position: absolute;
+  right: 0;
+  top: 0;
+`
+const KiltLogo = styled(Kilt)`
+  top: 50px;
+  right: 0;
+  width: 114px;
+  height: 28px;
+  position: absolute;
+  @media (max-width: 500px) {
+    display: none;
+  }
+`
 export const Header = () => {
   return (
     <StyledHeader>
@@ -78,7 +97,9 @@ export const Header = () => {
             DID for free.
           </HeaderText>
         </HeaderTextContainer>
+        <KiltLogo />
       </HeaderContainer>
+      <HeaderRightBg />
     </StyledHeader>
   )
 }
