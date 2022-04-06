@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { AccountLinking } from './AccountLinking'
-import { StepsContainer } from './Guides'
 import { ReactComponent as ArrowDown } from './ImageAssets/bte_Triangle.svg'
 
 interface Style {
