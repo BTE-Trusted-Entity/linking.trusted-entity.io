@@ -4,7 +4,7 @@ export const LightTheme = {
   gradientblack: '#010000',
   pinklinks: '#871e50',
   headerheading: '#89c35b',
-  headerpink: '#370f22',
+  headerpink: '#44142B',
   imprinttext: '#ffcfe6',
   bodygradient: '#fefefe',
   bodygradient2: 'rgba(52, 14, 32, 0.3)',
