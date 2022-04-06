@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { AccountLinking } from './AccountLinking'
+import { StepsContainer } from './Guides'
 import { ReactComponent as ArrowDown } from './ImageAssets/bte_Triangle.svg'
-import { getPayerAccount } from './Utilts/backend-requests-helpers'
 
 interface Style {
   borderRadius?: boolean
-  options?: boolean
+  open?: boolean
 }
+interface Wallet {
+  accounts: any[]
+  did: string
+}
+
 const SelectContainer = styled.div`
   display: flex;
   color: #43142b;
@@ -17,8 +23,7 @@ const SelectContainer = styled.div`
   box-sizing: border-box;
   height: 60px;
   border: 1px solid rgba(151, 151, 151, 0.5);
-  border-radius: ${(props: Style) =>
-    props.options ? '15px 15px 0 0' : '15px'};
+  border-radius: ${(props: Style) => (props.open ? '15px 15px 0 0' : '15px')};
   background-color: rgba(0, 0, 0, 0.1);
   box-shadow: inset 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
   align-items: center;
@@ -38,7 +43,7 @@ const Selection = styled.div`
 `
 const Arrow = styled(ArrowDown)`
   margin-left: auto;
-  transform: rotate(${(props: Style) => props.options && '180deg'});
+  transform: rotate(${(props: Style) => props.open && '180deg'});
 `
 const OptionBoxContainer = styled.div`
   display: flex;
@@ -78,34 +83,50 @@ const Options = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+  width: 100%;
 `
 
-export const CustomDropdown = () => {
+export const CustomDropdown = (props: Wallet) => {
   const [showOptions, setShowOptions] = useState<boolean>(false)
-  const handleOptions = async () => {
-    console.log(await getPayerAccount())
+  const [selectedAccount, setSelectedAccount] = useState<any>()
+  useState<string>('Choose Account')
+
+  const openOptionsMenu = async () => {
+    if (!props.accounts.length) return
     if (showOptions) setShowOptions(false)
     else setShowOptions(true)
   }
+  const selectOptions = (account: any) => {
+    setSelectedAccount(account)
+    setShowOptions(false)
+  }
   return (
     <Container>
-      <SelectContainer options={showOptions} onClick={() => handleOptions()}>
+      <SelectContainer open={showOptions} onClick={() => openOptionsMenu()}>
         <Selection>
-          KILT Identity 1 (Sporran)
-          <Arrow options={showOptions} />
+          {selectedAccount
+            ? `${selectedAccount.meta.name} (${selectedAccount.meta.source})`
+            : 'Choose Account'}
+          <Arrow open={showOptions} />
         </Selection>
       </SelectContainer>
-      {showOptions && <OptionsComponent />}
+      {showOptions && (
+        <OptionBoxContainer>
+          {props.accounts.map((account, index) => (
+            <OptionsWrapper
+              key={account.address}
+              borderRadius={index === props.accounts.length - 1}
+              onClick={() => selectOptions(account)}
+            >
+              <Options>
+                {account.meta.name} ({account.meta.source})
+              </Options>
+            </OptionsWrapper>
+          ))}
+        </OptionBoxContainer>
+      )}
+      <AccountLinking account={selectedAccount} did={props.did} />
     </Container>
-  )
-}
-const OptionsComponent = () => {
-  return (
-    <OptionBoxContainer>
-      <OptionsWrapper borderRadius>
-        <Options>Polkadot Extension</Options>
-      </OptionsWrapper>
-    </OptionBoxContainer>
   )
 }
