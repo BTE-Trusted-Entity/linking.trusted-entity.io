@@ -29,7 +29,6 @@ const HeadTitle = styled.span`
 `
 const InputContainer = styled.div`
   display: flex;
-  color: #43142b;
   margin-top: 10px;
   margin-bottom: 10px;
   letter-spacing: 0;
@@ -46,7 +45,6 @@ const InputContainer = styled.div`
 const Input = styled.input`
   height: 58px;
   width: 90%;
-  color: #411329;
   font-family: Overpass;
   font-size: 18px;
   font-weight: 600;
@@ -54,6 +52,7 @@ const Input = styled.input`
   line-height: 28px;
   background-color: transparent;
   border: none;
+  color: ${(props) => props.theme.primary};
   :focus {
     outline: none;
   }
@@ -66,7 +65,8 @@ const ConnectBtn = styled.button`
   letter-spacing: 0;
   height: 60px;
   border-radius: 15px;
-  background: radial-gradient(circle, #44142b 0%, #010000 100%);
+  background: ${(props) =>
+    `radial-gradient(circle, ${props.theme.gradientpink} 0%, ${props.theme.gradientblack} 100%)`};
   box-shadow: -2px 8px 12px 0 rgba(0, 0, 0, 0.35);
   font-size: 18px;
   font-weight: 600;
@@ -80,7 +80,6 @@ const ConnectBtn = styled.button`
 export const StepsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  color: #43142b;
   letter-spacing: 0;
   max-width: 550px;
   width: 90%;
@@ -90,13 +89,13 @@ export const StepsContainer = styled.div`
     line-height: 22px;
   }
   a {
-    color: #871e50;
+    color: ${(props) => props.theme.pinklinks};
   }
 `
 const SpacerElement = styled.div`
   height: 1px;
   width: 100%;
-  background-color: #43142b;
+  background-color: ${(props) => props.theme.primary};
   margin-top: 20px;
   margin-bottom: 20px;
   opacity: 0.4;

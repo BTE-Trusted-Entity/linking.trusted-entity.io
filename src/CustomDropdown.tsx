@@ -15,17 +15,17 @@ interface Wallet {
 
 const SelectContainer = styled.div`
   display: flex;
-  color: #43142b;
+  color: ${(props) => props.theme.primary};
   margin-top: 10px;
   margin-bottom: 10px;
   letter-spacing: 0;
   max-width: 550px;
   box-sizing: border-box;
   height: 60px;
-  border: 1px solid rgba(151, 151, 151, 0.5);
+  border: 1px solid ${(props) => props.theme.selectborder};
   border-radius: ${(props: Style) => (props.open ? '15px 15px 0 0' : '15px')};
-  background-color: rgba(0, 0, 0, 0.1);
-  box-shadow: inset 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
+  background-color: ${(props) => props.theme.selectbg};
+  box-shadow: inset 2px 2px 6px 0 ${(props) => props.theme.selectborder};
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -53,13 +53,13 @@ const OptionBoxContainer = styled.div`
   background-color: white;
   margin-top: -10px;
   border-radius: 0 0 15px 15px;
-  box-shadow: -2px 8px 12px 0 rgba(0, 0, 0, 0.35);
+  box-shadow: -2px 8px 12px 0 ${(props) => props.theme.optionshadow};
 `
 const OptionsWrapper = styled.div`
   height: 60px;
   width: 100%;
   margin-top: 2px;
-  background-color: #e4e4e4;
+  background-color: ${(props) => props.theme.optionbg};
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 0;
@@ -71,7 +71,7 @@ const OptionsWrapper = styled.div`
   border-radius: ${(props: Style) => props.borderRadius && '0 0 15px 15px'};
 
   :hover {
-    background-color: rgba(65, 19, 41, 0.5);
+    background-color: ${(props) => props.theme.optionhover};
   }
 `
 const Options = styled.div`

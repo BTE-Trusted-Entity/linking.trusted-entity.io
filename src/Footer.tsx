@@ -3,7 +3,11 @@ import styled from 'styled-components'
 import { ReactComponent as FooterLogo } from './ImageAssets/bte_logo_light.svg'
 
 const StyledFooter = styled.div`
-  background: radial-gradient(circle, #370f22 0%, #000000 100%);
+  background: radial-gradient(
+    circle,
+    ${(props) => props.theme.headerpink} 0%,
+    black 100%
+  );
   min-height: fit-content;
   width: 100vw;
   display: flex;
@@ -32,13 +36,13 @@ const Imprint = styled.div`
   letter-spacing: 0;
   line-height: 22px;
   span {
-    color: #ffcfe6;
+    color: ${(props) => props.theme.imprinttext};
   }
   a {
-    color: #89c35b;
+    color: ${(props) => props.theme.headerheading};
   }
   label {
-    color: #89c35b;
+    color: ${(props) => props.theme.headerheading};
     margin-bottom: 10px;
   }
 `
