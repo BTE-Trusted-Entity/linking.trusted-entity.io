@@ -4,7 +4,11 @@ import { ReactComponent as HeaderBigLogo } from './ImageAssets/header_bte_logo_l
 
 const StyledHeader = styled.div`
   width: 100vw;
-  background: radial-gradient(circle, #370f22 0%, #000000 100%);
+  background: radial-gradient(
+    circle,
+    ${(props) => props.theme.headerpink} 0%,
+    black 100%
+  );
   display: flex;
   align-content: center;
   justify-content: center;
@@ -42,7 +46,7 @@ const HeaderTextContainer = styled.div`
   }
 `
 const HeaderHeading = styled.span`
-  color: #89c35b;
+  color: ${(props) => props.theme.headerheading};
   font-size: 48px;
   font-weight: 200;
   letter-spacing: 0;
@@ -53,7 +57,7 @@ const HeaderHeading = styled.span`
   }
 `
 const HeaderText = styled.span`
-  color: #ffffff;
+  color: white;
   font-size: 16px;
   letter-spacing: 0;
   line-height: 23px;
