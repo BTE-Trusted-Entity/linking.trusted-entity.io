@@ -21,7 +21,6 @@ const HeaderContainer = styled.div`
   max-width: 1100px;
   width: 90%;
   display: flex;
-  position: relative;
   justify-content: flex-start;
   flex-wrap: wrap;
   @media (max-width: 900px) {
@@ -75,7 +74,7 @@ const HeaderRightBg = styled(HeaderRight)`
 `
 const KiltLogo = styled(Kilt)`
   top: 50px;
-  right: 0;
+  right: 40px;
   width: 114px;
   height: 28px;
   position: absolute;
