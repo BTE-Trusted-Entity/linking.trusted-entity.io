@@ -75,6 +75,7 @@ const ConnectBtn = styled.button`
   text-transform: uppercase;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `
 
 export const StepsContainer = styled.div`
