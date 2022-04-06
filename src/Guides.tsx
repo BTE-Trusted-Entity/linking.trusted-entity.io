@@ -66,7 +66,7 @@ const ConnectBtn = styled.button`
   height: 60px;
   border-radius: 15px;
   background: ${(props) =>
-    `radial-gradient(circle, ${props.theme.gradientpink} 0%, ${props.theme.gradientblack} 100%)`};
+    `radial-gradient(circle at top right, ${props.theme.gradientpink} 0%, ${props.theme.gradientblack} 100%)`};
   box-shadow: -2px 8px 12px 0 rgba(0, 0, 0, 0.35);
   font-size: 18px;
   font-weight: 600;
