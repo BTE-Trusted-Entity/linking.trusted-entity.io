@@ -4,7 +4,7 @@ import { ReactComponent as FooterLogo } from './ImageAssets/bte_logo_light.svg'
 
 const StyledFooter = styled.div`
   background: radial-gradient(
-    circle,
+    circle at top right,
     ${(props) => props.theme.headerpink} 0%,
     black 100%
   );
