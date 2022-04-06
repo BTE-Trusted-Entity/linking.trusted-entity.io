@@ -11,14 +11,13 @@ interface Wallet {
 }
 const LinkingBtn = styled.button`
   display: flex;
-  color: white;
   margin-top: 10px;
   margin-bottom: 10px;
   letter-spacing: 0;
   height: 60px;
   border-radius: 15px;
   background: ${(props) =>
-    `radial-gradient(circle, ${props.theme.gradientpink} 0%, ${props.theme.gradientblack} 100%)`};
+    `radial-gradient(circle at top right, ${props.theme.gradientpink} 0%, ${props.theme.gradientblack} 100%)`};
   box-shadow: -2px 8px 12px 0 rgba(0, 0, 0, 0.35);
   font-size: 18px;
   font-weight: 600;
@@ -29,6 +28,7 @@ const LinkingBtn = styled.button`
   justify-content: center;
   position: relative;
   cursor: pointer;
+  color: white;
 `
 const Container = styled.div`
   display: flex;
@@ -67,11 +67,12 @@ export const AccountLinking = (props: Wallet) => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
   const [linking, setLinking] = useState<boolean>(false)
-
   const handleLinking = async () => {
     setError(null)
     setSuccessMessage(null)
-
+    if (!props.did || !props.account) {
+      return
+    }
     if (!isKiltDid(props.did)) {
       setError('Not a valid Kilt Did')
     }
