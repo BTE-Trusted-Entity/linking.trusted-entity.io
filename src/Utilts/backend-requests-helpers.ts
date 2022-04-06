@@ -20,23 +20,23 @@ const getApiEndpoint = (): KyInstance => {
   }
 }
 export const getPayerAccount = async (): Promise<string> => {
-  const status: any = await getApiEndpoint().get('promo_status').json()
+  const status = (await getApiEndpoint().get('promo_status').json()) as any
   const accountAddress = status.account
   return accountAddress
 }
 export const submitDidRequest = async (
   call: HexString,
   signature: HexString
-): Promise<unknown> => {
-  const jsonResponse = await getApiEndpoint()
+): Promise<any> => {
+  const jsonResponse = (await getApiEndpoint()
     .post('submit_did_call', {
       json: {
         call: call,
         signature: signature,
       },
     })
-    .json()
-  return jsonResponse
+    .json()) as any
+  return jsonResponse.tx_hash
 }
 export const checkFinalTrans = async (tx_hash: HexString): Promise<boolean> => {
   return await getApiEndpoint()
