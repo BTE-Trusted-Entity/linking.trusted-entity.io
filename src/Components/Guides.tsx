@@ -291,9 +291,14 @@ const TermsOfUse = () => {
     <StepsContainer>
       <HeadTitle>Terms & Conditions</HeadTitle>
       <p>
-        <a href=" ">Terms PDF</a>.
+        <a href="https://www.trusted-entity.io/assets/pdf/web3namePromo_Terms_2022.pdf">
+          Terms PDF
+        </a>
+        .
         <br />
-        <a href=" ">Privacy Policy PDF</a>
+        <a href="https://www.trusted-entity.io/assets/pdf/web3namePromo_PrivacyPolicy_2022.pdf">
+          Privacy Policy PDF
+        </a>
       </p>
     </StepsContainer>
   )
