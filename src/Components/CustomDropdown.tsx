@@ -89,7 +89,7 @@ const Container = styled.div`
 export const CustomDropdown = (props: Wallet) => {
   const [showOptions, setShowOptions] = useState<boolean>(false)
   const [selectedAccount, setSelectedAccount] = useState<any>()
-  useState<string>('Choose Account')
+  const [selectedText, setSelectedText] = useState<string>('Choose Account')
 
   const openOptionsMenu = async () => {
     if (!props.accounts.length) return
@@ -98,15 +98,16 @@ export const CustomDropdown = (props: Wallet) => {
   }
   const selectOptions = (account: any) => {
     setSelectedAccount(account)
+    setSelectedText(
+      `${selectedAccount.meta.name} (${selectedAccount.meta.source})`
+    )
     setShowOptions(false)
   }
   return (
     <Container>
       <SelectContainer open={showOptions} onClick={() => openOptionsMenu()}>
         <Selection>
-          {selectedAccount
-            ? `${selectedAccount.meta.name} (${selectedAccount.meta.source})`
-            : 'Choose Account'}
+          {props.accounts.length > 0 ? selectedText : 'Wallet Not Connected'}
           <Arrow open={showOptions} />
         </Selection>
       </SelectContainer>
