@@ -40,6 +40,7 @@ export const getFilteredAccounts = async () => {
     (account) =>
       !account.meta.genesisHash || account.meta.genesisHash === genesisHash
   )
+  api.disconnect()
   return filteredAccounts
 }
 export const linkDidWithAccount = async (
