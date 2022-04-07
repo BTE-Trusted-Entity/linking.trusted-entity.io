@@ -9,6 +9,9 @@ interface Wallet {
   account: any
   did: string
 }
+interface Button {
+  disabled: boolean
+}
 const LinkingBtn = styled.button`
   display: flex;
   margin-top: 10px;
@@ -29,7 +32,12 @@ const LinkingBtn = styled.button`
   justify-content: center;
   position: relative;
   cursor: pointer;
-  color: white;
+  color: ${(props: Button) =>
+    props.disabled ? 'rgba(255, 255, 255, 0.3)' : 'white'};
+  opacity: ${(props: Button) => props.disabled && 0.6};
+  @media (max-width: 400px) {
+    font-size: 16px;
+  }
 `
 const Container = styled.div`
   display: flex;
@@ -54,7 +62,7 @@ const Container = styled.div`
 const SuccessLabel = styled.label`
   color: green;
 `
-const ErrorLabel = styled.label`
+export const ErrorLabel = styled.label`
   color: red;
 `
 const LoaderSVG = styled(Loader)`
@@ -76,6 +84,7 @@ export const AccountLinking = (props: Wallet) => {
     }
     if (!isKiltDid(props.did)) {
       setError('Not a valid Kilt Did')
+      return
     }
     const tx_hash = await linkDidWithAccount(props.account, props.did)
     setLinking(true)
@@ -90,7 +99,10 @@ export const AccountLinking = (props: Wallet) => {
         8.&nbsp;&nbsp; Click “Link DID with Account” (By clicking this button,
         you accept the terms and conditions){' '}
       </Steps>
-      <LinkingBtn onClick={() => handleLinking()}>
+      <LinkingBtn
+        disabled={!props.did || !props.account}
+        onClick={() => handleLinking()}
+      >
         Link Did with account
         {linking && <LoaderSVG />}
       </LinkingBtn>
