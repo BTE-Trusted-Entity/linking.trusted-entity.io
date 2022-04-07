@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ReactComponent as FooterLogo } from './ImageAssets/bte_logo_light.svg'
+import { ReactComponent as FooterRight } from './ImageAssets/footer_right_bg.svg'
 
 const StyledFooter = styled.div`
   background: radial-gradient(
@@ -19,12 +20,12 @@ const StyledFooter = styled.div`
 `
 const Div = styled.div`
   max-width: 1100px;
-  margin-top: 45px;
   margin-bottom: 20px;
   width: 90%;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+
   @media (max-width: 900px) {
     justify-content: center;
   }
@@ -35,6 +36,7 @@ const Imprint = styled.div`
   font-size: 14px;
   letter-spacing: 0;
   line-height: 22px;
+
   span {
     color: ${(props) => props.theme.imprinttext};
   }
@@ -44,6 +46,7 @@ const Imprint = styled.div`
   label {
     color: ${(props) => props.theme.headerheading};
     margin-bottom: 10px;
+    margin-top: 40px;
   }
 `
 const MarginSpan = styled.span`
@@ -55,11 +58,13 @@ const Logo = styled(FooterLogo)`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 40px;
   @media (max-width: 500px) {
     width: 100%;
     margin-top: 30px;
   }
 `
+
 export const Footer = () => {
   return (
     <StyledFooter>
