@@ -16,6 +16,7 @@ const LinkingBtn = styled.button`
   letter-spacing: 0;
   height: 60px;
   border-radius: 15px;
+  border: none;
   background: ${(props) =>
     `radial-gradient(circle at top right, ${props.theme.gradientpink} 0%, ${props.theme.gradientblack} 100%)`};
   box-shadow: -2px 8px 12px 0 rgba(0, 0, 0, 0.35);
