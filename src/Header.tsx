@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ReactComponent as HeaderBigLogo } from './ImageAssets/header_bte_logo_left.svg'
-import { ReactComponent as HeaderRight } from './ImageAssets/BG Header right.svg'
+import HeaderRight from './ImageAssets/BG Header right.svg'
 import { ReactComponent as Kilt } from './ImageAssets/kilt_logo_header.svg'
 
 const StyledHeader = styled.div`
@@ -67,7 +67,7 @@ const HeaderText = styled.span`
   text-align: justify;
   word-break: break-all;
 `
-const HeaderRightBg = styled(HeaderRight)`
+const HeaderRightBg = styled.img`
   position: absolute;
   right: 0;
   top: 0;
@@ -98,7 +98,7 @@ export const Header = () => {
         </HeaderTextContainer>
         <KiltLogo />
       </HeaderContainer>
-      <HeaderRightBg />
+      <HeaderRightBg src={HeaderRight} />
     </StyledHeader>
   )
 }
