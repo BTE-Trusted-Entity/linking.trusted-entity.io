@@ -25,9 +25,9 @@ const GuideContainer = styled.div`
 `
 export const Steps = styled.span`
   margin-top: 10px;
-  font-size: 14px;
-  line-height: 22px;
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 24px;
+  font-size: 16px;
   margin-left: 10px;
 `
 const HeadTitle = styled.span`
@@ -110,8 +110,8 @@ export const StepsContainer = styled.div`
   width: 90%;
 
   p {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 16px;
+    line-height: 24px;
   }
   a {
     color: ${(props) => props.theme.pinklinks};
@@ -225,8 +225,8 @@ const StepThree = () => {
   const [did, setDid] = useState<string>('')
   const [loadingWallets, setLoadingWallets] = useState<boolean>(false)
   const loadWalletAccounts = async () => {
-    setLoadingWallets(true)
     if (accounts.length) return
+    setLoadingWallets(true)
     const filteredAccounts = await getFilteredAccounts()
     setAccounts(filteredAccounts)
     setLoadingWallets(false)

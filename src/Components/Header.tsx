@@ -61,9 +61,9 @@ const HeaderHeading = styled.span`
 `
 const HeaderText = styled.span`
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 0;
-  line-height: 23px;
+  line-height: 24px;
   text-align: justify;
   word-break: break-all;
 `

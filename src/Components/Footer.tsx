@@ -32,9 +32,9 @@ const Div = styled.div`
 const Imprint = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0;
-  line-height: 22px;
+  line-height: 24px;
 
   span {
     color: ${(props) => props.theme.imprinttext};
@@ -81,7 +81,7 @@ export const Footer = () => {
           <span>Managing Director: Ingo Rübe</span>
           <span>Contact: info@botlabs.org</span>
           <span>
-            Or go to <a href=" ">Tech Support</a>and click on "Contact Us"
+            Or go to <a href=" ">Tech Support</a> and click on "Contact Us"
           </span>
           <MarginSpan>Requirements according to § 5 TMG (Germany)</MarginSpan>
         </Imprint>
