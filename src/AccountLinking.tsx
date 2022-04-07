@@ -77,6 +77,7 @@ export const AccountLinking = (props: Wallet) => {
 
   const [linking, setLinking] = useState<boolean>(false)
   const handleLinking = async () => {
+    if (linking) return
     setError(null)
     setSuccessMessage(null)
     if (!props.did || !props.account) {
