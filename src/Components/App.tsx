@@ -4,7 +4,7 @@ import { Header } from './Header'
 import { Guides } from './Guides'
 import { Footer } from './Footer'
 import { ThemeProvider } from 'styled-components'
-import { LightTheme } from './Theme/light'
+import { LightTheme } from '../Theme/light'
 
 const StyledBody = styled.div`
   min-height: 100vh;

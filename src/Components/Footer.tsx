@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ReactComponent as FooterLogo } from './ImageAssets/bte_logo_light.svg'
-import { ReactComponent as FooterRight } from './ImageAssets/footer_right_bg.svg'
+import { ReactComponent as FooterLogo } from '../ImageAssets/bte_logo_light.svg'
 
 const StyledFooter = styled.div`
   background: radial-gradient(

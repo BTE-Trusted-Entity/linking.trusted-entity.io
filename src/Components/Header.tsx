@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ReactComponent as HeaderBigLogo } from './ImageAssets/header_bte_logo_left.svg'
-import HeaderRight from './ImageAssets/BG Header right.svg'
-import { ReactComponent as Kilt } from './ImageAssets/kilt_logo_header.svg'
+import { ReactComponent as HeaderBigLogo } from '../ImageAssets/header_bte_logo_left.svg'
+import HeaderRight from '../ImageAssets/BG Header right.svg'
+import { ReactComponent as Kilt } from '../ImageAssets/kilt_logo_header.svg'
 
 const StyledHeader = styled.div`
   width: 100vw;

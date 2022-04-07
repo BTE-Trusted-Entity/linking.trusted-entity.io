@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { AccountLinking } from './AccountLinking'
-import { ReactComponent as ArrowDown } from './ImageAssets/bte_Triangle.svg'
+import { ReactComponent as ArrowDown } from '../ImageAssets/bte_Triangle.svg'
 
 interface Style {
   borderRadius?: boolean

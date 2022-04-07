@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Steps } from './Guides'
 import styled from 'styled-components'
-import { isKiltDid, linkDidWithAccount } from './Utilts/linking-helpers'
-import { checkFinalTrans } from './Utilts/backend-requests-helpers'
-import { ReactComponent as Loader } from './ImageAssets/oval.svg'
+import { isKiltDid, linkDidWithAccount } from '../Utilts/linking-helpers'
+import { checkFinalTrans } from '../Utilts/backend-requests-helpers'
+import { ReactComponent as Loader } from '../ImageAssets/oval.svg'
 
 interface Wallet {
   account: any

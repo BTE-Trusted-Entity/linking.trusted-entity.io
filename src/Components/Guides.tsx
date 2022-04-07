@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { CustomDropdown } from './CustomDropdown'
-import { getFilteredAccounts } from './Utilts/linking-helpers'
-import { ReactComponent as BTE1 } from './ImageAssets/bte_numbers_1.svg'
-import { ReactComponent as BTE2 } from './ImageAssets/bte_numbers_2.svg'
-import { ReactComponent as BTE3 } from './ImageAssets/bte_numbers_3.svg'
-import { ReactComponent as Checkmark } from './ImageAssets/bte_check.svg'
-import { ReactComponent as LoaderSVG } from './ImageAssets/oval.svg'
+import { getFilteredAccounts } from '../Utilts/linking-helpers'
+import { ReactComponent as BTE1 } from '../ImageAssets/bte_numbers_1.svg'
+import { ReactComponent as BTE2 } from '../ImageAssets/bte_numbers_2.svg'
+import { ReactComponent as BTE3 } from '../ImageAssets/bte_numbers_3.svg'
+import { ReactComponent as Checkmark } from '../ImageAssets/bte_check.svg'
+import { ReactComponent as LoaderSVG } from '../ImageAssets/oval.svg'
 
 interface Button {
   disabled: boolean
