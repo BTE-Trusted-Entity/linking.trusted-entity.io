@@ -2,7 +2,15 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { CustomDropdown } from './CustomDropdown'
 import { getFilteredAccounts } from './Utilts/linking-helpers'
+import { ReactComponent as BTE1 } from './ImageAssets/bte_numbers_1.svg'
+import { ReactComponent as BTE2 } from './ImageAssets/bte_numbers_2.svg'
+import { ReactComponent as BTE3 } from './ImageAssets/bte_numbers_3.svg'
+import { ReactComponent as Checkmark } from './ImageAssets/bte_check.svg'
+import { ReactComponent as LoaderSVG } from './ImageAssets/oval.svg'
 
+interface Button {
+  disabled: boolean
+}
 const GuideContainer = styled.div`
   max-width: 1100px;
   width: 90%;
@@ -59,12 +67,14 @@ const Input = styled.input`
 `
 const ConnectBtn = styled.button`
   display: flex;
-  color: white;
+  color: ${(props: Button) =>
+    props.disabled ? 'rgba(255, 255, 255, 0.3)' : 'white'};
   margin-top: 10px;
   margin-bottom: 10px;
   letter-spacing: 0;
   height: 60px;
   border-radius: 15px;
+  border: none;
   background: ${(props) =>
     `radial-gradient(circle at top right, ${props.theme.gradientpink} 0%, ${props.theme.gradientblack} 100%)`};
   box-shadow: -2px 8px 12px 0 rgba(0, 0, 0, 0.35);
@@ -75,9 +85,20 @@ const ConnectBtn = styled.button`
   text-transform: uppercase;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor: ${(props: Button) => (props.disabled ? 'none' : 'pointer')};
+  position: relative;
+  opacity: ${(props: Button) => props.disabled && 0.6};
 `
-
+const CheckIcon = styled(Checkmark)`
+  position: absolute;
+  top: 14px;
+  right: 20px;
+`
+const Loader = styled(LoaderSVG)`
+  position: absolute;
+  top: 13px;
+  right: 20px;
+`
 export const StepsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -100,6 +121,22 @@ const SpacerElement = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   opacity: 0.4;
+`
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+`
+const ImageContainer = styled.div`
+  display: flex;
+  max-width: 500px;
+  width: 30%;
+  height: 100%;
+  margin-top: 56px;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 20px;
 `
 
 const MainText = () => {
@@ -129,92 +166,118 @@ const MainText = () => {
 }
 const StepOne = () => {
   return (
-    <StepsContainer>
-      <HeadTitle>Getting started</HeadTitle>
-      <p>
-        In order to claim your name, you need a Sporran wallet and a KILT
-        on-chain DID. Here’s how to <a href=" ">set up your Sporran</a>. Then
-        you can create your free on-chain DID
-      </p>
-      <p>
-        Once you have these, you’re ready to go. Just follow the steps below.
-      </p>
-    </StepsContainer>
+    <Container>
+      <StepsContainer>
+        <HeadTitle>Getting started</HeadTitle>
+        <p>
+          In order to claim your name, you need a Sporran wallet and a KILT
+          on-chain DID. Here’s how to <a href=" ">set up your Sporran</a>. Then
+          you can create your free on-chain DID
+        </p>
+        <p>
+          Once you have these, you’re ready to go. Just follow the steps below.
+        </p>
+      </StepsContainer>
+      <ImageContainer>
+        <BTE1 />
+      </ImageContainer>
+    </Container>
   )
 }
 const StepTwo = () => {
   return (
-    <StepsContainer>
-      <HeadTitle>Claim your name </HeadTitle>
-      <Steps>1.&nbsp;&nbsp; Open your Sporran extension</Steps>
-      <Steps> 2.&nbsp;&nbsp; Click “Create web3name”</Steps>
-      <Steps>
-        {' '}
-        3.&nbsp;&nbsp; Click and read the Terms. If you agree, check the box
-        “Use web3name Promo and accept Terms”. This will create a signed package
-        that is sent to the web3name promo server for payment and submission to
-        the blockchain.
-      </Steps>
-      <Steps>4.&nbsp;&nbsp; Click “Next Step”</Steps>
-      <Steps>5.&nbsp;&nbsp; Enter the name you wish to claim.</Steps>
-      <Steps>
-        6.&nbsp;&nbsp; When you have chosen an available name, click “Next”
-      </Steps>
-      <Steps>7.&nbsp;&nbsp; Enter your Sporran password and click “Sign </Steps>
-      <p>Congratulations, you now have your unique web3name!</p>
-    </StepsContainer>
+    <Container>
+      <StepsContainer>
+        <HeadTitle>Claim your name </HeadTitle>
+        <Steps>1.&nbsp;&nbsp; Open your Sporran extension</Steps>
+        <Steps> 2.&nbsp;&nbsp; Click “Create web3name”</Steps>
+        <Steps>
+          {' '}
+          3.&nbsp;&nbsp; Click and read the Terms. If you agree, check the box
+          “Use web3name Promo and accept Terms”. This will create a signed
+          package that is sent to the web3name promo server for payment and
+          submission to the blockchain.
+        </Steps>
+        <Steps>4.&nbsp;&nbsp; Click “Next Step”</Steps>
+        <Steps>5.&nbsp;&nbsp; Enter the name you wish to claim.</Steps>
+        <Steps>
+          6.&nbsp;&nbsp; When you have chosen an available name, click “Next”
+        </Steps>
+        <Steps>
+          7.&nbsp;&nbsp; Enter your Sporran password and click “Sign{' '}
+        </Steps>
+        <p>Congratulations, you now have your unique web3name!</p>
+      </StepsContainer>
+      <ImageContainer>
+        <BTE2 />
+      </ImageContainer>
+    </Container>
   )
 }
 const StepThree = () => {
   const [accounts, setAccounts] = useState<any[]>([])
   const [did, setDid] = useState<string>('')
+  const [loadingWallets, setLoadingWallets] = useState<boolean>(false)
   const loadWalletAccounts = async () => {
+    setLoadingWallets(true)
+    if (accounts.length) return
     const filteredAccounts = await getFilteredAccounts()
     setAccounts(filteredAccounts)
+    setLoadingWallets(false)
   }
   return (
-    <StepsContainer>
-      <HeadTitle>Link your web3name to your account address</HeadTitle>
-      <p>
-        You may link your on-chain DID, with your new web3name, to any accounts
-        you have in the Polkadot ecosystem.{' '}
-      </p>
-      <p>
-        In this way, people with your Polkadot ecosystem account address will be
-        able to see your DID and your web3 name and, vice versa, those with your
-        web3name can see your public address. This is especially useful for
-        validators and collators, who can provide a personalized name that makes
-        them easily identifiable.
-      </p>
-      <p>To link your web3name to your ecosystem account address:</p>
-      <Steps>1.&nbsp;&nbsp; Open your Sporran extension</Steps>
-      <Steps> 2.&nbsp;&nbsp; Click “Manage on-chain DID” </Steps>
-      <Steps>
-        {' '}
-        3.&nbsp;&nbsp; Click the icon to the right of your DID to copy it
-      </Steps>
-      <Steps>4.&nbsp;&nbsp; Paste your DID into the field below:</Steps>
-      <InputContainer>
-        <Input
-          placeholder="Enter DID"
-          onInput={(e) => setDid((e.target as HTMLInputElement).value)}
-        />
-      </InputContainer>
-      <Steps>5.&nbsp;&nbsp; Click “Connect to wallet” </Steps>
-      <ConnectBtn onClick={() => loadWalletAccounts()}>
-        Connect To Wallet
-      </ConnectBtn>
-      <p>
-        This opens up pop-ups to request access to all your Polkadot-enabled
-        extensions, including Sporran)
-      </p>
-      <Steps>6.&nbsp;&nbsp; Click “Allow access” on each wallet </Steps>
-      <Steps>
-        7.&nbsp;&nbsp; Click next to “Choose Account Name” in the dropdown list
-        and choose the account you wish to link to your web3name{' '}
-      </Steps>
-      <CustomDropdown accounts={accounts} did={did} />
-    </StepsContainer>
+    <Container>
+      <StepsContainer>
+        <HeadTitle>Link your web3name to your account address</HeadTitle>
+        <p>
+          You may link your on-chain DID, with your new web3name, to any
+          accounts you have in the Polkadot ecosystem.{' '}
+        </p>
+        <p>
+          In this way, people with your Polkadot ecosystem account address will
+          be able to see your DID and your web3 name and, vice versa, those with
+          your web3name can see your public address. This is especially useful
+          for validators and collators, who can provide a personalized name that
+          makes them easily identifiable.
+        </p>
+        <p>To link your web3name to your ecosystem account address:</p>
+        <Steps>1.&nbsp;&nbsp; Open your Sporran extension</Steps>
+        <Steps> 2.&nbsp;&nbsp; Click “Manage on-chain DID” </Steps>
+        <Steps>
+          {' '}
+          3.&nbsp;&nbsp; Click the icon to the right of your DID to copy it
+        </Steps>
+        <Steps>4.&nbsp;&nbsp; Paste your DID into the field below:</Steps>
+        <InputContainer>
+          <Input
+            placeholder="Enter DID"
+            onInput={(e) => setDid((e.target as HTMLInputElement).value)}
+          />
+        </InputContainer>
+        <Steps>5.&nbsp;&nbsp; Click “Connect to wallet” </Steps>
+        <ConnectBtn
+          disabled={accounts.length > 0}
+          onClick={() => loadWalletAccounts()}
+        >
+          Connect To Wallet
+          {accounts.length > 0 && <CheckIcon />}
+          {loadingWallets && <Loader />}
+        </ConnectBtn>
+        <p>
+          This opens up pop-ups to request access to all your Polkadot-enabled
+          extensions, including Sporran)
+        </p>
+        <Steps>6.&nbsp;&nbsp; Click “Allow access” on each wallet </Steps>
+        <Steps>
+          7.&nbsp;&nbsp; Click next to “Choose Account Name” in the dropdown
+          list and choose the account you wish to link to your web3name{' '}
+        </Steps>
+        <CustomDropdown accounts={accounts} did={did} />
+      </StepsContainer>
+      <ImageContainer>
+        <BTE3 />
+      </ImageContainer>
+    </Container>
   )
 }
 const TermsOfUse = () => {
