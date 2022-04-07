@@ -88,6 +88,9 @@ const ConnectBtn = styled.button`
   cursor: ${(props: Button) => (props.disabled ? 'none' : 'pointer')};
   position: relative;
   opacity: ${(props: Button) => props.disabled && 0.6};
+  @media (max-width: 400px) {
+    font-size: 16px;
+  }
 `
 const CheckIcon = styled(Checkmark)`
   position: absolute;
@@ -131,12 +134,15 @@ const Container = styled.div`
 const ImageContainer = styled.div`
   display: flex;
   max-width: 500px;
-  width: 30%;
+  width: 50%;
   height: 100%;
   margin-top: 56px;
   align-items: flex-start;
   justify-content: center;
   margin-left: 20px;
+  @media (max-width: 570px) {
+    display: none;
+  }
 `
 
 const MainText = () => {
@@ -259,7 +265,7 @@ const StepThree = () => {
           disabled={accounts.length > 0}
           onClick={() => loadWalletAccounts()}
         >
-          Connect To Wallet
+          {accounts.length > 0 ? 'Wallets Loaded' : 'Connect To Wallet'}
           {accounts.length > 0 && <CheckIcon />}
           {loadingWallets && <Loader />}
         </ConnectBtn>
