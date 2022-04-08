@@ -94,13 +94,15 @@ export const CustomDropdown = (props: Wallet) => {
   const openOptionsMenu = async () => {
     if (!props.accounts.length) return
     if (showOptions) setShowOptions(false)
-    else setShowOptions(true)
+    else {
+      console.log(props.accounts[0].meta)
+      setShowOptions(true)
+    }
   }
   const selectOptions = (account: any) => {
+    if (!account) return
     setSelectedAccount(account)
-    setSelectedText(
-      `${selectedAccount.meta.name} (${selectedAccount.meta.source})`
-    )
+    setSelectedText(`${account.meta.name} (${account.meta.source})`)
     setShowOptions(false)
   }
   return (
