@@ -4,6 +4,8 @@ import type { MultiSignature, AccountId } from '@polkadot/types/interfaces'
 import { KeypairType } from '@polkadot/util-crypto/types'
 import type { AnyNumber } from '@polkadot/types/types'
 import type { HexString } from '@polkadot/util/types'
+import { hexToU8a, u8aToHex } from '@polkadot/util'
+import { wrapBytes } from '@polkadot/extension-dapp/wrapBytes'
 import { encodeAddress, signatureVerify } from '@polkadot/util-crypto'
 import {
   web3Accounts,
@@ -125,10 +127,37 @@ export async function authorizeLinkWithAccount(
   const signMe = api
     .createType('(AccountId32, u64)', [didIdentifier, validTill])
     .toHex()
-  const signature = await signingCallback(signMe, accountAddress)
-  const { crypto, isValid } = signatureVerify(signMe, signature, accountAddress)
-  if (!isValid && crypto !== 'none') throw new Error('signature not valid')
-  const sigType = getMultiSignatureTypeFromKeypairType(crypto as KeypairType)
+
+  let signature = hexToU8a(
+    await signingCallback(u8aToHex(wrapBytes(signMe)), accountAddress)
+  )
+
+  let result = {
+    crypto: 'none',
+    isValid: false,
+  }
+
+  try {
+    const signatureWithoutType = signature.subarray(1)
+    result = signatureVerify(signMe, signatureWithoutType, accountAddress)
+    signature = result.isValid ? signatureWithoutType : signature
+  } catch {
+    console.log('Can not verify without type')
+  }
+
+  if (!result.isValid) {
+    try {
+      result = signatureVerify(signMe, signature, accountAddress)
+    } catch {
+      console.log('Can not verify signature')
+    }
+  }
+
+  if (!result.isValid) throw new Error('signature not valid')
+  const sigType = getMultiSignatureTypeFromKeypairType(
+    result.crypto as KeypairType
+  )
+
   return getAccountSignedAssociationTx(
     api,
     accountAddress,
