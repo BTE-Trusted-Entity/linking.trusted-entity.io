@@ -118,7 +118,7 @@ export async function authorizeLinkWithAccount(
   accountAddress: AccountAddress,
   didIdentifier: string,
   signingCallback: LinkingSignerCallback,
-  nBlocksValid = 10
+  nBlocksValid = 20
 ): Promise<Extrinsic> {
   const blockNo = await api.query.system.number<BlockNumber>()
   const validTill = blockNo.addn(nBlocksValid)
