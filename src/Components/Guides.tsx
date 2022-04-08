@@ -130,6 +130,9 @@ const Container = styled.div`
   width: 100%;
   justify-content: flex-start;
   align-items: center;
+  @media (max-width: 570px) {
+    width: 90%;
+  }
 `
 const ImageContainer = styled.div`
   display: flex;
@@ -147,27 +150,30 @@ const ImageContainer = styled.div`
 
 const MainText = () => {
   return (
-    <StepsContainer>
-      <HeadTitle>web3name</HeadTitle>
-      <p>
-        Your web3name (w3n) represents your unique on-chain decentralized
-        identifier (DID), a string of letters and numbers that form the core of
-        your KILT digital identity.
-      </p>
-      <p>
-        web3name provides a unique personal and recognizable way to represent
-        yourself across the Polkadot ecosystem. Validators and collators can
-        customize a name that makes them easy to identify, and may link this
-        name to all their different addresses in the Polkadot ecosystem. This
-        name can also be used with <a href=" ">DIDsign</a>, adding an extra
-        layer of verification when you share digital files you have signed.
-      </p>
-      <p>
-        Normally, creating an on-chain DID and a web3name requires a deposit of
-        around 2 KILT Coins and a small transaction fee. Now, for a limited
-        time, you can create both your web3name and your on-chain DID for free.
-      </p>
-    </StepsContainer>
+    <Container>
+      <StepsContainer>
+        <HeadTitle>web3name</HeadTitle>
+        <p>
+          Your web3name (w3n) represents your unique on-chain decentralized
+          identifier (DID), a string of letters and numbers that form the core
+          of your KILT digital identity.
+        </p>
+        <p>
+          web3name provides a unique personal and recognizable way to represent
+          yourself across the Polkadot ecosystem. Validators and collators can
+          customize a name that makes them easy to identify, and may link this
+          name to all their different addresses in the Polkadot ecosystem. This
+          name can also be used with <a href=" ">DIDsign</a>, adding an extra
+          layer of verification when you share digital files you have signed.
+        </p>
+        <p>
+          Normally, creating an on-chain DID and a web3name requires a deposit
+          of around 2 KILT Coins and a small transaction fee. Now, for a limited
+          time, you can create both your web3name and your on-chain DID for
+          free.
+        </p>
+      </StepsContainer>
+    </Container>
   )
 }
 const StepOne = () => {
