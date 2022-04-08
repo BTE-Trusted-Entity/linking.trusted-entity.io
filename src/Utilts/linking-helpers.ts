@@ -123,7 +123,7 @@ export async function authorizeLinkWithAccount(
   const blockNo = await api.query.system.number<BlockNumber>()
   const validTill = blockNo.addn(nBlocksValid)
   const signMe = api
-    .createType('(AccountId, u64)', [didIdentifier, validTill])
+    .createType('(AccountId32, u64)', [didIdentifier, validTill])
     .toHex()
   const signature = await signingCallback(signMe, accountAddress)
   const { crypto, isValid } = signatureVerify(signMe, signature, accountAddress)
