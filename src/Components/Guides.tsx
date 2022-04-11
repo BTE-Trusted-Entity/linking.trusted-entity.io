@@ -163,9 +163,12 @@ const MainText = () => {
           yourself across the Polkadot ecosystem. Validators and collators can
           customize a name that makes them easy to identify, and may link this
           name to all their different addresses in the Polkadot ecosystem. This
-          name can also be used with <a href="https://didsign.io/">DIDsign</a>,
-          adding an extra layer of verification when you share digital files you
-          have signed.
+          name can also be used with{' '}
+          <a href="https://didsign.io/" target="_blank" rel="noreferrer">
+            DIDsign
+          </a>
+          , adding an extra layer of verification when you share digital files
+          you have signed.
         </p>
         <p>
           Normally, creating an on-chain DID and a web3name requires a deposit
@@ -185,11 +188,19 @@ const StepOne = () => {
         <p>
           In order to claim your name, you need a Sporran wallet and a KILT
           on-chain DID. Here’s how to{' '}
-          <a href="https://www.kilt.io/wp-content/uploads/2021/11/How-to-Set-Up-Sporran_22-Nov.pdf">
+          <a
+            href="https://www.kilt.io/wp-content/uploads/2021/11/How-to-Set-Up-Sporran_22-Nov.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
             set up your Sporran
           </a>
           . Then you can create your free{' '}
-          <a href="https://www.trusted-entity.io/assets/pdf/w3n_Promo_On-Chain-DID.pdf ">
+          <a
+            href="https://www.trusted-entity.io/assets/pdf/w3n_Promo_On-Chain-DID.pdf "
+            target="_blank"
+            rel="noreferrer"
+          >
             on-chain DID
           </a>
         </p>
@@ -304,12 +315,20 @@ const TermsOfUse = () => {
     <StepsContainer>
       <HeadTitle>Terms & Conditions</HeadTitle>
       <p>
-        <a href="https://www.trusted-entity.io/assets/pdf/web3namePromo_Terms_2022.pdf">
+        <a
+          href="https://www.trusted-entity.io/assets/pdf/web3namePromo_Terms_2022.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
           Terms PDF
         </a>
         .
         <br />
-        <a href="https://www.trusted-entity.io/assets/pdf/web3namePromo_PrivacyPolicy_2022.pdf">
+        <a
+          href="https://www.trusted-entity.io/assets/pdf/web3namePromo_PrivacyPolicy_2022.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
           Privacy Policy PDF
         </a>
       </p>

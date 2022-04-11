@@ -84,8 +84,14 @@ export const Footer = () => {
           </span>
           <span>
             Or go to{' '}
-            <a href="https://support.kilt.io/support/home">Tech Support</a> and
-            click on "Contact Us"
+            <a
+              href="https://support.kilt.io/support/home"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Tech Support
+            </a>{' '}
+            and click on "Contact Us"
           </span>
           <MarginSpan>Requirements according to § 5 TMG (Germany)</MarginSpan>
         </Imprint>
