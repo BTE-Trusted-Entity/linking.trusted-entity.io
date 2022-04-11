@@ -79,9 +79,13 @@ export const Footer = () => {
           <span>Registration Number: HRB 231219B</span>
           <span>VAT No: DE 346528612</span>
           <span>Managing Director: Ingo Rübe</span>
-          <span>Contact: info@botlabs.org</span>
           <span>
-            Or go to <a href=" ">Tech Support</a> and click on "Contact Us"
+            Contact: <a href="mailto:info@botlabs.org">info@botlabs.org</a>
+          </span>
+          <span>
+            Or go to{' '}
+            <a href="https://support.kilt.io/support/home">Tech Support</a> and
+            click on "Contact Us"
           </span>
           <MarginSpan>Requirements according to § 5 TMG (Germany)</MarginSpan>
         </Imprint>
