@@ -185,7 +185,7 @@ const StepOne = () => {
         <p>
           In order to claim your name, you need a Sporran wallet and a KILT
           on-chain DID. Here’s how to{' '}
-          <a href="https://chrome.google.com/webstore/detail/sporran/djdnajgjcbjhhbdblkegbcgodlkkfhcl">
+          <a href="https://www.kilt.io/wp-content/uploads/2021/11/How-to-Set-Up-Sporran_22-Nov.pdf">
             set up your Sporran
           </a>
           . Then you can create your free{' '}
@@ -283,7 +283,7 @@ const StepThree = () => {
           {loadingWallets && <Loader />}
         </ConnectBtn>
         <p>
-          This opens up pop-ups to request access to all your Polkadot-enabled
+          (This opens up pop-ups to request access to all your Polkadot-enabled
           extensions, including Sporran)
         </p>
         <Steps>6.&nbsp;&nbsp; Click “Allow access” on each wallet </Steps>
