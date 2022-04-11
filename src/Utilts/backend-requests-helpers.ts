@@ -4,8 +4,9 @@ import type { HexString } from '@polkadot/util/types'
 
 const getApiEndpoint = (): KyInstance => {
   switch (process.env.REACT_APP_CHAIN_ENDPOINT) {
-    case 'wss://spiritnet.api.onfinality.io/public-ws' ||
-      'wss://spiritnet.kilt.io': {
+    case 'wss://spiritnet.api.onfinality.io/public-ws':
+    case 'wss://kilt-rpc.dwellir.com/':
+    case 'wss://spiritnet.kilt.io': {
       return ky.create({ prefixUrl: 'https://did-promo.sporran.org/' })
     }
     case 'wss://peregrine.kilt.io/parachain-public-ws': {
