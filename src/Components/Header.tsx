@@ -90,7 +90,7 @@ export const Header = () => {
           <HeaderBigLogo />
         </LogoContainer>
         <HeaderTextContainer>
-          <HeaderHeading>Guide to your DID</HeaderHeading>
+          <HeaderHeading>Get your unique web3name – Free now!</HeaderHeading>
           <HeaderText>
             For a limited time, you can create your web3name and your on-chain
             DID for free.
