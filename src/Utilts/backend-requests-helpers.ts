@@ -2,6 +2,10 @@ import ky from 'ky'
 import { KyInstance } from 'ky/distribution/types/ky'
 import type { HexString } from '@polkadot/util/types'
 
+export type Promo = {
+  remaining_dids: number
+  is_active: boolean
+}
 const getApiEndpoint = (): KyInstance => {
   switch (process.env.REACT_APP_CHAIN_ENDPOINT) {
     case 'wss://spiritnet.api.onfinality.io/public-ws':
@@ -24,6 +28,14 @@ export const getPayerAccount = async (): Promise<string> => {
   const status = (await getApiEndpoint().get('promo_status').json()) as any
   const accountAddress = status.account
   return accountAddress
+}
+export const getPromoStatus = async (): Promise<Promo> => {
+  const response = (await getApiEndpoint().get('promo_status').json()) as any
+  const promoStatus: Promo = {
+    remaining_dids: response.remaining_dids,
+    is_active: response.is_active,
+  }
+  return promoStatus
 }
 export const submitDidRequest = async (
   call: HexString,
