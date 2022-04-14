@@ -28,7 +28,7 @@ const StyledBody = styled.div`
 `
 
 export const App = () => {
-  const [promoStatus, setPromoStatus] = useState<string>('true')
+  const [promoStatus, setPromoStatus] = useState<string>('Loading')
   const [remainingPromos, setRemainingPromos] = useState<number>()
 
   useEffect(() => {

@@ -60,7 +60,9 @@ export const PromoStatus = (props: Promo) => {
       <Wrapper>
         <HeadingSpan>Promo Status</HeadingSpan>
         <RemainingSpan promo_end={props.status === 'false'}>
-          {props.status === 'true' ? 'Active' : 'Ended'}
+          {props.status === 'true' && 'Active'}
+          {props.status === 'false' && 'Ended'}
+          {props.status === 'Loading' && 'Loading...'}
         </RemainingSpan>
       </Wrapper>
       <SpacerElement />
