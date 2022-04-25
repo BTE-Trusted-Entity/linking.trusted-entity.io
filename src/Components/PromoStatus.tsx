@@ -18,6 +18,9 @@ const PromoContainer = styled.div`
   margin-top: 40px;
   margin-bottom: 10px;
   gap: 20px;
+  @media (max-width: 570px) {
+    margin-left: 40px;
+  }
 `
 const Wrapper = styled.div`
   display: flex;
