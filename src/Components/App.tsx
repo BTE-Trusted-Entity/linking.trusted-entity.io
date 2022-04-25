@@ -5,8 +5,6 @@ import { Guides } from './Guides'
 import { Footer } from './Footer'
 import { ThemeProvider } from 'styled-components'
 import { LightTheme } from '../Theme/light'
-import { getPromoStatus } from '../Utilts/backend-requests-helpers'
-import { PromoStatus } from './PromoStatus'
 
 const StyledBody = styled.div`
   min-height: 100vh;
@@ -28,25 +26,10 @@ const StyledBody = styled.div`
 `
 
 export const App = () => {
-  const [promoStatus, setPromoStatus] = useState<string>('Loading')
-  const [remainingPromos, setRemainingPromos] = useState<number>()
-
-  useEffect(() => {
-    const fetch = async () => {
-      const promoResponse = await getPromoStatus()
-      setPromoStatus(promoResponse.is_active.toString())
-      setRemainingPromos(promoResponse.remaining_dids)
-    }
-    const interval = setInterval(() => {
-      fetch()
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
   return (
     <ThemeProvider theme={LightTheme}>
       <StyledBody>
         <Header />
-        <PromoStatus status={promoStatus} promos={remainingPromos} />
         <Guides />
         <Footer />
       </StyledBody>

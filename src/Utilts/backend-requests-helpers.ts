@@ -29,14 +29,6 @@ export const getPayerAccount = async (): Promise<string> => {
   const accountAddress = status.account
   return accountAddress
 }
-export const getPromoStatus = async (): Promise<Promo> => {
-  const response = (await getApiEndpoint().get('promo_status').json()) as any
-  const promoStatus: Promo = {
-    remaining_dids: response.remaining_dids,
-    is_active: response.is_active,
-  }
-  return promoStatus
-}
 export const submitDidRequest = async (
   call: HexString,
   signature: HexString
