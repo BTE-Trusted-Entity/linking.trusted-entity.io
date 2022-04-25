@@ -66,6 +66,7 @@ const HeaderText = styled.span`
   line-height: 24px;
   text-align: justify;
   overflow-wrap: break-word;
+  hyphens: auto;
 `
 const HeaderRightBg = styled.img`
   position: absolute;
