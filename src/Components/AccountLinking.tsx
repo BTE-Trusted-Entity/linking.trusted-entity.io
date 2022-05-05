@@ -111,14 +111,17 @@ export const AccountLinking = (props: Wallet) => {
       return
     }
     setLinking(true)
-    linkDidWithAccount(props.linkingAccount, props.payerAccount, props.did)
-      .then(async (result) => {
-        await submitDidCall(result.payerAddress, result.submittableExtrinsic)
-      })
-      .catch((error) => {
-        setLinking(false)
-        setError('Linking was unsuccessful')
-      })
+    try {
+      const result = await linkDidWithAccount(
+        props.linkingAccount,
+        props.payerAccount,
+        props.did
+      )
+      await submitDidCall(result.payerAddress, result.submittableExtrinsic)
+    } catch {
+      setLinking(false)
+      setError('Linking was unsuccessful')
+    }
   }
   return (
     <Container>
