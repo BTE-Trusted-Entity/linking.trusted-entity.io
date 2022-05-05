@@ -1,16 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ReactComponent as HeaderBigLogo } from '../ImageAssets/header_bte_logo_left.svg'
-import HeaderRight from '../ImageAssets/BG Header right.svg'
-import { ReactComponent as Kilt } from '../ImageAssets/kilt_logo_header.svg'
+import HeaderRight from '../ImageAssets/BG-Header-right.svg'
+import Logo from '../ImageAssets/kilt_logo_header.svg'
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.header`
   width: 100vw;
-  background: radial-gradient(
-    circle at top right,
-    ${(props) => props.theme.headerpink} 0%,
-    black 100%
-  );
+  background: url(${HeaderRight}) no-repeat top right/auto,
+    url(${Logo}) no-repeat top 40px right 20px / auto 40px,
+    radial-gradient(
+      circle at top right,
+      ${(props) => props.theme.headerpink} 0%,
+      black 100%
+    );
   display: flex;
   align-content: center;
   justify-content: center;
@@ -59,30 +61,6 @@ const HeaderHeading = styled.span`
     font-size: 28px;
   }
 `
-const HeaderText = styled.span`
-  color: white;
-  font-size: 18px;
-  letter-spacing: 0;
-  line-height: 24px;
-  text-align: justify;
-  overflow-wrap: break-word;
-  hyphens: auto;
-`
-const HeaderRightBg = styled.img`
-  position: absolute;
-  right: 0;
-  top: 0;
-`
-const KiltLogo = styled(Kilt)`
-  top: 50px;
-  right: 40px;
-  width: 114px;
-  height: 28px;
-  position: absolute;
-  @media (max-width: 500px) {
-    display: none;
-  }
-`
 export const Header = () => {
   return (
     <StyledHeader>
@@ -91,15 +69,9 @@ export const Header = () => {
           <HeaderBigLogo />
         </LogoContainer>
         <HeaderTextContainer>
-          <HeaderHeading>Get your unique web3name – Free now!</HeaderHeading>
-          <HeaderText>
-            For a limited time, you can create your web3name and your on-chain
-            DID for free.
-          </HeaderText>
+          <HeaderHeading>Get your unique web3name</HeaderHeading>
         </HeaderTextContainer>
-        <KiltLogo />
       </HeaderContainer>
-      <HeaderRightBg src={HeaderRight} />
     </StyledHeader>
   )
 }

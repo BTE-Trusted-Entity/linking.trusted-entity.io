@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { CustomDropdown } from './CustomDropdown'
-import { getFilteredAccounts } from '../Utilts/linking-helpers'
+import { SelectAccount } from './SelectAccount'
+import { getAccounts } from '../Utilts/linking-helpers'
 import { ReactComponent as BTE1 } from '../ImageAssets/bte_numbers_1.svg'
 import { ReactComponent as BTE2 } from '../ImageAssets/bte_numbers_2.svg'
 import { ReactComponent as BTE3 } from '../ImageAssets/bte_numbers_3.svg'
@@ -168,13 +168,11 @@ const MainText = () => {
             DIDsign
           </a>
           , adding an extra layer of verification when you share digital files
-          you have signed.
         </p>
         <p>
-          Normally, creating an on-chain DID and a web3name requires a deposit
-          of around 2 KILT Coins and a small transaction fee. Now, for a limited
-          time, you can create both your web3name and your on-chain DID for
-          free.
+          Creating an on-chain DID and a web3name requires a deposit of around 2
+          KILT Coins and small transaction fees. It is recommended to have
+          around 3 KILT in your wallet to cover this before you begin.
         </p>
       </StepsContainer>
     </Container>
@@ -195,14 +193,15 @@ const StepOne = () => {
           >
             set up your Sporran
           </a>
-          . Then you can create your free{' '}
+          . Then you can create your{' '}
           <a
             href="https://www.trusted-entity.io/assets/pdf/w3n_Promo_On-Chain-DID.pdf "
             target="_blank"
             rel="noreferrer"
           >
             on-chain DID
-          </a>
+          </a>{' '}
+          following this guide.
         </p>
         <p>
           Once you have these, you’re ready to go. Just follow the steps below.
@@ -219,22 +218,19 @@ const StepTwo = () => {
     <Container>
       <StepsContainer>
         <HeadTitle>Claim your name </HeadTitle>
+        <Steps>
+          Please ensure you have enough funds in your wallet before you start to
+          cover the transaction fee (currently around 0.0047 KILT).
+        </Steps>
         <Steps>1.&nbsp;&nbsp; Open your Sporran extension</Steps>
         <Steps> 2.&nbsp;&nbsp; Click “Create web3name”</Steps>
+        <Steps>3.&nbsp;&nbsp; Click “Next Step”</Steps>
+        <Steps>4.&nbsp;&nbsp; Enter the name you wish to claim.</Steps>
         <Steps>
-          {' '}
-          3.&nbsp;&nbsp; Click and read the Terms. If you agree, check the box
-          “Use web3name Promo and accept Terms”. This will create a signed
-          package that is sent to the web3name promo server for payment and
-          submission to the blockchain.
-        </Steps>
-        <Steps>4.&nbsp;&nbsp; Click “Next Step”</Steps>
-        <Steps>5.&nbsp;&nbsp; Enter the name you wish to claim.</Steps>
-        <Steps>
-          6.&nbsp;&nbsp; When you have chosen an available name, click “Next”
+          5.&nbsp;&nbsp; When you have chosen an available name, click “Next”
         </Steps>
         <Steps>
-          7.&nbsp;&nbsp; Enter your Sporran password and click “Sign{' '}
+          6.&nbsp;&nbsp; Enter your Sporran password and click “Sign”.
         </Steps>
         <p>Congratulations, you now have your unique web3name!</p>
       </StepsContainer>
@@ -246,13 +242,16 @@ const StepTwo = () => {
 }
 const StepThree = () => {
   const [accounts, setAccounts] = useState<any[]>([])
+  const [filteredAccounts, setFilteredAccounts] = useState<any[]>([])
+
   const [did, setDid] = useState<string>('')
   const [loadingWallets, setLoadingWallets] = useState<boolean>(false)
   const loadWalletAccounts = async () => {
     if (accounts.length) return
     setLoadingWallets(true)
-    const filteredAccounts = await getFilteredAccounts()
-    setAccounts(filteredAccounts)
+    const web3Accounts = await getAccounts()
+    setAccounts(web3Accounts.allAccounts)
+    setFilteredAccounts(web3Accounts.filteredAccounts)
     setLoadingWallets(false)
   }
   return (
@@ -270,6 +269,10 @@ const StepThree = () => {
           for validators and collators, who can provide a personalized name that
           makes them easily identifiable.
         </p>
+        <p>
+          Note, don’t link addresses that you don’t want connected to your name!
+          If you want to keep an address private, don’t link it.
+        </p>
         <p>To link your web3name to your ecosystem account address:</p>
         <Steps>1.&nbsp;&nbsp; Open your Sporran extension</Steps>
         <Steps> 2.&nbsp;&nbsp; Click “Manage on-chain DID” </Steps>
@@ -285,6 +288,10 @@ const StepThree = () => {
           />
         </InputContainer>
         <Steps>5.&nbsp;&nbsp; Click “Connect to wallet” </Steps>
+        <Steps>
+          Please ensure you choose a wallet containing some KILT to cover the
+          transaction fee (currently around 0.0047 KILT).
+        </Steps>
         <ConnectBtn
           disabled={accounts.length > 0}
           onClick={() => loadWalletAccounts()}
@@ -302,7 +309,11 @@ const StepThree = () => {
           7.&nbsp;&nbsp; Click next to “Choose Account Name” in the dropdown
           list and choose the account you wish to link to your web3name{' '}
         </Steps>
-        <CustomDropdown accounts={accounts} did={did} />
+        <SelectAccount
+          accounts={accounts}
+          did={did}
+          filteredAccounts={filteredAccounts}
+        />
       </StepsContainer>
       <ImageContainer>
         <BTE3 />
@@ -314,13 +325,14 @@ const TermsOfUse = () => {
   return (
     <StepsContainer>
       <HeadTitle>Terms & Conditions</HeadTitle>
+      {/*//Please update these links with the new TOC and Privacy Policy*/}
       <p>
         <a
           href="https://www.trusted-entity.io/assets/pdf/web3namePromo_Terms_2022.pdf"
           target="_blank"
           rel="noreferrer"
         >
-          Terms PDF
+          Terms Of Use PDF
         </a>
         .
         <br />

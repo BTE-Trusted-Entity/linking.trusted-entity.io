@@ -12,7 +12,6 @@ import {
   web3Enable,
   web3FromAddress,
 } from '@polkadot/extension-dapp'
-import { getPayerAccount, submitDidRequest } from './backend-requests-helpers'
 
 type AccountAddress = string
 type SignatureType = MultiSignature['type']
@@ -33,7 +32,7 @@ export const connect = async () => {
 const getApi = async (): Promise<ApiPromise> => {
   return await connect()
 }
-export const getFilteredAccounts = async () => {
+export const getAccounts = async () => {
   await web3Enable('web3name-promo by BTE')
   const allAccounts = await web3Accounts()
   const api = await getApi()
@@ -43,15 +42,21 @@ export const getFilteredAccounts = async () => {
       !account.meta.genesisHash || account.meta.genesisHash === genesisHash
   )
   api.disconnect()
-  return filteredAccounts
+  return { filteredAccounts, allAccounts }
 }
+
 export const linkDidWithAccount = async (
-  account: any,
+  linkingAccount: any,
+  payerAccount: any,
   did: string
-): Promise<HexString> => {
+) => {
   const api = await getApi()
   const ss58Prefix = api.registry.chainSS58
-  const encodedAccountAddresses = encodeAddress(account.address, ss58Prefix)
+  const payerAddress = payerAccount.address
+  const encodedAccountAddresses = encodeAddress(
+    linkingAccount.address,
+    ss58Prefix
+  )
   const injector = await web3FromAddress(encodedAccountAddresses)
   const didID = did.split(':').pop()
   if (!didID) throw Error('DID Address Undefined')
@@ -70,24 +75,21 @@ export const linkDidWithAccount = async (
       return result.signature
     }
   )
-  api.disconnect()
-  const payerAccountAddress = await getPayerAccount()
   const signedOutputFromSporran =
     await window.kilt.sporran.signExtrinsicWithDid(
       extrinsic.toHex(),
-      payerAccountAddress
+      payerAddress
     )
 
-  const submittableExtrinsic = api.createType(
+  const genericExtrinsic = api.createType(
     'Extrinsic',
     signedOutputFromSporran.signed
   )
-
-  const tx_hash = await submitDidRequest(
-    submittableExtrinsic.args[0].toHex(),
-    submittableExtrinsic.args[1].toHex()
+  const submittableExtrinsic = api.tx.did.submitDidCall(
+    genericExtrinsic.args[0],
+    genericExtrinsic.args[1]
   )
-  return tx_hash
+  return { payerAddress, submittableExtrinsic }
 }
 function getMultiSignatureTypeFromKeypairType(
   keypairType: KeypairType
@@ -124,33 +126,22 @@ export async function authorizeLinkWithAccount(
 ): Promise<Extrinsic> {
   const blockNo = await api.query.system.number<BlockNumber>()
   const validTill = blockNo.addn(nBlocksValid)
-  const signMe = api
-    .createType('(AccountId32, u64)', [didIdentifier, validTill])
-    .toHex()
-
-  let signature = hexToU8a(
-    await signingCallback(u8aToHex(wrapBytes(signMe)), accountAddress)
+  const signMe = wrapBytes(
+    api.createType('(AccountId32, u64)', [didIdentifier, validTill]).toU8a()
   )
 
+  let signature = hexToU8a(
+    await signingCallback(u8aToHex(signMe), accountAddress)
+  )
   let result = {
     crypto: 'none',
     isValid: false,
   }
 
   try {
-    const signatureWithoutType = signature.subarray(1)
-    result = signatureVerify(signMe, signatureWithoutType, accountAddress)
-    signature = result.isValid ? signatureWithoutType : signature
+    result = signatureVerify(signMe, signature, accountAddress)
   } catch {
-    console.log('Can not verify without type')
-  }
-
-  if (!result.isValid) {
-    try {
-      result = signatureVerify(signMe, signature, accountAddress)
-    } catch {
-      console.log('Can not verify signature')
-    }
+    console.log('Can not verify signature')
   }
 
   if (!result.isValid) throw new Error('signature not valid')

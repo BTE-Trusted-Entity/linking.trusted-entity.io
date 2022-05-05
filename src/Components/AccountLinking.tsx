@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { Steps } from './Guides'
 import styled from 'styled-components'
 import { isKiltDid, linkDidWithAccount } from '../Utilts/linking-helpers'
-import { checkFinalTrans } from '../Utilts/backend-requests-helpers'
 import { ReactComponent as Loader } from '../ImageAssets/oval.svg'
+import { SubmittableExtrinsic } from '@kiltprotocol/types'
+import { web3FromAddress } from '@polkadot/extension-dapp'
 
 interface Wallet {
-  account: any
+  linkingAccount: any
   did: string
+  payerAccount: any
 }
 interface Button {
   disabled: boolean
@@ -76,32 +78,59 @@ export const AccountLinking = (props: Wallet) => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
   const [linking, setLinking] = useState<boolean>(false)
+
+  const submitDidCall = async (
+    payerAddress: string,
+    extrinsic: SubmittableExtrinsic
+  ) => {
+    const injector = await web3FromAddress(payerAddress)
+    return extrinsic.signAndSend(
+      payerAddress,
+      { signer: injector.signer },
+      (result) => {
+        if (result.status.isFinalized) {
+          setLinking(false)
+          setSuccessMessage('The Linking was successful')
+        }
+        if (result.status.isFinalityTimeout) {
+          setLinking(false)
+          setError('The Linking was unsuccessful')
+        }
+      }
+    )
+  }
   const handleLinking = async () => {
     if (linking) return
     setError(null)
     setSuccessMessage(null)
-    if (!props.did || !props.account) {
+    if (!props.did || !props.linkingAccount || !props.payerAccount) {
       return
     }
     if (!isKiltDid(props.did)) {
       setError('Not a valid Kilt Did')
       return
     }
-    const tx_hash = await linkDidWithAccount(props.account, props.did)
     setLinking(true)
-    const final = await checkFinalTrans(tx_hash)
-    if (final) setSuccessMessage('The linking was successful')
-    else setError('Linking Failed')
-    setLinking(false)
+    try {
+      const result = await linkDidWithAccount(
+        props.linkingAccount,
+        props.payerAccount,
+        props.did
+      )
+      await submitDidCall(result.payerAddress, result.submittableExtrinsic)
+    } catch {
+      setLinking(false)
+      setError('Linking was unsuccessful')
+    }
   }
   return (
     <Container>
       <Steps>
-        8.&nbsp;&nbsp; Click “Link DID with Account” (By clicking this button,
+        9.&nbsp;&nbsp; Click “Link DID with Account” (By clicking this button,
         you accept the terms and conditions){' '}
       </Steps>
       <LinkingBtn
-        disabled={!props.did || !props.account}
+        disabled={!props.did || !props.linkingAccount || !props.payerAccount}
         onClick={() => handleLinking()}
       >
         Link Did with account
@@ -115,9 +144,9 @@ export const AccountLinking = (props: Wallet) => {
         password there and click “Sign”
       </p>
       <p>
-        our Polkadot account extension will pop up. Enter your Polkadot account
-        password and click “Sign”. This signed package is sent to the web3name
-        Promo server for payment and is submitted to the blockchain.
+        Your Polkadot account extension will pop up. Enter your Polkadot account
+        password and click “Sign”. (This involves a small transaction fee,
+        currently around 0.0047 KILT)
         <br />
         <br />
         That's it.
