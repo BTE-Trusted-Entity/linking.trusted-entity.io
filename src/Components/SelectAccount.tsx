@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { AccountLinking } from './AccountLinking'
 import { ReactComponent as ArrowDown } from '../ImageAssets/bte_Triangle.svg'
+import { Steps } from './Guides'
+import { SelectPayer } from './SelectPayer'
 
 interface Style {
   borderRadius?: boolean
@@ -9,6 +10,7 @@ interface Style {
 }
 interface Wallet {
   accounts: any[]
+  filteredAccounts: any[]
   did: string
 }
 
@@ -86,10 +88,9 @@ const Container = styled.div`
   width: 100%;
 `
 
-export const CustomDropdown = (props: Wallet) => {
+export const SelectAccount = (props: Wallet) => {
   const [showOptions, setShowOptions] = useState<boolean>(false)
   const [selectedAccount, setSelectedAccount] = useState<any>()
-  const [selectedText, setSelectedText] = useState<string>('Choose Account')
 
   const openOptionsMenu = async () => {
     if (!props.accounts.length) return
@@ -98,14 +99,15 @@ export const CustomDropdown = (props: Wallet) => {
   }
   const selectOptions = (account: any) => {
     setSelectedAccount(account)
-    setSelectedText(`${account.meta.name} (${account.meta.source})`)
     setShowOptions(false)
   }
   return (
     <Container>
       <SelectContainer open={showOptions} onClick={() => openOptionsMenu()}>
         <Selection>
-          {props.accounts.length > 0 ? selectedText : 'Wallet Not Connected'}
+          {selectedAccount
+            ? `${selectedAccount.meta.name} (${selectedAccount.meta.source})`
+            : 'Choose Account'}
           <Arrow open={showOptions} />
         </Selection>
       </SelectContainer>
@@ -124,7 +126,14 @@ export const CustomDropdown = (props: Wallet) => {
           ))}
         </OptionBoxContainer>
       )}
-      <AccountLinking account={selectedAccount} did={props.did} />
+      <Steps>
+        8. &nbsp;Choose the account you wish to pay the transaction fees from.
+      </Steps>
+      <SelectPayer
+        did={props.did}
+        accounts={props.filteredAccounts}
+        linkingAccount={selectedAccount}
+      />
     </Container>
   )
 }

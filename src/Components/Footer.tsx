@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ReactComponent as FooterLogo } from '../ImageAssets/bte_logo_light.svg'
+import FooterLogo from '../ImageAssets/bte_logo_light.svg'
 
-const StyledFooter = styled.div`
+const StyledFooter = styled.footer`
   background: radial-gradient(
     circle at top right,
     ${(props) => props.theme.headerpink} 0%,
@@ -19,6 +19,7 @@ const StyledFooter = styled.div`
 `
 const Div = styled.div`
   max-width: 1100px;
+  background: url(${FooterLogo}) no-repeat top 30px right/auto;
   margin-bottom: 20px;
   width: 90%;
   display: flex;
@@ -27,6 +28,9 @@ const Div = styled.div`
 
   @media (max-width: 900px) {
     justify-content: center;
+  }
+  @media (max-width: 850px) {
+    background: none;
   }
 `
 const Imprint = styled.div`
@@ -50,18 +54,6 @@ const Imprint = styled.div`
 `
 const MarginSpan = styled.span`
   margin-top: 10px;
-`
-const Logo = styled(FooterLogo)`
-  fill: white;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-  @media (max-width: 500px) {
-    width: 100%;
-    margin-top: 30px;
-  }
 `
 
 export const Footer = () => {
@@ -95,7 +87,6 @@ export const Footer = () => {
           </span>
           <MarginSpan>Requirements according to § 5 TMG (Germany)</MarginSpan>
         </Imprint>
-        <Logo />
       </Div>
     </StyledFooter>
   )
