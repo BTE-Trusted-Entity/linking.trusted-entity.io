@@ -168,10 +168,9 @@ const MainText = () => {
             DIDsign
           </a>
           , adding an extra layer of verification when you share digital files
-          you have signed.
         </p>
         <p>
-          Creating a-chain DID and a web3name requires a deposit of around 2
+          Creating an on-chain DID and a web3name requires a deposit of around 2
           KILT Coins and small transaction fees. It is recommended to have
           around 3 KILT in your wallet to cover this before you begin.
         </p>
@@ -194,15 +193,15 @@ const StepOne = () => {
           >
             set up your Sporran
           </a>
-          . Then you can create your &nbsp;
+          . Then you can create your{' '}
           <a
             href="https://www.trusted-entity.io/assets/pdf/w3n_Promo_On-Chain-DID.pdf "
             target="_blank"
             rel="noreferrer"
           >
             on-chain DID
-          </a>
-          &nbsp;following this guide.
+          </a>{' '}
+          following this guide.
         </p>
         <p>
           Once you have these, you’re ready to go. Just follow the steps below.
@@ -221,7 +220,7 @@ const StepTwo = () => {
         <HeadTitle>Claim your name </HeadTitle>
         <Steps>
           Please ensure you have enough funds in your wallet before you start to
-          cover the transaction fee (currently around 0.047 KILT).
+          cover the transaction fee (currently around 0.0047 KILT).
         </Steps>
         <Steps>1.&nbsp;&nbsp; Open your Sporran extension</Steps>
         <Steps> 2.&nbsp;&nbsp; Click “Create web3name”</Steps>
@@ -231,8 +230,7 @@ const StepTwo = () => {
           5.&nbsp;&nbsp; When you have chosen an available name, click “Next”
         </Steps>
         <Steps>
-          6.&nbsp;&nbsp; Enter your Sporran password and click “Sign” This step
-          requires a transaction fee (currently around 0.0047 KILT).
+          6.&nbsp;&nbsp; Enter your Sporran password and click “Sign”.
         </Steps>
         <p>Congratulations, you now have your unique web3name!</p>
       </StepsContainer>
@@ -334,7 +332,7 @@ const TermsOfUse = () => {
           target="_blank"
           rel="noreferrer"
         >
-          Terms PDF
+          Terms Of Use PDF
         </a>
         .
         <br />
