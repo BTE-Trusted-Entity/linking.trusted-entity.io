@@ -22,7 +22,7 @@ type LinkingSignerCallback = (
 ) => Promise<HexString>
 
 export const connect = async () => {
-  const ENDPOINT_URL = 'wss://peregrine.kilt.io/parachain-public-ws'
+  const ENDPOINT_URL = process.env.REACT_APP_CHAIN_ENDPOINT
   const provider = new WsProvider(ENDPOINT_URL)
   return await ApiPromise.create({
     provider,
@@ -138,20 +138,10 @@ export async function authorizeLinkWithAccount(
     isValid: false,
   }
 
-  //  try {
-  //    const signatureWithoutType = signature.subarray(1)
-  //    result = signatureVerify(signMe, signatureWithoutType, accountAddress)
-  //    signature = result.isValid ? signatureWithoutType : signature
-  //  } catch {
-  //    console.log('Can not verify without type')
-  //  }
-
-  if (!result.isValid) {
-    try {
-      result = signatureVerify(signMe, signature, accountAddress)
-    } catch {
-      console.log('Can not verify signature')
-    }
+  try {
+    result = signatureVerify(signMe, signature, accountAddress)
+  } catch {
+    console.log('Can not verify signature')
   }
 
   if (!result.isValid) throw new Error('signature not valid')
