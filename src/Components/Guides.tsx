@@ -197,7 +197,7 @@ const StepOne = () => {
           </a>
           . Then you can create your{' '}
           <a
-            href="https://www.trusted-entity.io/assets/pdf/How_To_Guide_web3name_Promo.pdf"
+            href="https://www.trusted-entity.io/assets/pdf/Upgrading-to-on-chain-DID.pdf"
             target="_blank"
             rel="noreferrer"
           >
