@@ -187,7 +187,7 @@ const StepOne = () => {
           In order to claim your name, you need a Sporran wallet and a KILT
           on-chain DID. Here’s how to{' '}
           <a
-            href="https://www.kilt.io/wp-content/uploads/2021/11/How-to-Set-Up-Sporran_22-Nov.pdf"
+            href="https://www.trusted-entity.io/assets/pdf/Create-KILT-Sporran-Identity.pdf"
             target="_blank"
             rel="noreferrer"
           >
@@ -195,7 +195,7 @@ const StepOne = () => {
           </a>
           . Then you can create your{' '}
           <a
-            href="https://www.trusted-entity.io/assets/pdf/w3n_Promo_On-Chain-DID.pdf "
+            href="https://www.trusted-entity.io/assets/pdf/How_To_Guide_web3name_Promo.pdf"
             target="_blank"
             rel="noreferrer"
           >
@@ -289,7 +289,7 @@ const StepThree = () => {
         </InputContainer>
         <Steps>5.&nbsp;&nbsp; Click “Connect to wallet” </Steps>
         <Steps>
-          Please ensure you choose a wallet containing some KILT to cover the
+          Please ensure you choose a wallet containing enough KILT to cover the
           transaction fee (currently around 0.0047 KILT).
         </Steps>
         <ConnectBtn

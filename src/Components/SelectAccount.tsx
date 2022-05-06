@@ -128,6 +128,7 @@ export const SelectAccount = (props: Wallet) => {
       )}
       <Steps>
         8. &nbsp;Choose the account you wish to pay the transaction fees from.
+        (This may be a different account.)
       </Steps>
       <SelectPayer
         did={props.did}

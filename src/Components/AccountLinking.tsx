@@ -141,7 +141,7 @@ export const AccountLinking = (props: Wallet) => {
 
       <p>
         This opens up Sporran which asks you to sign the linking. Enter your
-        password there and click “Sign”
+        password there and click “Sign”.
       </p>
       <p>
         Your Polkadot account extension will pop up. Enter your Polkadot account
