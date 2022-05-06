@@ -7,6 +7,8 @@ import { ReactComponent as BTE2 } from '../ImageAssets/bte_numbers_2.svg'
 import { ReactComponent as BTE3 } from '../ImageAssets/bte_numbers_3.svg'
 import { ReactComponent as Checkmark } from '../ImageAssets/bte_check.svg'
 import { ReactComponent as LoaderSVG } from '../ImageAssets/oval.svg'
+import Privacy from '../DocAssets/web3nameInformaionalWebsite_PrivacyPolicy_2022.pdf'
+import Terms from '../DocAssets/web3nameInformaionalWebsite_Terms_2022.pdf'
 
 interface Button {
   disabled: boolean
@@ -327,20 +329,12 @@ const TermsOfUse = () => {
       <HeadTitle>Terms & Conditions</HeadTitle>
       {/*//Please update these links with the new TOC and Privacy Policy*/}
       <p>
-        <a
-          href="https://www.trusted-entity.io/assets/pdf/web3namePromo_Terms_2022.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={Terms} target="_blank" rel="noreferrer">
           Terms Of Use PDF
         </a>
         .
         <br />
-        <a
-          href="https://www.trusted-entity.io/assets/pdf/web3namePromo_PrivacyPolicy_2022.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={Privacy} target="_blank" rel="noreferrer">
           Privacy Policy PDF
         </a>
       </p>
