@@ -69,7 +69,7 @@ export const Header = () => {
           <HeaderBigLogo />
         </LogoContainer>
         <HeaderTextContainer>
-          <HeaderHeading>Get your unique web3name</HeaderHeading>
+          <HeaderHeading>Get Your Unique web3name</HeaderHeading>
         </HeaderTextContainer>
       </HeaderContainer>
     </StyledHeader>
