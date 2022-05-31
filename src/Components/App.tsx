@@ -5,16 +5,12 @@ import { Guides } from './Guides'
 import { Footer } from './Footer'
 import { ThemeProvider } from 'styled-components'
 import { LightTheme } from '../Theme/light'
+import { GettingSporran } from './GettingSporran'
 
 const StyledBody = styled.div`
   min-height: 100vh;
   max-width: 100vw;
-  background: linear-gradient(
-      180deg,
-      ${(props) => props.theme.bodygradient} 0%,
-      ${(props) => props.theme.bodygradient2} 100%
-    ),
-    linear-gradient(180deg, white 0%, white 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #3c8690 100%);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -31,6 +27,10 @@ export const App = () => {
       <StyledBody>
         <Header />
         <Guides />
+        <GettingSporran />
+        <GettingSporran />
+        <GettingSporran />
+
         <Footer />
       </StyledBody>
     </ThemeProvider>
