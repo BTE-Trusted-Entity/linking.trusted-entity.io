@@ -216,7 +216,9 @@ export const Linking = () => {
 
             <Step>Click “Manage on-chain DID” </Step>
 
-            <Step>Click the icon to the right of your DID to copy it</Step>
+            <Step>
+              Click the clipboard icon to the right of your DID to copy it
+            </Step>
 
             <Step>
               Paste your DID into the field below:
@@ -269,8 +271,8 @@ export const Linking = () => {
             </Step>
 
             <Step>
-              Click “Link DID with Account Address” (By clicking this button,
-              you accept the Terms and Conditions)
+              Click “Link DID With Account Address” (By clicking this button,
+              you accept the Terms and Conditions.)
               <StepInfoImportant>
                 Note, linking a DID/web3name with an account address is done on
                 the blockchain and therefore public and a permanent record. If
@@ -287,13 +289,13 @@ export const Linking = () => {
                 your password and click “Sign”.
               </StepInfo>
               <StepInfo>
-                The extension of the account you are linking to will pop up.
-                Enter the password of that account and click “Sign”.
+                The extension of the account you are linking will pop up. Enter
+                your password for that account and click “Sign”.
               </StepInfo>
             </Step>
           </Steps>
 
-          <StepInfo>That's it!</StepInfo>
+          <StepInfo>That's it.</StepInfo>
           <CollapseBtn
             onClick={() => setExpanded(false)}
             aria-label="Collapse content"

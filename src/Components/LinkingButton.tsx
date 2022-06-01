@@ -118,7 +118,7 @@ export const LinkingButton = (props: Wallet) => {
         disabled={!props.did || !props.linkingAccount || !props.payerAccount}
         onClick={() => handleLinking()}
       >
-        Link Did with account
+        Link Did with account address
         {linking && <LoaderSVG />}
       </LinkingBtn>
       {error && <ErrorLabel>{error}</ErrorLabel>}

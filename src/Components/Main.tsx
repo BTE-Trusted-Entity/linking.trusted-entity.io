@@ -62,9 +62,12 @@ export const Main = () => {
         <Text>
           Linking your account addresses to your web3name and on-chain DID –
           your unique decentralized identifier – makes it easier for others to
-          reference you. Follow the steps below to link your web3name to any
-          number of addresses you have in the Polkadot and (coming soon)
-          Ethereum ecosystems.
+          reference you.
+        </Text>
+        <Text>
+          Follow the steps below to link your web3name to any number of
+          addresses you have in the Polkadot and (coming soon) Ethereum
+          ecosystems.
         </Text>
 
         <Info>
