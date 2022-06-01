@@ -3,6 +3,7 @@ export const colors = {
   white: '#FFFFFF',
   turquoise: '#378E9A',
   dark: '#0C212A',
+  footer: '#0D2022',
   ming: '#166871',
   mossGreen: '#8F9463',
   oliveGreen: '#64683E',

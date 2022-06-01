@@ -23,12 +23,6 @@ const Content = styled.div`
   align-items: flex-start;
   padding: 1.75rem 0;
   font-size: 0.875rem;
-
-  @media (max-width: 1000px) {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
 `
 const Anchor = styled.a`
   color: ${colors.textGreen};

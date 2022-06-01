@@ -27,14 +27,16 @@ const StyledHeader = styled.header`
 
 const Content = styled.div`
   max-width: 1250px;
-  width: 85%;
+  width: 82%;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
+  }
+  @media (max-width: 700px) {
     padding-top: 3rem;
   }
 `
@@ -42,6 +44,11 @@ const Content = styled.div`
 const BTELogo = styled.img`
   height: 22rem;
 
+  @media (max-width: 1100px) {
+    align-self: center;
+    align-items: center;
+    height: 18rem;
+  }
   @media (max-width: 700px) {
     height: 15rem;
   }
@@ -66,9 +73,10 @@ const Heading = styled.h1`
   align-self: flex-end;
   margin-bottom: 3.5rem;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     align-self: center;
     align-items: center;
+    font-size: 1.75rem;
   }
   @media (max-width: 700px) {
     font-size: 1.5rem;
@@ -90,7 +98,7 @@ const TextLarge = styled.span`
 const HeadingBottom = styled.span`
   align-self: flex-end;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     align-self: center;
   }
 `
