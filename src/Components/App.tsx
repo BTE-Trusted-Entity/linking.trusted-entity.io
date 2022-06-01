@@ -10,6 +10,8 @@ const StyledBody = styled.div`
   max-width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 `
 
 export const App = () => {
