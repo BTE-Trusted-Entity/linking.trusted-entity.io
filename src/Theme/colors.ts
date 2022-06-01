@@ -1,4 +1,6 @@
-export const LightTheme = {
+export const colors = {
+  textGreen: '#C8CE94',
+  white: '#FFFFFF',
   primary: '#43142b',
   gradientpink: '#44142b',
   gradientblack: '#010000',

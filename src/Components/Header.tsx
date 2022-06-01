@@ -5,6 +5,8 @@ import HeaderBackground from '../ImageAssets/header_bg.png'
 import BTE from '../ImageAssets/bte_logo.png'
 import Kilt from '../ImageAssets/kilt_logo_header.svg'
 
+import { colors } from '../Theme/colors'
+
 const StyledHeader = styled.header`
   width: 100%;
   min-height: calc(410rem / 16);
@@ -33,7 +35,6 @@ const Content = styled.div`
 
   @media (max-width: 1000px) {
     flex-direction: column;
-    align-items: center;
     padding-top: 3rem;
   }
 `
@@ -58,7 +59,7 @@ const Heading = styled.h1`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  color: #ffffff;
+  color: ${colors.white};
   font-size: 2rem;
   font-weight: 300;
   line-height: 2rem;
@@ -80,12 +81,10 @@ const Heading = styled.h1`
   }
 `
 
-const HeadingTop = styled.span``
-
 const TextLarge = styled.span`
   font-size: 2.25em;
   font-weight: 200;
-  color: #c8ce94;
+  color: ${colors.textGreen};
 `
 
 const HeadingBottom = styled.span`
@@ -103,12 +102,10 @@ export const Header = () => {
         <BTELogo src={BTE} alt="Botlabs Trusted Entity logo" />
         <KiltLogo src={Kilt} alt="Built on KILT" />
         <Heading>
-          <HeadingTop>
-            <TextLarge>link</TextLarge> <span>your account addresses</span>
-          </HeadingTop>
-          <HeadingBottom>
-            <span>with your unique web3name</span>
-          </HeadingBottom>
+          <span>
+            <TextLarge>link</TextLarge> your account addresses
+          </span>
+          <HeadingBottom>with your unique web3name</HeadingBottom>
         </Heading>
       </Content>
     </StyledHeader>
