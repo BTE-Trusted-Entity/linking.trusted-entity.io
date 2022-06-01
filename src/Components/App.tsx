@@ -6,6 +6,8 @@ import { Footer } from './Footer'
 import { ThemeProvider } from 'styled-components'
 import { LightTheme } from '../Theme/light'
 import { GettingSporran } from './GettingSporran'
+import { CreateOnChainDID } from './CreateOnChainDID'
+import { ClaimWeb3name } from './ClaimWeb3name'
 
 const StyledBody = styled.div`
   min-height: 100vh;
@@ -28,8 +30,8 @@ export const App = () => {
         <Header />
         <Guides />
         <GettingSporran />
-        <GettingSporran />
-        <GettingSporran />
+        <CreateOnChainDID />
+        <ClaimWeb3name />
 
         <Footer />
       </StyledBody>
