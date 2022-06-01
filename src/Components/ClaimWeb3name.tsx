@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import ExpandIcon from '../ImageAssets/Open.svg'
 import CollapseIcon from '../ImageAssets/Close.svg'
 
+import { colors } from '../Theme/colors'
+
 interface Style {
   expand: boolean
 }
@@ -15,7 +17,7 @@ const Container = styled.section`
   align-items: flex-start;
   border-radius: 12px;
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.25);
-  background-color: #378e9a;
+  background-color: ${colors.turquoise};
   padding: 12px 20px 12px 20px;
   height: ${(props: Style) => (props.expand ? '344px' : '40px')};
   margin-bottom: 17px;
@@ -24,7 +26,7 @@ const Container = styled.section`
   pointer-events: ${(props: Style) => props.expand && 'auto'};
 `
 const Heading = styled.h1`
-  color: #ffffff;
+  color: ${colors.white};
   font-family: Overpass;
   font-size: 1.7rem;
   font-weight: 300;
@@ -33,7 +35,7 @@ const Heading = styled.h1`
   margin-bottom: 10px;
 `
 const SporranGuide = styled.p`
-  color: #ffffff;
+  color: ${colors.white};
   font-family: Overpass;
   font-size: 16px;
   letter-spacing: 0.1px;

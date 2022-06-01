@@ -1,7 +1,7 @@
 export const colors = {
   textGreen: '#C8CE94',
   white: '#FFFFFF',
-  primary: '#43142b',
+  turquoise: '#378E9A',
   gradientpink: '#44142b',
   gradientblack: '#010000',
   pinklinks: '#871e50',
