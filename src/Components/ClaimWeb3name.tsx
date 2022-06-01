@@ -48,6 +48,18 @@ const Content = styled.div`
   padding: 0 1.25rem 2.25rem 1.25rem;
 `
 
+const MainText = styled.p`
+  margin-top: 0;
+  line-height: 150%;
+`
+
+const LinkToGuide = styled.a`
+  display: block;
+  margin: 0.5rem 0.5rem;
+  color: ${colors.white};
+  text-decoration: underline;
+`
+
 const CollapseBtn = styled.button`
   background: url(${CollapseIcon}) no-repeat center/auto;
   position: absolute;
@@ -77,13 +89,26 @@ export const ClaimWeb3name = () => {
 
       {expanded && (
         <Content>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum
+          <MainText>
+            Your web3name is a custom name you create to represent your on-chain
+            decentralized identifier (DID), which personalizes your digital
+            identity.
+          </MainText>
+          <p>
+            Upgrading to an on-chain DID requires a deposit of 2 KILT and a
+            small transaction fee (around 0.0045 KILT).
+          </p>
+          <ol>
+            <li>Open your Sporran extension</li>
+            <li>Click “Create web3name”</li>
+          </ol>
+          <LinkToGuide
+            href="https://www.trusted-entity.io/assets/pdf/How_To_Guide_web3name_link_address_Full_May22.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Guide to claiming your web3name (PDF)
+          </LinkToGuide>
           <CollapseBtn
             onClick={() => setExpanded(false)}
             aria-label="Collapse content"

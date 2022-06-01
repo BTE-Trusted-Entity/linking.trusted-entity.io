@@ -68,23 +68,28 @@ const ExtensionWrapper = styled.div`
   flex-wrap: wrap;
   flex-grow: 1;
 `
+
 const Extension = styled.img`
   height: 75.6px;
   width: 250px;
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.25);
 `
+
 const ChromeExtension = styled(Extension)`
   background-image: url(${ChromeWebstore});
 `
+
 const FirefoxExtension = styled(Extension)`
   background-image: url(${FirefoxWebstore});
 `
+
 const LinkToGuide = styled.a`
   display: block;
   margin: 0.5rem 0.5rem;
   color: ${colors.white};
   text-decoration: underline;
 `
+
 const CollapseBtn = styled.button`
   background: url(${CollapseIcon}) no-repeat center/auto;
   position: absolute;

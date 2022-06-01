@@ -52,12 +52,14 @@ const MainText = styled.p`
   margin-top: 0;
   line-height: 150%;
 `
+
 const LinkToGuide = styled.a`
   display: block;
   margin: 0.5rem 0.5rem;
   color: ${colors.white};
   text-decoration: underline;
 `
+
 const CollapseBtn = styled.button`
   background: url(${CollapseIcon}) no-repeat center/auto;
   position: absolute;
