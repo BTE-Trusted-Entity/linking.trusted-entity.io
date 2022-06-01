@@ -62,18 +62,18 @@ const ExpandBtn = styled.button`
   bottom: 5px;
   background-repeat: no-repeat;
   border: none;
+  cursor: pointer;
 `
 const CollapseBtn = styled(ExpandBtn)`
   background: url(${CollapseIcon});
   background-repeat: no-repeat;
   cursor: pointer;
-  z-index: 20;
 `
 
 export const GettingSporran = () => {
   const [expand, setExpand] = useState<boolean>(false)
   return (
-    <Container expand={expand} onClick={() => setExpand(true)}>
+    <Container expand={expand}>
       <Heading>1. Get your Sporran wallet</Heading>
       <SporranGuide>
         The Sporran wallet is a browser extension that interacts with the KILT
@@ -85,7 +85,7 @@ export const GettingSporran = () => {
       {expand ? (
         <CollapseBtn onClick={() => setExpand(false)} />
       ) : (
-        <ExpandBtn />
+        <ExpandBtn onClick={() => setExpand(true)} />
       )}
     </Container>
   )
