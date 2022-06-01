@@ -8,6 +8,7 @@ import { colors } from '../Theme/colors'
 interface Style {
   expand: boolean
 }
+
 const Container = styled.section`
   display: flex;
   flex-direction: column;
@@ -20,7 +21,7 @@ const Container = styled.section`
   background-color: ${colors.turquoise};
   padding: 12px 20px 12px 20px;
   height: ${(props: Style) => (props.expand ? '344px' : '40px')};
-  margin-bottom: 17px;
+  margin-bottom: 20px;
   transition: height 0.5s ease-in-out;
   position: relative;
   pointer-events: ${(props: Style) => props.expand && 'auto'};
@@ -34,10 +35,15 @@ const Heading = styled.h1`
   margin-top: 5px;
   margin-bottom: 10px;
 `
+const Contents = styled.div`
+  visibility: ${(props: Style) => (props.expand ? 'visible' : 'hidden')};
+  opacity: ${(props: Style) => (props.expand ? '1' : '0')};
+  transition: visibility 0.5s, opacity 0.5s linear;
+  margin-right: 35px;
+`
 const SporranGuide = styled.p`
   color: ${colors.white};
   font-family: Overpass;
-  font-size: 16px;
   letter-spacing: 0.1px;
   line-height: 26px;
   word-break: normal;
@@ -78,13 +84,15 @@ export const ClaimWeb3name = () => {
   return (
     <Container expand={expand}>
       <Heading>3. Claim your web3name</Heading>
-      <SporranGuide>
-        The Sporran wallet is a browser extension that interacts with the KILT
-        blockchain, displaying KILT Coin balances and enabling signing and
-        sending transactions. The wallet also stores credentials, allowing you
-        to build a decentralized digital identity and control who sees your
-        data.
-      </SporranGuide>
+      <Contents expand={expand}>
+        <SporranGuide>
+          The Sporran wallet is a browser extension that interacts with the KILT
+          blockchain, displaying KILT Coin balances and enabling signing and
+          sending transactions. The wallet also stores credentials, allowing you
+          to build a decentralized digital identity and control who sees your
+          data.
+        </SporranGuide>
+      </Contents>
       {expand ? (
         <CollapseBtn onClick={() => setExpand(false)} />
       ) : (
