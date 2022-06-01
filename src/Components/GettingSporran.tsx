@@ -2,6 +2,8 @@ import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import ExpandIcon from '../ImageAssets/Open.svg'
 import CollapseIcon from '../ImageAssets/Close.svg'
+import ChromeWebstore from '../ImageAssets/chrome_webstore.svg'
+import FirefoxWebstore from '../ImageAssets/firefox_webstore.svg'
 
 import { colors } from '../Theme/colors'
 
@@ -48,6 +50,33 @@ const Content = styled.div`
   padding: 0 1.25rem 2.25rem 1.25rem;
 `
 
+const ExtensionWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  max-width: 550px;
+  flex-wrap: wrap;
+  flex-grow: 1;
+`
+const Extension = styled.div`
+  height: 75.6px;
+  width: 250px;
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.25);
+`
+const ChromeExtension = styled(Extension)`
+  background-image: url(${ChromeWebstore});
+`
+const FirefoxExtension = styled(Extension)`
+  background-image: url(${FirefoxWebstore});
+`
+const LinkToGuide = styled.a`
+  color: ${colors.white};
+  font-family: Overpass;
+  letter-spacing: 0.1px;
+  line-height: 26px;
+  word-break: normal;
+`
+
 const CollapseBtn = styled.button`
   background: url(${CollapseIcon}) no-repeat center/auto;
   position: absolute;
@@ -77,13 +106,15 @@ export const GettingSporran = () => {
 
       {expanded && (
         <Content>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum
+          The Sporran wallet is a browser extension that interacts with the KILT
+          blockchain, displaying KILT Coin balances and enabling signing and
+          sending transactions. The wallet also stores credentials, allowing you
+          to build a decentralized digital identity and control who sees your
+          data.
+          <ExtensionWrapper>
+            <ChromeExtension></ChromeExtension>
+            <FirefoxExtension></FirefoxExtension>
+          </ExtensionWrapper>
           <CollapseBtn
             onClick={() => setExpanded(false)}
             aria-label="Collapse content"
