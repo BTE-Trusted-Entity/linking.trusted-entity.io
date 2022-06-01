@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Header } from './Header'
 import { Guides } from './Guides'
@@ -19,7 +19,6 @@ const StyledBody = styled.div`
   overflow-x: hidden;
   align-items: center;
   justify-content: flex-start;
-  font-family: 'Overpass';
   color: ${(props) => props.theme.primary};
 `
 
