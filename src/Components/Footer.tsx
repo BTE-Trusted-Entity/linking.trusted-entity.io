@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Privacy from '../DocAssets/LinkAddressestoweb3nameWebsite_PrivacyPolicy_62022.docx.pdf'
+import Terms from '../DocAssets/LinkAddressestoweb3nameWebsite_Terms_62022.docx.pdf'
+
 import FooterBackground from '../ImageAssets/footer_bg.png'
-import Privacy from '../DocAssets/web3nameInformaionalWebsite_PrivacyPolicy_2022.pdf'
-import Terms from '../DocAssets/web3nameInformaionalWebsite_Terms_2022.pdf'
 
 import { colors } from '../Theme/colors'
 
@@ -36,7 +37,6 @@ const Anchor = styled.a`
 const Imprint = styled.div`
   display: flex;
   flex-direction: column;
-  letter-spacing: 0;
   color: ${colors.white};
 `
 

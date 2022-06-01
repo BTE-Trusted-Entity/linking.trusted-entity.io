@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
+
 import ExpandIcon from '../ImageAssets/Open.svg'
 import CollapseIcon from '../ImageAssets/Close.svg'
 import ChromeWebstore from '../ImageAssets/chrome_webstore.svg'
@@ -16,8 +17,6 @@ const Container = styled.section`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  max-width: 1182px;
-  width: 82%;
   justify-content: flex-start;
   align-items: flex-start;
   border-radius: 0.75rem;
