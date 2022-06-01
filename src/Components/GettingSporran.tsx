@@ -16,9 +16,9 @@ const Container = styled.section`
   border-radius: 12px;
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.25);
   background-color: #378e9a;
-  padding: 20px;
-  height: ${(props: Style) => (props.expand ? '344px' : '60px')};
-  margin-bottom: 20px;
+  padding: 12px 20px 12px 20px;
+  height: ${(props: Style) => (props.expand ? '344px' : '40px')};
+  margin-bottom: 17px;
   transition: height 0.5s ease-in-out;
   position: relative;
   pointer-events: ${(props: Style) => props.expand && 'auto'};
@@ -26,10 +26,11 @@ const Container = styled.section`
 const Heading = styled.h1`
   color: #ffffff;
   font-family: Overpass;
-  font-size: 30px;
+  font-size: 1.7rem;
   font-weight: 300;
   letter-spacing: 0;
-  line-height: 30px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 `
 const SporranGuide = styled.p`
   color: #ffffff;
@@ -58,8 +59,8 @@ const ExpandBtn = styled.button`
   height: 30px;
   width: 30px;
   position: absolute;
-  right: 5px;
-  bottom: 5px;
+  right: 12px;
+  bottom: 12px;
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
