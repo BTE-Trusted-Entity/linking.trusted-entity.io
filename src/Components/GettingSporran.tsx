@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import ExpandIcon from '../ImageAssets/Open.svg'
 import CollapseIcon from '../ImageAssets/Close.svg'
+import ChromeWebstore from '../ImageAssets/chrome_webstore.svg'
+import FirefoxWebstore from '../ImageAssets/firefox_webstore.svg'
 
 import { colors } from '../Theme/colors'
 
@@ -41,7 +43,6 @@ const Contents = styled.div`
   transition: visibility 0.5s, opacity 0.5s linear;
   margin-right: 35px;
 `
-
 const SporranGuide = styled.p`
   color: ${colors.white};
   font-family: Overpass;
@@ -51,7 +52,9 @@ const SporranGuide = styled.p`
 `
 const ExtensionWrapper = styled.div`
   display: flex;
-  max-width: 500px;
+  gap: 10px;
+  justify-content: space-between;
+  max-width: 550px;
   flex-wrap: wrap;
   flex-grow: 1;
 `
@@ -61,7 +64,17 @@ const Extension = styled.div`
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.25);
 `
 const ChromeExtension = styled(Extension)`
-  background-image: url;
+  background-image: url(${ChromeWebstore});
+`
+const FirefoxExtension = styled(Extension)`
+  background-image: url(${FirefoxWebstore});
+`
+const LinkToGuide = styled.a`
+  color: ${colors.white};
+  font-family: Overpass;
+  letter-spacing: 0.1px;
+  line-height: 26px;
+  word-break: normal;
 `
 const ExpandBtn = styled.button`
   background: url(${ExpandIcon});
@@ -93,6 +106,10 @@ export const GettingSporran = () => {
           to build a decentralized digital identity and control who sees your
           data.
         </SporranGuide>
+        <ExtensionWrapper>
+          <ChromeExtension></ChromeExtension>
+          <FirefoxExtension></FirefoxExtension>
+        </ExtensionWrapper>
       </Contents>
       {expand ? (
         <CollapseBtn onClick={() => setExpand(false)} />
