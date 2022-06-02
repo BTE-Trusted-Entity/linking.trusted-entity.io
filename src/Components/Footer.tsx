@@ -17,7 +17,7 @@ const StyledFooter = styled.footer`
 `
 const Content = styled.div`
   max-width: 1250px;
-  width: 85%;
+  width: 82%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
