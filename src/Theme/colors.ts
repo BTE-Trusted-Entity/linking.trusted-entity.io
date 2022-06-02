@@ -13,6 +13,6 @@ export const colors = {
   selectShadow: 'rgba(0, 0, 0, 0.3)',
   selectBackground: 'rgba(0, 0, 0, 0.1)',
   optionShadow: 'rgba(0, 0, 0, 0.35)',
-  optionBackground: '#e4e4e4',
-  optionHover: 'rgba(65, 19, 41, 0.5)',
+  optionBackground: '#C8CE94',
+  burgundy: '#411329',
 }

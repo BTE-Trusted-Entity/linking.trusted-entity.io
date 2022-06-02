@@ -56,6 +56,7 @@ const OptionsWrapper = styled.div`
   width: 100%;
   margin-top: 2px;
   background-color: ${colors.optionBackground};
+  color: ${colors.burgundy};
   font-size: 18px;
   font-weight: 600;
   line-height: 28px;
@@ -66,7 +67,8 @@ const OptionsWrapper = styled.div`
   border-radius: ${(props: Style) => props.borderRadius && '0 0 15px 15px'};
 
   :hover {
-    background-color: ${colors.optionHover};
+    background-color: ${colors.oliveGreen};
+    color: ${colors.white};
   }
 `
 const Options = styled.div`
