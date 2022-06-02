@@ -44,7 +44,11 @@ const Content = styled.div`
   color: ${colors.white};
   letter-spacing: 0.1px;
   word-break: normal;
-  padding: 0 2.5rem 2.25rem 1.25rem;
+  padding: 0 1.25rem 2.25rem 1.25rem;
+
+  @media (max-width: 500px) {
+    padding-bottom: 3.25rem;
+  }
 `
 
 const MainText = styled.p`

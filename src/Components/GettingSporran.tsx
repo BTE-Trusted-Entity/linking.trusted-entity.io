@@ -47,7 +47,11 @@ const Content = styled.div`
   color: ${colors.white};
   letter-spacing: 0.1px;
   word-break: normal;
-  padding: 0 2.5rem 2.25rem 1.25rem;
+  padding: 0 1.25rem 2.5rem 1.25rem;
+
+  @media (max-width: 500px) {
+    padding-bottom: 3.25rem;
+  }
 `
 
 const MainText = styled.p`
@@ -61,11 +65,15 @@ const ExtensionWrapper = styled.div`
   padding-left: 1.5rem;
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
-
   justify-content: space-between;
   max-width: 550px;
   flex-wrap: wrap;
   flex-grow: 1;
+
+  @media (max-width: 700px) {
+    justify-content: center;
+    padding: 0;
+  }
 `
 
 const Extension = styled.img`
@@ -75,7 +83,7 @@ const Extension = styled.img`
 `
 
 const ChromeExtension = styled(Extension)`
-  background-image: url(${ChromeWebstore});
+  background: url(${ChromeWebstore}) no-repeat;
 `
 
 const FirefoxExtension = styled(Extension)`
