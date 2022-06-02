@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { AccountLinking } from './AccountLinking'
+
 import { ReactComponent as ArrowDown } from '../ImageAssets/bte_Triangle.svg'
+
+import { colors } from '../Theme/colors'
 
 interface Style {
   borderRadius?: boolean
@@ -9,23 +11,19 @@ interface Style {
 }
 interface Wallet {
   accounts: any[]
-  did: string
-  linkingAccount: any
+  selected: any
+  onSelect: React.Dispatch<any>
 }
 
 const SelectContainer = styled.div`
   display: flex;
   color: ${(props) => props.theme.primary};
   margin-top: 10px;
-  margin-bottom: 10px;
-  letter-spacing: 0;
-  max-width: 550px;
   box-sizing: border-box;
   height: 60px;
-  border: 1px solid ${(props) => props.theme.selectborder};
   border-radius: ${(props: Style) => (props.open ? '15px 15px 0 0' : '15px')};
-  background-color: ${(props) => props.theme.selectbg};
-  box-shadow: inset 2px 2px 6px 0 ${(props) => props.theme.selectborder};
+  background-color: ${colors.selectBackground};
+  box-shadow: inset 2px 2px 6px 0 ${colors.selectShadow};
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -35,7 +33,6 @@ const Selection = styled.div`
   width: 90%;
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 0;
   line-height: 28px;
   display: flex;
   justify-content: flex-start;
@@ -49,20 +46,19 @@ const OptionBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: fit-content;
-  max-width: 555px;
-  background-color: white;
+  background-color: ${colors.white};
   margin-top: -10px;
   border-radius: 0 0 15px 15px;
-  box-shadow: -2px 8px 12px 0 ${(props) => props.theme.optionshadow};
+  box-shadow: inset 2px 2px 6px 0 ${colors.selectShadow};
 `
 const OptionsWrapper = styled.div`
   height: 60px;
   width: 100%;
   margin-top: 2px;
-  background-color: ${(props) => props.theme.optionbg};
+  background-color: ${colors.optionBackground};
+  color: ${colors.burgundy};
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 0;
   line-height: 28px;
   display: flex;
   justify-content: center;
@@ -71,7 +67,8 @@ const OptionsWrapper = styled.div`
   border-radius: ${(props: Style) => props.borderRadius && '0 0 15px 15px'};
 
   :hover {
-    background-color: ${(props) => props.theme.optionhover};
+    background-color: ${colors.oliveGreen};
+    color: ${colors.white};
   }
 `
 const Options = styled.div`
@@ -83,13 +80,11 @@ const Options = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
-  width: 100%;
+  max-width: calc(535rem / 16);
 `
 
 export const SelectPayer = (props: Wallet) => {
   const [showOptions, setShowOptions] = useState<boolean>(false)
-  const [selectedAccount, setSelectedAccount] = useState<any>()
 
   const openOptionsMenu = async () => {
     if (!props.accounts.length) return
@@ -97,15 +92,15 @@ export const SelectPayer = (props: Wallet) => {
     else setShowOptions(true)
   }
   const selectOptions = (account: any) => {
-    setSelectedAccount(account)
+    props.onSelect(account)
     setShowOptions(false)
   }
   return (
     <Container>
       <SelectContainer open={showOptions} onClick={() => openOptionsMenu()}>
         <Selection>
-          {selectedAccount
-            ? `${selectedAccount.meta.name} (${selectedAccount.meta.source})`
+          {props.selected
+            ? `${props.selected.meta.name} (${props.selected.meta.source})`
             : 'Choose Payer Account'}
           <Arrow open={showOptions} />
         </Selection>
@@ -125,11 +120,6 @@ export const SelectPayer = (props: Wallet) => {
           ))}
         </OptionBoxContainer>
       )}
-      <AccountLinking
-        linkingAccount={props.linkingAccount}
-        did={props.did}
-        payerAccount={selectedAccount}
-      />
     </Container>
   )
 }

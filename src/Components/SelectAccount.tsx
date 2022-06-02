@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+
 import { ReactComponent as ArrowDown } from '../ImageAssets/bte_Triangle.svg'
-import { Steps } from './Guides'
-import { SelectPayer } from './SelectPayer'
+
+import { colors } from '../Theme/colors'
 
 interface Style {
   borderRadius?: boolean
@@ -10,23 +11,20 @@ interface Style {
 }
 interface Wallet {
   accounts: any[]
-  filteredAccounts: any[]
-  did: string
+  onSelect: React.Dispatch<any>
+  selected: any
 }
 
 const SelectContainer = styled.div`
   display: flex;
   color: ${(props) => props.theme.primary};
   margin-top: 10px;
-  margin-bottom: 10px;
-  letter-spacing: 0;
-  max-width: 550px;
   box-sizing: border-box;
   height: 60px;
-  border: 1px solid ${(props) => props.theme.selectborder};
+  border: 1px solid ${colors.selectBorder};
   border-radius: ${(props: Style) => (props.open ? '15px 15px 0 0' : '15px')};
-  background-color: ${(props) => props.theme.selectbg};
-  box-shadow: inset 2px 2px 6px 0 ${(props) => props.theme.selectborder};
+  background-color: ${colors.selectBackground};
+  box-shadow: inset 2px 2px 6px 0 ${colors.selectShadow};
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -36,7 +34,6 @@ const Selection = styled.div`
   width: 90%;
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 0;
   line-height: 28px;
   display: flex;
   justify-content: flex-start;
@@ -50,20 +47,19 @@ const OptionBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: fit-content;
-  max-width: 555px;
   background-color: white;
   margin-top: -10px;
   border-radius: 0 0 15px 15px;
-  box-shadow: -2px 8px 12px 0 ${(props) => props.theme.optionshadow};
+  box-shadow: inset 2px 2px 6px 0 ${colors.selectShadow};
 `
 const OptionsWrapper = styled.div`
   height: 60px;
   width: 100%;
   margin-top: 2px;
-  background-color: ${(props) => props.theme.optionbg};
+  background-color: ${colors.optionBackground};
+  color: ${colors.burgundy};
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 0;
   line-height: 28px;
   display: flex;
   justify-content: center;
@@ -72,7 +68,8 @@ const OptionsWrapper = styled.div`
   border-radius: ${(props: Style) => props.borderRadius && '0 0 15px 15px'};
 
   :hover {
-    background-color: ${(props) => props.theme.optionhover};
+    background-color: ${colors.oliveGreen};
+    color: ${colors.white};
   }
 `
 const Options = styled.div`
@@ -84,13 +81,11 @@ const Options = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
-  width: 100%;
+  max-width: calc(535rem / 16);
 `
 
 export const SelectAccount = (props: Wallet) => {
   const [showOptions, setShowOptions] = useState<boolean>(false)
-  const [selectedAccount, setSelectedAccount] = useState<any>()
 
   const openOptionsMenu = async () => {
     if (!props.accounts.length) return
@@ -98,16 +93,16 @@ export const SelectAccount = (props: Wallet) => {
     else setShowOptions(true)
   }
   const selectOptions = (account: any) => {
-    setSelectedAccount(account)
+    props.onSelect(account)
     setShowOptions(false)
   }
   return (
     <Container>
       <SelectContainer open={showOptions} onClick={() => openOptionsMenu()}>
         <Selection>
-          {selectedAccount
-            ? `${selectedAccount.meta.name} (${selectedAccount.meta.source})`
-            : 'Choose Account'}
+          {props.selected
+            ? `${props.selected.meta.name} (${props.selected.meta.source})`
+            : 'Choose Account Name'}
           <Arrow open={showOptions} />
         </Selection>
       </SelectContainer>
@@ -126,15 +121,6 @@ export const SelectAccount = (props: Wallet) => {
           ))}
         </OptionBoxContainer>
       )}
-      <Steps>
-        8. &nbsp;Choose the account you wish to pay the transaction fees from.
-        (This may be a different account.)
-      </Steps>
-      <SelectPayer
-        did={props.did}
-        accounts={props.filteredAccounts}
-        linkingAccount={selectedAccount}
-      />
     </Container>
   )
 }

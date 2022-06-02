@@ -1,0 +1,18 @@
+export const colors = {
+  textGreen: '#C8CE94',
+  white: '#FFFFFF',
+  turquoise: '#378E9A',
+  dark: '#0C212A',
+  footer: '#0D2022',
+  ming: '#166871',
+  mossGreen: '#8F9463',
+  oliveGreen: '#64683E',
+  lightBlue: '#77E4E0',
+  borderDisabled: '#ABAF88',
+  selectBorder: 'rgba(151, 151, 151, 0.5)',
+  selectShadow: 'rgba(0, 0, 0, 0.3)',
+  selectBackground: 'rgba(0, 0, 0, 0.1)',
+  optionShadow: 'rgba(0, 0, 0, 0.35)',
+  optionBackground: '#C8CE94',
+  burgundy: '#411329',
+}

@@ -1,93 +1,98 @@
 import React from 'react'
 import styled from 'styled-components'
-import FooterLogo from '../ImageAssets/bte_logo_light.svg'
+
+import Privacy from '../DocAssets/LinkAddressestoweb3nameWebsite_PrivacyPolicy_62022.docx.pdf'
+import Terms from '../DocAssets/LinkAddressestoweb3nameWebsite_Terms_62022.docx.pdf'
+
+import FooterBackground from '../ImageAssets/footer_bg.png'
+
+import { colors } from '../Theme/colors'
 
 const StyledFooter = styled.footer`
-  background: radial-gradient(
-    circle at top right,
-    ${(props) => props.theme.headerpink} 0%,
-    black 100%
-  );
-  min-height: fit-content;
-  width: 100vw;
+  background: url(${FooterBackground}) no-repeat center/cover;
+  min-height: calc(410rem / 16);
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  margin-top: auto;
-  justify-content: center;
-  align-items: center;
-  gap: 100px;
+  place-content: center;
 `
-const Div = styled.div`
-  max-width: 1100px;
-  background: url(${FooterLogo}) no-repeat top 30px right/auto;
-  margin-bottom: 20px;
-  width: 90%;
+const Content = styled.div`
+  max-width: 1250px;
+  width: 85%;
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-
-  @media (max-width: 900px) {
-    justify-content: center;
-  }
-  @media (max-width: 850px) {
-    background: none;
-  }
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.75rem 0;
+  font-size: 0.875rem;
+`
+const Anchor = styled.a`
+  color: ${colors.textGreen};
+  margin-bottom: 1rem;
 `
 const Imprint = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: 24px;
-
-  span {
-    color: ${(props) => props.theme.imprinttext};
-  }
-  a {
-    color: ${(props) => props.theme.headerheading};
-  }
-  label {
-    color: ${(props) => props.theme.headerheading};
-    margin-bottom: 10px;
-    margin-top: 40px;
-  }
+  color: ${colors.white};
 `
-const MarginSpan = styled.span`
-  margin-top: 10px;
+
+const ImprintHeading = styled.h6`
+  font-size: inherit;
+  font-weight: normal;
+  margin: 1rem 0;
+`
+
+const ImprintLine = styled.p`
+  margin: 0;
+`
+
+const SpacedLine = styled(ImprintLine)`
+  margin-top: 1rem;
 `
 
 export const Footer = () => {
   return (
     <StyledFooter>
-      <Div>
+      <Content>
+        <Anchor href={Terms} target="_blank" rel="noreferrer">
+          Terms & Conditions (PDF)
+        </Anchor>
+        <Anchor href={Privacy} target="_blank" rel="noreferrer">
+          Privacy Policy (PDF)
+        </Anchor>
+
         <Imprint>
-          <label>Imprint</label>
-          <span>B.T.E. BOTLabs Trusted Entity GmbH</span>
-          <span>Keithstraße 2-4</span>
-          <span>10787 Berlin, Germany</span>
-          <span>
+          <ImprintHeading>Imprint</ImprintHeading>
+          <ImprintLine>B.T.E. BOTLabs Trusted Entity GmbH</ImprintLine>
+          <ImprintLine>Keithstraße 2-4</ImprintLine>
+          <ImprintLine>10787 Berlin, Germany</ImprintLine>
+          <ImprintLine>
             Germany Commercial Court: Amtsgericht Charlottenburg in Berlin
-          </span>
-          <span>Registration Number: HRB 231219B</span>
-          <span>VAT No: DE 346528612</span>
-          <span>Managing Director: Ingo Rübe</span>
-          <span>
-            Contact: <a href="mailto:info@botlabs.org">info@botlabs.org</a>
-          </span>
-          <span>
+          </ImprintLine>
+          <ImprintLine>Registration Number: HRB 231219B</ImprintLine>
+          <ImprintLine>VAT No: DE 346528612</ImprintLine>
+          <ImprintLine>Managing Director: Ingo Rübe</ImprintLine>
+          <ImprintLine>
+            Contact:{' '}
+            <Anchor href="mailto:info@botlabs.org">info@botlabs.org</Anchor>
+          </ImprintLine>
+          <ImprintLine>
             Or go to{' '}
-            <a
+            <Anchor
               href="https://support.kilt.io/support/home"
               target="_blank"
               rel="noreferrer"
             >
               Tech Support
-            </a>{' '}
+            </Anchor>{' '}
             and click on "Contact Us"
-          </span>
-          <MarginSpan>Requirements according to § 5 TMG (Germany)</MarginSpan>
+          </ImprintLine>
+
+          <SpacedLine>Requirements according to § 5 TMG (Germany)</SpacedLine>
+
+          <SpacedLine>
+            &copy; 2022 B.T.E. BOTLabs Trusted Entity GmbH
+          </SpacedLine>
         </Imprint>
-      </Div>
+      </Content>
     </StyledFooter>
   )
 }
