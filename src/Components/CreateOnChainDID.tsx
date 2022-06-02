@@ -53,14 +53,53 @@ const Content = styled.div`
   }
 `
 
-const MainText = styled.p`
+const Subheading = styled.p`
   margin-top: 0;
-  line-height: 150%;
+  line-height: 1.5rem;
+`
+
+const Bullets = styled.ul`
+  display: flex;
+  flex-direction: column;
+  list-style-position: inside;
+  padding-left: 1.75rem;
+  margin-top: 0.75rem;
+  line-height: 1.5rem;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
+`
+
+const Steps = styled.ol`
+  display: flex;
+  flex-direction: column;
+  list-style-position: inside;
+  padding-left: 1.75rem;
+  margin-top: 0.75rem;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
+`
+
+const Step = styled.li`
+  font-size: 16px;
+  line-height: 24px;
+  font-size: 16px;
+  margin-bottom: 1.25rem;
+`
+
+const LinkPar = styled.p`
+  margin: 0.5rem 0;
+  padding-left: 1.75rem;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
 `
 
 const LinkToGuide = styled.a`
-  display: block;
-  margin: 0.5rem 0.5rem;
   color: ${colors.white};
   text-decoration: underline;
 `
@@ -97,13 +136,13 @@ export const CreateOnChainDID = () => {
 
       {expanded && (
         <Content>
-          <MainText>
+          <Subheading>
             Your decentralized Identifier (DID) is a unique set of numbers and
             letters that represents your identity, like a digital fingerprint.
             When you upgrade to an on-chain DID, you can link multiple things to
             your DID including:
-          </MainText>
-          <ul>
+          </Subheading>
+          <Bullets>
             <li>Your unique web3name </li>
             <li>
               As many of your Polkadot ecosystem (and soon, Ethereum) addresses
@@ -114,22 +153,24 @@ export const CreateOnChainDID = () => {
               handles, GitHub and email addresses
             </li>
             <li>Communication endpoints, e.g., your website</li>
-          </ul>
+          </Bullets>
           <p>
             Upgrading to an on-chain DID requires a deposit of 2 KILT and a
             small transaction fee (around 0.0045 KILT).
           </p>
-          <ol>
-            <li>Open your Sporran extension</li>
-            <li>Click “Upgrade to on-chain DID”</li>
-          </ol>
-          <LinkToGuide
-            href="https://www.trusted-entity.io/assets/pdf/Upgrading-to-on-chain-DID.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Guide to upgrading your DID (PDF)
-          </LinkToGuide>
+          <Steps>
+            <Step>Open your Sporran extension</Step>
+            <Step>Click “Upgrade to on-chain DID”</Step>
+          </Steps>
+          <LinkPar>
+            <LinkToGuide
+              href="https://www.trusted-entity.io/assets/pdf/Upgrading-to-on-chain-DID.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Guide to upgrading your DID (PDF)
+            </LinkToGuide>
+          </LinkPar>
           <CollapseBtn
             onClick={() => setExpanded(false)}
             aria-label="Collapse content"

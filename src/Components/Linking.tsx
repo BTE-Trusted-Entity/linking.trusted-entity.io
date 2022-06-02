@@ -52,6 +52,7 @@ const Heading = styled.h1`
 
 const Subheading = styled.p`
   margin: 0;
+  line-height: 1.5rem;
 `
 
 const Content = styled.div`
@@ -86,9 +87,7 @@ const Steps = styled.ol`
 `
 
 const Step = styled.li`
-  font-size: 16px;
   line-height: 24px;
-  font-size: 16px;
   margin-bottom: 1.25rem;
 `
 

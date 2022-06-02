@@ -53,14 +53,40 @@ const Content = styled.div`
   }
 `
 
-const MainText = styled.p`
+const Subheading = styled.p`
   margin-top: 0;
-  line-height: 150%;
+  line-height: 1.5rem;
+`
+
+const Steps = styled.ol`
+  display: flex;
+  flex-direction: column;
+  list-style-position: inside;
+  padding-left: 1.75rem;
+  margin-top: 0.75rem;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
+`
+
+const Step = styled.li`
+  font-size: 16px;
+  line-height: 24px;
+  font-size: 16px;
+  margin-bottom: 1.25rem;
+`
+
+const LinkPar = styled.p`
+  margin: 0.5rem 0;
+  padding-left: 1.75rem;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
 `
 
 const LinkToGuide = styled.a`
-  display: block;
-  margin: 0.5rem 0.5rem;
   color: ${colors.white};
   text-decoration: underline;
 `
@@ -97,26 +123,28 @@ export const ClaimWeb3name = () => {
 
       {expanded && (
         <Content>
-          <MainText>
+          <Subheading>
             Your web3name is a custom name you create to represent your on-chain
             decentralized identifier (DID), which personalizes your digital
             identity.
-          </MainText>
+          </Subheading>
           <p>
             Upgrading to an on-chain DID requires a deposit of 2 KILT and a
             small transaction fee (around 0.0045 KILT).
           </p>
-          <ol>
-            <li>Open your Sporran extension</li>
-            <li>Click “Create web3name”</li>
-          </ol>
-          <LinkToGuide
-            href="https://www.trusted-entity.io/assets/pdf/How_To_Guide_web3name_link_address_Full_May22.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Guide to claiming your web3name (PDF)
-          </LinkToGuide>
+          <Steps>
+            <Step>Open your Sporran extension</Step>
+            <Step>Click “Create web3name”</Step>
+          </Steps>
+          <LinkPar>
+            <LinkToGuide
+              href="https://www.trusted-entity.io/assets/pdf/How_To_Guide_web3name_link_address_Full_May22.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Guide to claiming your web3name (PDF)
+            </LinkToGuide>
+          </LinkPar>
           <CollapseBtn
             onClick={() => setExpanded(false)}
             aria-label="Collapse content"

@@ -14,7 +14,11 @@ const Container = styled.main`
   flex: 1;
   display: flex;
   justify-content: center;
-  background: linear-gradient(180deg, ${colors.white} 0%, #3c8690 100%);
+  background: linear-gradient(
+    180deg,
+    ${colors.white} 0%,
+    ${colors.turquoise} 100%
+  );
 `
 
 const Content = styled.div`

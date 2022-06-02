@@ -55,17 +55,17 @@ const Content = styled.div`
   }
 `
 
-const MainText = styled.p`
+const Subheading = styled.p`
   margin-top: 0;
-  line-height: 150%;
+  line-height: 1.5rem;
 `
 
 const ExtensionWrapper = styled.div`
   display: flex;
   gap: 10px;
-  padding-left: 1.5rem;
+  padding-left: 1.75rem;
   margin-top: 1.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   justify-content: space-between;
   max-width: 550px;
   flex-wrap: wrap;
@@ -91,7 +91,12 @@ const FirefoxExtension = styled(Extension)`
   background-image: url(${FirefoxWebstore});
 `
 const LinkPar = styled.p`
-  margin: 0.5rem 0.5rem;
+  margin: 0.5rem 0;
+  padding-left: 1.75rem;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
 `
 
 const LinkToGuide = styled.a`
@@ -131,13 +136,13 @@ export const GettingSporran = () => {
 
       {expanded && (
         <Content>
-          <MainText>
+          <Subheading>
             The Sporran wallet is a browser extension that interacts with the
             KILT blockchain, displaying KILT Coin balances and enabling signing
             and sending transactions. The wallet also stores credentials,
             allowing you to build a decentralized digital identity and control
             who sees your data.
-          </MainText>
+          </Subheading>
           <ExtensionWrapper>
             <a href="https://chrome.google.com/webstore/detail/djdnajgjcbjhhbdblkegbcgodlkkfhcl">
               <ChromeExtension />
