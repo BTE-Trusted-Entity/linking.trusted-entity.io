@@ -17,7 +17,7 @@ const Container = styled.main`
   background: linear-gradient(
     180deg,
     ${colors.white} 0%,
-    ${colors.turquoise} 100%
+    ${colors.lightBlue} 100%
   );
 `
 

@@ -7,7 +7,7 @@ export const colors = {
   ming: '#166871',
   mossGreen: '#8F9463',
   oliveGreen: '#64683E',
-  lightBlue: '#B4F0EE',
+  lightBlue: '#77E4E0',
   borderDisabled: '#ABAF88',
   selectBorder: 'rgba(151, 151, 151, 0.5)',
   selectShadow: 'rgba(0, 0, 0, 0.3)',
