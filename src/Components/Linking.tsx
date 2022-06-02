@@ -27,7 +27,7 @@ const Container = styled.section`
   position: relative;
 
   &[aria-expanded='false'] {
-    background: url(${ExpandIcon}) no-repeat right 0.5rem center,
+    background: url(${ExpandIcon}) no-repeat right 0.5rem top 1.125rem,
       ${colors.mossGreen};
   }
 `
@@ -43,7 +43,7 @@ const Heading = styled.h1`
   margin: 0;
   font-size: 1.7rem;
   font-weight: 300;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 2.5rem 0.75rem 1.25rem;
   cursor: ${({ expanded }: HeadingProps) => (expanded ? 'default' : 'pointer')};
   border-radius: inherit;
 `
@@ -77,6 +77,10 @@ const Steps = styled.ol`
   list-style-position: inside;
   padding-left: 1.75rem;
   margin-top: 0.75rem;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
 `
 
 const Step = styled.li`

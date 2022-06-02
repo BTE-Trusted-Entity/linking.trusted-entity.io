@@ -26,7 +26,7 @@ const Container = styled.section`
   position: relative;
 
   &[aria-expanded='false'] {
-    background: url(${ExpandIcon}) no-repeat right 0.5rem center,
+    background: url(${ExpandIcon}) no-repeat right 0.5rem top 1.125rem,
       ${colors.turquoise};
   }
 `
@@ -38,7 +38,7 @@ const Heading = styled.h1`
   margin: 0;
   font-size: 1.7rem;
   font-weight: 300;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 2.5rem 0.75rem 1.25rem;
   cursor: ${({ expanded }: Style) => (expanded ? 'default' : 'pointer')};
   border-radius: inherit;
 `
@@ -47,7 +47,7 @@ const Content = styled.div`
   color: ${colors.white};
   letter-spacing: 0.1px;
   word-break: normal;
-  padding: 0 2.25rem 2.25rem 1.25rem;
+  padding: 0 2.5rem 2.25rem 1.25rem;
 `
 
 const MainText = styled.p`
