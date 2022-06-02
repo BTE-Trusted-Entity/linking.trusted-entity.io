@@ -1,9 +1,11 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
 
 import { SelectAccount } from './SelectAccount'
 import { SelectPayer } from './SelectPayer'
 import { LinkingButton } from './LinkingButton'
+
+import { useScrollIntoView } from '../Hooks/useScrollIntoView'
 
 import { getAccounts } from '../Utilts/linking-helpers'
 
@@ -204,8 +206,11 @@ export const Linking = () => {
     setLoadingWallets(false)
   }
 
+  const cardRef = useRef<HTMLDivElement>(null)
+  useScrollIntoView(expanded, cardRef)
+
   return (
-    <Container aria-expanded={expanded}>
+    <Container aria-expanded={expanded} ref={cardRef}>
       <Heading onClick={handleExpand} expanded={expanded}>
         Link your web3name and your account address
       </Heading>

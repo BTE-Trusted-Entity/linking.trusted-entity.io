@@ -1,5 +1,7 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
+
+import { useScrollIntoView } from '../Hooks/useScrollIntoView'
 
 import ExpandIcon from '../ImageAssets/Open.svg'
 import CollapseIcon from '../ImageAssets/Close.svg'
@@ -84,8 +86,11 @@ export const ClaimWeb3name = () => {
     setExpanded(true)
   }, [expanded])
 
+  const cardRef = useRef<HTMLDivElement>(null)
+  useScrollIntoView(expanded, cardRef)
+
   return (
-    <Container aria-expanded={expanded}>
+    <Container aria-expanded={expanded} ref={cardRef}>
       <Heading onClick={handleExpand} expanded={expanded}>
         3. Claim your web3name
       </Heading>

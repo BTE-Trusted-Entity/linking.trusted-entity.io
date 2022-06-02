@@ -1,11 +1,12 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
+
+import { useScrollIntoView } from '../Hooks/useScrollIntoView'
 
 import ExpandIcon from '../ImageAssets/Open.svg'
 import CollapseIcon from '../ImageAssets/Close.svg'
 import ChromeWebstore from '../ImageAssets/chrome_webstore.svg'
 import FirefoxWebstore from '../ImageAssets/firefox_webstore.svg'
-import CreateSporran from '../DocAssets/Create-KILT-Sporran-Identity.pdf'
 
 import { colors } from '../Theme/colors'
 
@@ -118,8 +119,11 @@ export const GettingSporran = () => {
     setExpanded(true)
   }, [expanded])
 
+  const cardRef = useRef<HTMLDivElement>(null)
+  useScrollIntoView(expanded, cardRef)
+
   return (
-    <Container aria-expanded={expanded}>
+    <Container aria-expanded={expanded} ref={cardRef}>
       <Heading onClick={handleExpand} expanded={expanded}>
         1. Get your Sporran wallet
       </Heading>
