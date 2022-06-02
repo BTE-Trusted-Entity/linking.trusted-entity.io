@@ -90,10 +90,11 @@ const ChromeExtension = styled(Extension)`
 const FirefoxExtension = styled(Extension)`
   background-image: url(${FirefoxWebstore});
 `
+const LinkPar = styled.p`
+  margin: 0.5rem 0.5rem;
+`
 
 const LinkToGuide = styled.a`
-  display: block;
-  margin: 0.5rem 0.5rem;
   color: ${colors.white};
   text-decoration: underline;
 `
@@ -145,20 +146,24 @@ export const GettingSporran = () => {
               <FirefoxExtension />
             </a>
           </ExtensionWrapper>
-          <LinkToGuide
-            href="https://www.trusted-entity.io/assets/pdf/Create-KILT-Sporran-Identity.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Guide to downloading Sporran (PDF)
-          </LinkToGuide>
-          <LinkToGuide
-            href="https://www.sporran.org"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Read addtional information on Sporran.org
-          </LinkToGuide>
+          <LinkPar>
+            <LinkToGuide
+              href="https://www.trusted-entity.io/assets/pdf/Create-KILT-Sporran-Identity.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Guide to downloading Sporran (PDF)
+            </LinkToGuide>
+          </LinkPar>
+          <LinkPar>
+            <LinkToGuide
+              href="https://www.sporran.org"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Read addtional information on Sporran.org
+            </LinkToGuide>
+          </LinkPar>
           <CollapseBtn
             onClick={() => setExpanded(false)}
             aria-label="Collapse content"
