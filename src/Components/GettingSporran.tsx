@@ -144,10 +144,18 @@ export const GettingSporran = () => {
             who sees your data.
           </Subheading>
           <ExtensionWrapper>
-            <a href="https://chrome.google.com/webstore/detail/djdnajgjcbjhhbdblkegbcgodlkkfhcl">
+            <a
+              href="https://chrome.google.com/webstore/detail/djdnajgjcbjhhbdblkegbcgodlkkfhcl"
+              target="_blank"
+              rel="noreferrer"
+            >
               <ChromeExtension />
             </a>
-            <a href="https://addons.mozilla.org/firefox/addon/sporran/">
+            <a
+              href="https://addons.mozilla.org/firefox/addon/sporran/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FirefoxExtension />
             </a>
           </ExtensionWrapper>
