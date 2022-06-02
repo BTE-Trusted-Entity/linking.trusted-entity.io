@@ -10,17 +10,7 @@ import { colors } from '../Theme/colors'
 const StyledHeader = styled.header`
   width: 100%;
   min-height: calc(410rem / 16);
-  background: linear-gradient(
-      4.28deg,
-      rgba(0, 0, 0, 0.72) 0%,
-      rgba(83, 142, 174, 0.03) 100%
-    ),
-    linear-gradient(
-      343.63deg,
-      rgba(0, 0, 0, 0.72) 0%,
-      rgba(83, 142, 174, 0.03) 100%
-    ),
-    url(${HeaderBackground}) no-repeat center/cover;
+  background: url(${HeaderBackground}) no-repeat center/cover;
   display: flex;
   place-content: center;
 `
