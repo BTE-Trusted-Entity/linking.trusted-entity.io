@@ -9,10 +9,12 @@ export const colors = {
   oliveGreen: '#64683E',
   lightBlue: '#77E4E0',
   borderDisabled: '#ABAF88',
+  buttonDisabled: 'rgba(255, 255, 255, 0.3)',
   selectBorder: 'rgba(151, 151, 151, 0.5)',
   selectShadow: 'rgba(0, 0, 0, 0.3)',
   selectBackground: 'rgba(0, 0, 0, 0.1)',
   optionShadow: 'rgba(0, 0, 0, 0.35)',
+  boxShadow: 'rgba(0, 0, 0, 0.25)',
   optionBackground: '#C8CE94',
   burgundy: '#411329',
 }

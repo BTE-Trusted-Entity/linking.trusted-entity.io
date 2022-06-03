@@ -19,7 +19,7 @@ const Container = styled.section`
   justify-content: flex-start;
   align-items: flex-start;
   border-radius: 0.75rem;
-  box-shadow: 0 0.375rem 0.5rem 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.375rem 0.5rem 0 ${colors.boxShadow};
   background-color: ${colors.turquoise};
   margin-bottom: 1.25rem;
   position: relative;
@@ -58,7 +58,7 @@ const Subheading = styled.p`
   line-height: 1.5rem;
 `
 
-const Bullets = styled.ul`
+const BulletList = styled.ul`
   display: flex;
   flex-direction: column;
   list-style-position: inside;
@@ -90,7 +90,7 @@ const Step = styled.li`
   margin-bottom: 1.25rem;
 `
 
-const LinkPar = styled.p`
+const LinkParagraph = styled.p`
   margin: 0.5rem 0;
   padding-left: 1.75rem;
 
@@ -142,7 +142,7 @@ export const CreateOnChainDID = () => {
             When you upgrade to an on-chain DID, you can link multiple things to
             your DID including:
           </Subheading>
-          <Bullets>
+          <BulletList>
             <li>Your unique web3name </li>
             <li>
               As many of your Polkadot ecosystem (and soon, Ethereum) addresses
@@ -153,7 +153,7 @@ export const CreateOnChainDID = () => {
               handles, GitHub and email addresses
             </li>
             <li>Communication endpoints, e.g., your website</li>
-          </Bullets>
+          </BulletList>
           <p>
             Upgrading to an on-chain DID requires a deposit of 2 KILT and a
             small transaction fee (around 0.0045 KILT).
@@ -162,7 +162,7 @@ export const CreateOnChainDID = () => {
             <Step>Open your Sporran extension</Step>
             <Step>Click “Upgrade to on-chain DID”</Step>
           </Steps>
-          <LinkPar>
+          <LinkParagraph>
             <LinkToGuide
               href="https://www.trusted-entity.io/assets/pdf/Upgrading-to-on-chain-DID.pdf"
               target="_blank"
@@ -170,7 +170,7 @@ export const CreateOnChainDID = () => {
             >
               Guide to upgrading your DID (PDF)
             </LinkToGuide>
-          </LinkPar>
+          </LinkParagraph>
           <CollapseBtn
             onClick={() => setExpanded(false)}
             aria-label="Collapse content"

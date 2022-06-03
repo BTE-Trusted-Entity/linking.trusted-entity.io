@@ -53,10 +53,10 @@ export const Footer = () => {
     <StyledFooter>
       <Content>
         <Anchor href={Terms} target="_blank" rel="noreferrer">
-          Terms & Conditions (PDF)
+          Terms & Conditions for the Website to Link Addresses (PDF)
         </Anchor>
         <Anchor href={Privacy} target="_blank" rel="noreferrer">
-          Privacy Policy (PDF)
+          Privacy Policy for the Website to Link Addresses (PDF)
         </Anchor>
 
         <Imprint>

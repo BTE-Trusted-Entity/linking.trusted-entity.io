@@ -21,7 +21,7 @@ const Container = styled.section`
   justify-content: flex-start;
   align-items: flex-start;
   border-radius: 0.75rem;
-  box-shadow: 0 0.375rem 0.5rem 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.375rem 0.5rem 0 ${colors.boxShadow};
   background-color: ${colors.turquoise};
   margin-bottom: 1.25rem;
   position: relative;
@@ -77,10 +77,10 @@ const ExtensionWrapper = styled.div`
   }
 `
 
-const Extension = styled.img`
-  height: 75.6px;
-  width: 250px;
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.25);
+const Extension = styled.div`
+  height: calc(75.6rem / 16);
+  width: calc(250rem / 16);
+  box-shadow: 0 6px 8px 0 ${colors.boxShadow};
 `
 
 const ChromeExtension = styled(Extension)`
@@ -88,9 +88,9 @@ const ChromeExtension = styled(Extension)`
 `
 
 const FirefoxExtension = styled(Extension)`
-  background-image: url(${FirefoxWebstore});
+  background: url(${FirefoxWebstore}) no-repeat;
 `
-const LinkPar = styled.p`
+const LinkParagraph = styled.p`
   margin: 0.5rem 0;
   padding-left: 1.75rem;
 
@@ -137,11 +137,12 @@ export const GettingSporran = () => {
       {expanded && (
         <Content>
           <Subheading>
-            The Sporran wallet is a browser extension that interacts with the
-            KILT blockchain, displaying KILT Coin balances and enabling signing
-            and sending transactions. The wallet also stores credentials,
-            allowing you to build a decentralized digital identity and control
-            who sees your data.
+            The Sporran wallet is a browser-based extension that interacts with
+            the KILT blockchain, displaying KILT Coin balances and enabling
+            signing and sending transactions. The wallet also stores
+            credentials, allowing you to build a decentralized digital identity
+            and control who sees your data. (Currently Sporran is available on
+            desktop only.)
           </Subheading>
           <ExtensionWrapper>
             <a
@@ -159,7 +160,7 @@ export const GettingSporran = () => {
               <FirefoxExtension />
             </a>
           </ExtensionWrapper>
-          <LinkPar>
+          <LinkParagraph>
             <LinkToGuide
               href="https://www.trusted-entity.io/assets/pdf/Create-KILT-Sporran-Identity.pdf"
               target="_blank"
@@ -167,16 +168,25 @@ export const GettingSporran = () => {
             >
               Guide to downloading Sporran (PDF)
             </LinkToGuide>
-          </LinkPar>
-          <LinkPar>
+          </LinkParagraph>
+          <LinkParagraph>
             <LinkToGuide
               href="https://www.sporran.org"
               target="_blank"
               rel="noreferrer"
             >
-              Read addtional information on Sporran.org
+              Read additional information on Sporran.org
             </LinkToGuide>
-          </LinkPar>
+          </LinkParagraph>
+          <LinkParagraph>
+            <LinkToGuide
+              href="https://www.sporran.org/terms.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Sporran Terms & Conditions
+            </LinkToGuide>
+          </LinkParagraph>
           <CollapseBtn
             onClick={() => setExpanded(false)}
             aria-label="Collapse content"

@@ -26,7 +26,7 @@ const LinkingBtn = styled.button`
     props.disabled
       ? `1px solid ${colors.borderDisabled}`
       : `1px solid ${colors.white}`};
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 8px 0 ${colors.boxShadow};
   background: ${colors.oliveGreen};
   box-shadow: -2px 8px 12px 0 ${colors.optionShadow};
   font-size: 18px;
@@ -38,7 +38,7 @@ const LinkingBtn = styled.button`
   position: relative;
   cursor: pointer;
   color: ${(props: Button) =>
-    props.disabled ? 'rgba(255, 255, 255, 0.3)' : 'white'};
+    props.disabled ? colors.buttonDisabled : 'white'};
   opacity: ${(props: Button) => props.disabled && 0.6};
   max-width: calc(535rem / 16);
   @media (max-width: 400px) {
