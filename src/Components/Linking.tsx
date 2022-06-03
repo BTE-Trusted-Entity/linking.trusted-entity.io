@@ -23,7 +23,7 @@ const Container = styled.section`
   justify-content: flex-start;
   align-items: flex-start;
   border-radius: 0.75rem;
-  box-shadow: 0 0.375rem 0.5rem 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.375rem 0.5rem 0 ${colors.boxShadow};
   background-color: ${colors.mossGreen};
   margin-bottom: 1.25rem;
   position: relative;
@@ -140,7 +140,7 @@ const ConnectBtn = styled.button`
   display: inline-flex;
   background: ${colors.oliveGreen};
   color: ${(props: ConnectBtnProps) =>
-    props.disabled ? 'rgba(255, 255, 255, 0.3)' : 'white'};
+    props.disabled ? colors.buttonDisabled : 'white'};
   margin-top: 10px;
   width: 100%;
   max-width: calc(535rem / 16);
@@ -150,7 +150,7 @@ const ConnectBtn = styled.button`
     props.disabled
       ? `1px solid ${colors.borderDisabled}`
       : `1px solid ${colors.white}`};
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 8px 0 ${colors.boxShadow};
   font-size: 18px;
   font-weight: 600;
   line-height: 20px;

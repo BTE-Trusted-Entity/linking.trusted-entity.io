@@ -19,7 +19,7 @@ const Container = styled.section`
   justify-content: flex-start;
   align-items: flex-start;
   border-radius: 0.75rem;
-  box-shadow: 0 0.375rem 0.5rem 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.375rem 0.5rem 0 ${colors.boxShadow};
   background-color: ${colors.turquoise};
   margin-bottom: 1.25rem;
   position: relative;
@@ -71,13 +71,11 @@ const Steps = styled.ol`
 `
 
 const Step = styled.li`
-  font-size: 16px;
   line-height: 24px;
-  font-size: 16px;
   margin-bottom: 1.25rem;
 `
 
-const LinkPar = styled.p`
+const LinkParagraph = styled.p`
   margin: 0.5rem 0;
   padding-left: 1.75rem;
 
@@ -136,7 +134,7 @@ export const ClaimWeb3name = () => {
             <Step>Open your Sporran extension</Step>
             <Step>Click “Create web3name”</Step>
           </Steps>
-          <LinkPar>
+          <LinkParagraph>
             <LinkToGuide
               href="https://www.trusted-entity.io/assets/pdf/How_To_Guide_web3name_link_address_Full_May22.pdf"
               target="_blank"
@@ -144,7 +142,7 @@ export const ClaimWeb3name = () => {
             >
               Guide to claiming your web3name (PDF)
             </LinkToGuide>
-          </LinkPar>
+          </LinkParagraph>
           <CollapseBtn
             onClick={() => setExpanded(false)}
             aria-label="Collapse content"
