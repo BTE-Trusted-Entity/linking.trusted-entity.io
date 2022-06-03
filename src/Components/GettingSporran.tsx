@@ -69,7 +69,6 @@ const ExtensionWrapper = styled.div`
   justify-content: space-between;
   max-width: 550px;
   flex-wrap: wrap;
-  flex-grow: 1;
 
   @media (max-width: 700px) {
     justify-content: center;
@@ -77,7 +76,7 @@ const ExtensionWrapper = styled.div`
   }
 `
 
-const Extension = styled.div`
+const Extension = styled.a`
   height: calc(75.6rem / 16);
   width: calc(250rem / 16);
   box-shadow: 0 6px 8px 0 ${colors.boxShadow};
@@ -90,6 +89,7 @@ const ChromeExtension = styled(Extension)`
 const FirefoxExtension = styled(Extension)`
   background: url(${FirefoxWebstore}) no-repeat;
 `
+
 const LinkParagraph = styled.p`
   margin: 0.5rem 0;
   padding-left: 1.75rem;
@@ -144,22 +144,21 @@ export const GettingSporran = () => {
             and control who sees your data. (Currently Sporran is available on
             desktop only.)
           </Subheading>
+
           <ExtensionWrapper>
-            <a
+            <ChromeExtension
               href="https://chrome.google.com/webstore/detail/djdnajgjcbjhhbdblkegbcgodlkkfhcl"
               target="_blank"
               rel="noreferrer"
-            >
-              <ChromeExtension />
-            </a>
-            <a
+            />
+
+            <FirefoxExtension
               href="https://addons.mozilla.org/firefox/addon/sporran/"
               target="_blank"
               rel="noreferrer"
-            >
-              <FirefoxExtension />
-            </a>
+            />
           </ExtensionWrapper>
+
           <LinkParagraph>
             <LinkToGuide
               href="https://www.trusted-entity.io/assets/pdf/Create-KILT-Sporran-Identity.pdf"
@@ -169,6 +168,7 @@ export const GettingSporran = () => {
               Guide to downloading Sporran (PDF)
             </LinkToGuide>
           </LinkParagraph>
+
           <LinkParagraph>
             <LinkToGuide
               href="https://www.sporran.org"
@@ -178,6 +178,7 @@ export const GettingSporran = () => {
               Read additional information on Sporran.org
             </LinkToGuide>
           </LinkParagraph>
+
           <LinkParagraph>
             <LinkToGuide
               href="https://www.sporran.org/terms.html"
@@ -187,6 +188,7 @@ export const GettingSporran = () => {
               Sporran Terms & Conditions
             </LinkToGuide>
           </LinkParagraph>
+
           <CollapseBtn
             onClick={() => setExpanded(false)}
             aria-label="Collapse content"
