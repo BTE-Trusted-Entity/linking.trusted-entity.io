@@ -36,7 +36,7 @@ const Text = styled.p`
 `
 
 const Info = styled.p`
-  padding: 0.875rem 1.5rem 0.75rem calc(41rem / 16);
+  padding: 0.875rem calc(19rem / 16) 0.75rem calc(41rem / 16);
   background: url(${InfoIcon}) no-repeat top 0.625rem left 0.625rem,
     ${colors.lightBlue};
   border-radius: 0.75rem;
