@@ -184,7 +184,7 @@ export const GettingSporran = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Terms and Conditions of the Sporran wallet
+              Sporran Terms & Conditions
             </LinkToGuide>
           </LinkParagraph>
           <CollapseBtn
