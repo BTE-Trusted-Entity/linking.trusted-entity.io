@@ -28,11 +28,15 @@ const Content = styled.div`
 `
 
 const Text = styled.p`
-  margin: 0 0 0.5rem;
+  margin: 0 0 1.25rem;
   font-size: 1.125rem;
   line-height: 1.25rem;
   letter-spacing: 0.1px;
   color: ${colors.dark};
+`
+
+const TopText = styled(Text)`
+  margin-bottom: 2rem;
 `
 
 const Info = styled.p`
@@ -42,6 +46,7 @@ const Info = styled.p`
   border-radius: 0.75rem;
   color: ${colors.dark};
   letter-spacing: 0.1px;
+  margin: 0 0 1.25rem;
 
   a {
     color: ${colors.ming};
@@ -63,14 +68,18 @@ export const Main = () => {
   return (
     <Container>
       <Content>
-        <Text>
+        <TopText>
           Linking your account addresses to your web3name and on-chain DID –
           your unique decentralized identifier – makes it easier for others to
           reference you.
-        </Text>
+        </TopText>
+
         <Text>
-          Follow the steps below to link your web3name to your Polkadot
-          addresses and (coming soon), your Ethereum addresses.
+          <Bold>
+            Follow the steps below to link your web3name to your Polkadot
+            addresses
+          </Bold>{' '}
+          and (coming soon), your Ethereum addresses.
         </Text>
 
         <Info>
