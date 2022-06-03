@@ -137,11 +137,12 @@ export const GettingSporran = () => {
       {expanded && (
         <Content>
           <Subheading>
-            The Sporran wallet is a browser extension that interacts with the
-            KILT blockchain, displaying KILT Coin balances and enabling signing
-            and sending transactions. The wallet also stores credentials,
-            allowing you to build a decentralized digital identity and control
-            who sees your data.
+            The Sporran wallet is a browser-based extension that interacts with
+            the KILT blockchain, displaying KILT Coin balances and enabling
+            signing and sending transactions. The wallet also stores
+            credentials, allowing you to build a decentralized digital identity
+            and control who sees your data. (Currently Sporran is available on
+            desktop only.)
           </Subheading>
           <ExtensionWrapper>
             <a

@@ -28,7 +28,7 @@ const Content = styled.div`
 `
 
 const Text = styled.p`
-  margin: 0;
+  margin: 0 0 0.5rem;
   font-size: 1.125rem;
   line-height: 1.25rem;
   letter-spacing: 0.1px;
@@ -52,7 +52,7 @@ const Instructions = styled.h2`
   font-size: 1.125rem;
   font-weight: normal;
   letter-spacing: 0.11px;
-  margin: 1.25rem 0;
+  margin: 2rem 0 1rem;
 `
 
 const Bold = styled.span`
@@ -69,9 +69,8 @@ export const Main = () => {
           reference you.
         </Text>
         <Text>
-          Follow the steps below to link your web3name to any number of
-          addresses you have in the Polkadot and (coming soon) Ethereum
-          ecosystems.
+          Follow the steps below to link your web3name to your Polkadot
+          addresses and (coming soon), your Ethereum addresses.
         </Text>
 
         <Info>
