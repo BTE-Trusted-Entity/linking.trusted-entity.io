@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Privacy from '../DocAssets/LinkAddressestoweb3nameWebsite_PrivacyPolicy_62022.docx.pdf'
-import Terms from '../DocAssets/LinkAddressestoweb3nameWebsite_Terms_62022.docx.pdf'
+import Terms from '../DocAssets/LinkAddressestoweb3nameWebsite_Terms_62022.pdf'
 
 import FooterBackground from '../ImageAssets/footer_bg.png'
 
