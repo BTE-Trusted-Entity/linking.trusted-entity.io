@@ -96,7 +96,7 @@ const StepInfo = styled.p`
   margin-bottom: 0;
 `
 const Error = styled(StepInfo)`
-  color: red;
+  color: ${colors.errorRed};
 `
 const StepInfoImportant = styled(StepInfo)`
   font-weight: bold;
@@ -203,14 +203,14 @@ export const Linking = () => {
     if (accounts.length) return
     setError(null)
     setLoadingWallets(true)
-    const web3Accounts = await getAccounts()
-    if (!web3Accounts.allAccounts.length) {
+    const {allAccounts,filteredAccounts} = await getAccounts()
+    if (!allAccounts.length) {
       setError('No wallets found')
       setLoadingWallets(false)
       return
     }
-    setAccounts(web3Accounts.allAccounts)
-    setFilteredAccounts(web3Accounts.filteredAccounts)
+    setAccounts(allAccounts)
+    setFilteredAccounts(filteredAccounts)
     setLoadingWallets(false)
   }
 
