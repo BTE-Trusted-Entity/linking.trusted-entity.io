@@ -51,10 +51,11 @@ const Container = styled.div`
   width: 100%;
 `
 const SuccessLabel = styled.label`
+  margin-top: 1rem;
   color: green;
 `
-export const ErrorLabel = styled.label`
-  color: red;
+export const ErrorLabel = styled(SuccessLabel)`
+  color: ${colors.errorRed};
 `
 const LoaderSVG = styled(Loader)`
   position: absolute;
