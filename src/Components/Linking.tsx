@@ -95,7 +95,9 @@ const StepInfo = styled.p`
   margin-top: 1rem;
   margin-bottom: 0;
 `
-
+const Error = styled(StepInfo)`
+  color: ${colors.errorRed};
+`
 const StepInfoImportant = styled(StepInfo)`
   font-weight: bold;
 `
@@ -189,6 +191,7 @@ export const Linking = () => {
   }, [expanded])
 
   const [accounts, setAccounts] = useState<any[]>([])
+  const [error, setError] = useState<string | null>(null)
   const [filteredAccounts, setFilteredAccounts] = useState<any[]>([])
 
   const [linkingAccount, setLinkingAccount] = useState<any>()
@@ -198,10 +201,16 @@ export const Linking = () => {
   const [loadingWallets, setLoadingWallets] = useState<boolean>(false)
   const loadWalletAccounts = async () => {
     if (accounts.length) return
+    setError(null)
     setLoadingWallets(true)
-    const web3Accounts = await getAccounts()
-    setAccounts(web3Accounts.allAccounts)
-    setFilteredAccounts(web3Accounts.filteredAccounts)
+    const {allAccounts,filteredAccounts} = await getAccounts()
+    if (!allAccounts.length) {
+      setError('No wallets found')
+      setLoadingWallets(false)
+      return
+    }
+    setAccounts(allAccounts)
+    setFilteredAccounts(filteredAccounts)
     setLoadingWallets(false)
   }
 
@@ -248,6 +257,7 @@ export const Linking = () => {
                 {accounts.length > 0 && <CheckIcon />}
                 {loadingWallets && <Loader />}
               </ConnectBtn>
+              {error && <Error>{error}</Error>}
               <StepInfo>
                 This triggers pop-ups to request access to your Polkadot-enabled
                 extensions, including Sporran.
