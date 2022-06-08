@@ -203,7 +203,7 @@ export const Linking = () => {
     if (accounts.length) return
     setError(null)
     setLoadingWallets(true)
-    const {allAccounts,filteredAccounts} = await getAccounts()
+    const { allAccounts, filteredAccounts } = await getAccounts()
     if (!allAccounts.length) {
       setError('No wallets found')
       setLoadingWallets(false)
@@ -310,6 +310,7 @@ export const Linking = () => {
                 The extension of the account you are linking will pop up. Enter
                 your password for that account and click “Sign”.
               </StepInfo>
+              <StepInfo>Sign the transaction from the payer account.</StepInfo>
             </Step>
           </Steps>
 

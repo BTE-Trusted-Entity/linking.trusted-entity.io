@@ -52,9 +52,11 @@ const Container = styled.div`
 `
 const SuccessLabel = styled.label`
   color: green;
+  margin-top: 1rem;
 `
 export const ErrorLabel = styled.label`
   color: red;
+  margin-top: 1rem;
 `
 const LoaderSVG = styled(Loader)`
   position: absolute;
