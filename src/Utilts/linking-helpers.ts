@@ -33,7 +33,7 @@ const getApi = async (): Promise<ApiPromise> => {
   return await connect()
 }
 export const getAccounts = async () => {
-  await web3Enable('web3name-promo by BTE')
+  await web3Enable('web3name by BTE')
   const allAccounts = await web3Accounts()
   const api = await getApi()
   const genesisHash = api.genesisHash.toHex()

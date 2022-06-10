@@ -1,77 +1,111 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ReactComponent as HeaderBigLogo } from '../ImageAssets/header_bte_logo_left.svg'
-import HeaderRight from '../ImageAssets/BG-Header-right.svg'
-import Logo from '../ImageAssets/kilt_logo_header.svg'
+
+import HeaderBackground from '../ImageAssets/header_bg.png'
+import BTE from '../ImageAssets/bte_logo.png'
+import Kilt from '../ImageAssets/kilt_logo_header.svg'
+
+import { colors } from '../Theme/colors'
 
 const StyledHeader = styled.header`
-  width: 100vw;
-  background: url(${HeaderRight}) no-repeat top right/auto,
-    url(${Logo}) no-repeat top 40px right 20px / auto 40px,
-    radial-gradient(
-      circle at top right,
-      ${(props) => props.theme.headerpink} 0%,
-      black 100%
-    );
+  width: 100%;
+  min-height: calc(410rem / 16);
+  background: url(${HeaderBackground}) no-repeat center/cover;
   display: flex;
-  align-content: center;
-  justify-content: center;
-  margin-bottom: 20px;
+  place-content: center;
+`
+
+const Content = styled.div`
+  max-width: 1250px;
+  width: 82%;
   position: relative;
-`
-const HeaderContainer = styled.div`
-  max-width: 1100px;
-  width: 90%;
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  @media (max-width: 900px) {
-    justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 1100px) {
+    flex-direction: column;
+  }
+  @media (max-width: 700px) {
+    padding-top: 3rem;
   }
 `
-const LogoContainer = styled.div`
-  display: flex;
-  max-width: 433px;
-  width: 70%;
-  @media (max-width: 500px) {
-    svg {
-      height: 95%;
-    }
+
+const BTELogo = styled.img`
+  height: 22rem;
+
+  @media (max-width: 1100px) {
+    align-self: center;
+    align-items: center;
+    height: 18rem;
+  }
+  @media (max-width: 700px) {
+    height: 15rem;
   }
 `
-const HeaderTextContainer = styled.div`
+const KiltLogo = styled.img`
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  height: 1.75rem;
+`
+
+const Heading = styled.h1`
+  width: 57%;
+  min-width: 520px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  margin-bottom: 50px;
-  gap: 20px;
-  width: 50%;
-  @media (max-width: 900px) {
-    width: 90%;
-  }
-`
-const HeaderHeading = styled.span`
-  color: ${(props) => props.theme.headerheading};
-  font-size: 48px;
-  font-weight: 200;
-  letter-spacing: 0;
-  line-height: 52px;
+  flex-wrap: wrap;
+  color: ${colors.white};
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 2rem;
+  align-self: flex-end;
+  margin-bottom: 3.5rem;
 
-  @media (max-width: 500px) {
-    font-size: 28px;
+  @media (max-width: 1100px) {
+    align-self: center;
+    align-items: center;
+    font-size: 1.75rem;
+  }
+  @media (max-width: 700px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 1.2rem;
+  }
+  @media (max-width: 300px) {
+    font-size: 1rem;
   }
 `
+
+const TextLarge = styled.span`
+  font-size: 2.25em;
+  font-weight: 200;
+  color: ${colors.textGreen};
+`
+
+const HeadingBottom = styled.span`
+  align-self: flex-end;
+
+  @media (max-width: 1100px) {
+    align-self: center;
+  }
+`
+
 export const Header = () => {
   return (
     <StyledHeader>
-      <HeaderContainer>
-        <LogoContainer>
-          <HeaderBigLogo />
-        </LogoContainer>
-        <HeaderTextContainer>
-          <HeaderHeading>Get Your Unique web3name</HeaderHeading>
-        </HeaderTextContainer>
-      </HeaderContainer>
+      <Content>
+        <BTELogo src={BTE} alt="Botlabs Trusted Entity logo" />
+        <KiltLogo src={Kilt} alt="Built on KILT" />
+        <Heading>
+          <span>
+            <TextLarge>link</TextLarge> your account addresses
+          </span>
+          <HeadingBottom>with your unique web3name</HeadingBottom>
+        </Heading>
+      </Content>
     </StyledHeader>
   )
 }
