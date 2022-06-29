@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { SubmittableExtrinsic } from '@kiltprotocol/types'
 import { web3FromAddress } from '@polkadot/extension-dapp'
+import { SubmittableExtrinsic } from '@polkadot/api/types'
 
 import { isKiltDid, linkDidWithAccount } from '../Utilts/linking-helpers'
 
@@ -72,7 +72,7 @@ export const LinkingButton = (props: Wallet) => {
 
   const submitDidCall = async (
     payerAddress: string,
-    extrinsic: SubmittableExtrinsic
+    extrinsic: SubmittableExtrinsic<'promise'>
   ) => {
     const injector = await web3FromAddress(payerAddress)
     return extrinsic.signAndSend(
