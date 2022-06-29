@@ -4,8 +4,11 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.4.3",
-    "@kiltprotocol/sdk-js": "^0.26.0",
-    "@polkadot/extension-dapp": "^0.42.9",
+    "@polkadot/api": "^8.10.1",
+    "@polkadot/extension-dapp": "^0.44.1",
+    "@polkadot/types": "^8.10.1",
+    "@polkadot/util": "^9.6.2",
+    "@polkadot/util-crypto": "^9.6.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
