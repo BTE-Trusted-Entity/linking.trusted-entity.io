@@ -1,0 +1,43 @@
+.footer {
+  background: url('../../ImageAssets/footer_bg.png') no-repeat center/cover;
+  min-height: calc(410rem / 16);
+  width: 100%;
+  display: flex;
+  place-content: center;
+}
+
+.content {
+  max-width: 1250px;
+  width: 82%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.75rem 0;
+  font-size: 0.875rem;
+}
+
+.anchor {
+  color: var(--color-lilly-green);
+  margin-bottom: 1rem;
+}
+
+.imprint {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.imprintHeading {
+  font-size: inherit;
+  font-weight: normal;
+  margin: 1rem 0;
+}
+
+.imprintLine {
+  margin: 0;
+}
+
+.spacedLine {
+  margin: 0;
+  margin-top: 1rem;
+}

@@ -17,5 +17,5 @@ export const colors = {
   boxShadow: 'rgba(0, 0, 0, 0.25)',
   optionBackground: '#C8CE94',
   burgundy: '#411329',
-  errorRed: '#BA0021'
-}
+  errorRed: '#BA0021',
+};

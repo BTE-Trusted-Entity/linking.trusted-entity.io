@@ -1,0 +1,85 @@
+.container {
+  composes: container from '../ClaimWeb3name/ClaimWeb3name.module.css';
+}
+
+.containerExpanded {
+  composes: containerExpanded from '../ClaimWeb3name/ClaimWeb3name.module.css';
+}
+
+.heading {
+  composes: heading from '../ClaimWeb3name/ClaimWeb3name.module.css';
+}
+
+.headingExpanded {
+  cursor: default;
+}
+
+.content {
+  composes: content from '../ClaimWeb3name/ClaimWeb3name.module.css';
+}
+
+@media (max-width: 500px) {
+  .content {
+    padding-bottom: 3.25rem;
+  }
+}
+
+.subHeading {
+  composes: subHeading from '../ClaimWeb3name/ClaimWeb3name.module.css';
+}
+
+.linkParagraph {
+  composes: linkParagraph from '../ClaimWeb3name/ClaimWeb3name.module.css';
+}
+
+@media (max-width: 700px) {
+  .linkParagraph {
+    padding: 0;
+  }
+}
+
+.linkToGuide {
+  composes: linkToGuide from '../ClaimWeb3name/ClaimWeb3name.module.css';
+}
+
+.collapseBtn {
+  composes: collapseBtn from '../ClaimWeb3name/ClaimWeb3name.module.css';
+}
+
+.extensionWrapper {
+  display: flex;
+  gap: 10px;
+  padding-left: 1.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+  max-width: 550px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 700px) {
+  .extensionWrapper {
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+.extension {
+  height: calc(75.6rem / 16);
+  width: calc(250rem / 16);
+  box-shadow: 0 6px 8px 0 rgb(black / 25%);
+}
+
+.chromeExtension {
+  composes: extension;
+  background: url('../../ImageAssets/chrome_webstore.svg') no-repeat;
+}
+
+.firefoxExtension {
+  composes: extension;
+  background: url('../../ImageAssets/firefox_webstore.svg') no-repeat;
+}
+
+.hiddenLinkText {
+  visibility: hidden;
+}
