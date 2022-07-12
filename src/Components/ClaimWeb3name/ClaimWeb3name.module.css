@@ -15,6 +15,7 @@
 }
 
 .containerExpanded {
+  composes: container;
   background: var(--color-turquoise);
 }
 
@@ -31,6 +32,7 @@
 }
 
 .headingExpanded {
+  composes: heading;
   cursor: default;
 }
 

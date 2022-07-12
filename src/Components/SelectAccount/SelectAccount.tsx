@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import classnames from 'classnames';
-
-import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 
 import styles from './SelectAccount.module.css';
 
 import { ReactComponent as ArrowDown } from '../../ImageAssets/bte_Triangle.svg';
+import { InjectedAccount } from '../../Utilts/linking-helpers';
 
 interface Wallet {
-  accounts: InjectedAccountWithMeta[];
-  onSelect: React.Dispatch<
-    React.SetStateAction<InjectedAccountWithMeta | undefined>
-  >;
-  selected?: InjectedAccountWithMeta;
+  accounts: InjectedAccount[];
+  onSelect: React.Dispatch<React.SetStateAction<InjectedAccount | undefined>>;
+  selected?: InjectedAccount;
 }
 
 export const SelectAccount = (props: Wallet) => {
@@ -24,17 +21,16 @@ export const SelectAccount = (props: Wallet) => {
     if (showOptions) setShowOptions(false);
     else setShowOptions(true);
   };
-  const selectOptions = (account: InjectedAccountWithMeta) => {
+  const selectOptions = (account: InjectedAccount) => {
     props.onSelect(account);
     setShowOptions(false);
   };
   return (
     <div className={styles.container}>
       <div
-        className={classnames({
-          [styles.selectContainer]: true,
-          [styles.selectContainerOpen]: showOptions,
-        })}
+        className={classnames(
+          showOptions ? styles.selectContainerOpen : styles.selectContainer,
+        )}
         onClick={() => openOptionsMenu()}
       >
         <div
@@ -46,10 +42,9 @@ export const SelectAccount = (props: Wallet) => {
             ? `${props.selected.meta.name} (${props.selected.meta.source})`
             : 'Choose Account Name'}
           <ArrowDown
-            className={classnames({
-              [styles.arrow]: true,
-              [styles.arrowRotate]: showOptions,
-            })}
+            className={classnames(
+              showOptions ? styles.arrowRotate : styles.arrow,
+            )}
           />
         </div>
       </div>

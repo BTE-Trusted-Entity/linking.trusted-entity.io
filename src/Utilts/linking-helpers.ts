@@ -19,15 +19,17 @@ import {
   web3Enable,
   web3FromAddress,
 } from '@polkadot/extension-dapp';
-import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 
 type AccountAddress = string;
 type SignatureType = MultiSignature['type'];
-
 type LinkingSignerCallback = (
   payload: HexString,
   address: AccountAddress,
 ) => Promise<HexString>;
+
+export type InjectedAccount = Awaited<
+  ReturnType<typeof getWeb3Accounts>
+>[number];
 
 export const connect = async () => {
   const ENDPOINT_URL = process.env.REACT_APP_CHAIN_ENDPOINT;
@@ -40,9 +42,14 @@ export const connect = async () => {
 const getApi = async (): Promise<ApiPromise> => {
   return await connect();
 };
-export const getAccounts = async () => {
+
+async function getWeb3Accounts() {
   await web3Enable('web3name by BTE');
-  const allAccounts = await web3Accounts();
+  return web3Accounts();
+}
+
+export const getAccounts = async () => {
+  const allAccounts = await getWeb3Accounts();
   const api = await getApi();
   const genesisHash = api.genesisHash.toHex();
   const filteredAccounts = allAccounts.filter(
@@ -54,8 +61,8 @@ export const getAccounts = async () => {
 };
 
 export const linkDidWithAccount = async (
-  linkingAccount: InjectedAccountWithMeta,
-  payerAccount: InjectedAccountWithMeta,
+  linkingAccount: InjectedAccount,
+  payerAccount: InjectedAccount,
   did: string,
 ) => {
   const api = await getApi();

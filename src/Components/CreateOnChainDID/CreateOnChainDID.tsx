@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import classnames from 'classnames';
 
@@ -21,17 +21,15 @@ export const CreateOnChainDID = () => {
 
   return (
     <section
-      className={classnames({
-        [styles.container]: true,
-        [styles.containerExpanded]: expanded,
-      })}
+      className={classnames(
+        expanded ? styles.containerExpanded : styles.container,
+      )}
       ref={cardRef}
     >
       <h1
-        className={classnames({
-          [styles.heading]: true,
-          [styles.headingExpanded]: expanded,
-        })}
+        className={classnames(
+          expanded ? styles.headingExpanded : styles.heading,
+        )}
         onClick={handleExpand}
       >
         2. Create your on-chain DID

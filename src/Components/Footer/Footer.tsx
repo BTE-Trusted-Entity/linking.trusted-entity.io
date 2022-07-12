@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './Footer.module.css';
 
 import Privacy from '../../DocAssets/LinkAddressestoweb3nameWebsite_PrivacyPolicy_62022.docx.pdf';

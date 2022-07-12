@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { web3FromAddress } from '@polkadot/extension-dapp';
 import { SubmittableExtrinsic } from '@polkadot/api/types';
 
 import classnames from 'classnames';
 
-import { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
-
 import styles from './LinkingButton.module.css';
 
-import { isKiltDid, linkDidWithAccount } from '../../Utilts/linking-helpers';
+import {
+  InjectedAccount,
+  isKiltDid,
+  linkDidWithAccount,
+} from '../../Utilts/linking-helpers';
 
 interface Wallet {
-  linkingAccount?: InjectedAccountWithMeta;
+  linkingAccount?: InjectedAccount;
   did: string;
-  payerAccount?: InjectedAccountWithMeta;
+  payerAccount?: InjectedAccount;
 }
 
 export const LinkingButton = (props: Wallet) => {

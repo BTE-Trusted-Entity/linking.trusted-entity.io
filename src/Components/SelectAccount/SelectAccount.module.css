@@ -44,7 +44,7 @@
   height: 60px;
   width: 100%;
   margin-top: 2px;
-  background-color: var(--color-lilly-green);
+  background-color: var(--color-lily-green);
   color: var(--color-burgundy);
   font-size: 18px;
   font-weight: 600;
@@ -56,7 +56,7 @@
 }
 
 .optionsWrapper:hover {
-  background-color: var(--color-olive-green);
+  background-color: var(--color-olive);
   color: white;
 }
 
@@ -82,5 +82,6 @@
 }
 
 .arrowRotate {
+  composes: arrow;
   transform: rotate(180deg);
 }

@@ -11,11 +11,12 @@
   background:
     url('../../ImageAssets/Open.svg') no-repeat right 0.5rem top
     1.125rem,
-    var(--color-moss-green);
+    var(--color-emerald);
 }
 
 .containerExpanded {
-  background: var(--color-moss-green);
+  composes: container;
+  background: var(--color-emerald);
 }
 
 .heading {
@@ -23,6 +24,7 @@
 }
 
 .headingExpanded {
+  composes: heading;
   cursor: default;
 }
 
@@ -121,7 +123,7 @@
   height: 60px;
   border-radius: 15px;
   border: 1px solid white;
-  background: var(--color-olive-green);
+  background: var(--color-olive);
   box-shadow: 0 6px 8px 0 rgb(0 0 0/25%);
   font-size: 18px;
   font-weight: 600;
@@ -135,7 +137,7 @@
 
 .connectBtn:disabled {
   color: rgb(255 255 255 /30%);
-  background: url('../../ImageAssets/bte_check.svg') no-repeat 98% center, var(--color-olive-green);
+  background: url('../../ImageAssets/bte_check.svg') no-repeat 98% center, var(--color-olive);
   opacity: 0.6;
   border: 1px solid var(--color-wall-green);
   cursor: none;
@@ -147,8 +149,9 @@
   }
 }
 
-.loader {
+.connectBtnLoader {
+  composes: connectBtn;
   background:
     url('../../ImageAssets/oval.svg') no-repeat 98% center,
-    var(--color-olive-green);
+    var(--color-olive);
 }

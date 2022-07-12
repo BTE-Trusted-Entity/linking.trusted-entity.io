@@ -13,7 +13,7 @@ declare const styles: {
   readonly input: string;
   readonly inputContainer: string;
   readonly connectBtn: string;
-  readonly loader: string;
+  readonly connectBtnLoader: string;
   readonly stepInfoImportant: string;
 };
 export = styles;

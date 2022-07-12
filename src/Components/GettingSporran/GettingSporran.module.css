@@ -11,7 +11,7 @@
 }
 
 .headingExpanded {
-  cursor: default;
+  composes: headingExpanded from '../ClaimWeb3name/ClaimWeb3name.module.css';
 }
 
 .content {
