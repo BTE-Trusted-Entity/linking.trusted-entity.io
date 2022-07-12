@@ -1,0 +1,9 @@
+.body {
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--body-font);
+}

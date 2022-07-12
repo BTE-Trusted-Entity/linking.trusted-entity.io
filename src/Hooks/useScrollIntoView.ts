@@ -1,12 +1,12 @@
-import { RefObject, useEffect } from 'react'
+import { RefObject, useEffect } from 'react';
 
 export function useScrollIntoView(
   expanded: boolean,
-  cardRef: RefObject<HTMLDivElement>
+  cardRef: RefObject<HTMLDivElement>,
 ): void {
   useEffect(() => {
     if (expanded && cardRef.current) {
-      cardRef.current.scrollIntoView({ behavior: 'smooth' })
+      cardRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [expanded, cardRef])
+  }, [expanded, cardRef]);
 }
