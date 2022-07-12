@@ -1,0 +1,56 @@
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background:
+    linear-gradient(
+      180deg,
+      white 0%,
+      var(--color-light-blue) 100%
+    );
+}
+
+.content {
+  max-width: 1250px;
+  width: 82%;
+  padding: 1.25rem 0;
+}
+
+.text {
+  margin: 0 0 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.1px;
+  color: var(--color-dark);
+}
+
+.topText {
+  composes: text;
+  margin-bottom: 2rem;
+}
+
+.info {
+  padding: 0.875rem calc(19rem / 16) 0.75rem calc(41rem / 16);
+  background:
+    url('../../ImageAssets/info.svg') no-repeat top 0.625rem left 0.625rem,
+    var(--color-light-blue);
+  border-radius: 0.75rem;
+  color: var(--color-dark);
+  letter-spacing: 0.1px;
+  margin: 0 0 1.25rem;
+}
+
+.info a {
+  color: var(--color-ming);
+}
+
+.instructions {
+  font-size: 1.125rem;
+  font-weight: normal;
+  letter-spacing: 0.11px;
+  margin: 2rem 0 1rem;
+}
+
+.bold {
+  font-weight: 700;
+}

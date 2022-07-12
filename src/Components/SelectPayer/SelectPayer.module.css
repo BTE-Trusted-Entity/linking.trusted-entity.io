@@ -1,0 +1,36 @@
+.selectContainer {
+  composes: selectContainer from '../SelectAccount/SelectAccount.module.css';
+}
+
+.selectContainerOpen {
+  composes: selectContainerOpen from '../SelectAccount/SelectAccount.module.css';
+}
+
+.selection {
+  composes: selection from '../SelectAccount/SelectAccount.module.css';
+}
+
+.optionBoxContainer {
+  composes: optionBoxContainer from '../SelectAccount/SelectAccount.module.css';
+}
+
+.optionsWrapper {
+  composes: optionsWrapper from '../SelectAccount/SelectAccount.module.css';
+}
+
+.options {
+  composes: options from '../SelectAccount/SelectAccount.module.css';
+}
+
+.container {
+  composes: container from '../SelectAccount/SelectAccount.module.css';
+}
+
+.arrow {
+  margin-left: auto;
+}
+
+.arrowRotate {
+  composes: arrow;
+  transform: rotate(180deg);
+}

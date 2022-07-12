@@ -1,0 +1,110 @@
+.header {
+  width: 100%;
+  min-height: calc(410rem / 16);
+  background:
+    url('../../ImageAssets/header_bg.png') no-repeat
+    center/cover;
+  display: flex;
+  place-content: center;
+}
+
+.content {
+  max-width: 1250px;
+  width: 82%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 1100px) {
+  .content {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 700px) {
+  .content {
+    padding-top: 3rem;
+  }
+}
+
+.bteLogo {
+  height: 22rem;
+}
+
+@media (max-width: 1100px) {
+  .bteLogo {
+    align-self: center;
+    align-items: center;
+    height: 18rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .bteLogo {
+    height: 15rem;
+  }
+}
+
+.kiltLogo {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  height: 1.75rem;
+}
+
+.heading {
+  width: 57%;
+  min-width: 520px;
+  display: flex;
+  flex-flow: column wrap;
+  color: white;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 2rem;
+  align-self: flex-end;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 1100px) {
+  .heading {
+    align-self: center;
+    align-items: center;
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .heading {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .heading {
+    font-size: 1rem;
+  }
+}
+
+.textLarge {
+  font-size: 2.25em;
+  font-weight: 200;
+  color: var(--color-lily-green);
+}
+
+.headingBottom {
+  align-self: flex-end;
+}
+
+@media (max-width: 1100px) {
+  .headingBottom {
+    align-self: center;
+  }
+}

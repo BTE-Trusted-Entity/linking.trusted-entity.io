@@ -1,0 +1,102 @@
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.375rem 0.5rem 0 rgb(black / 25%);
+  background:
+    url('../../ImageAssets/Open.svg') no-repeat right 0.5rem top
+    1.125rem,
+    var(--color-turquoise);
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.containerExpanded {
+  composes: container;
+  background: var(--color-turquoise);
+}
+
+.heading {
+  box-sizing: border-box;
+  color: white;
+  width: 100%;
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 300;
+  padding: 0.75rem 2.5rem 0.75rem 1.25rem;
+  cursor: pointer;
+  border-radius: inherit;
+}
+
+.headingExpanded {
+  composes: heading;
+  cursor: default;
+}
+
+.content {
+  color: white;
+  letter-spacing: 0.1px;
+  word-break: normal;
+  padding: 0 1.25rem 2.25rem;
+}
+
+@media (max-width: 500px) {
+  .content {
+    padding-bottom: 3.25rem;
+  }
+}
+
+.subHeading {
+  margin-top: 0;
+  line-height: 1.5rem;
+}
+
+.stepsList {
+  display: flex;
+  flex-direction: column;
+  list-style-position: inside;
+  padding-left: 1.75rem;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 700px) {
+  .stepsList {
+    padding: 0;
+  }
+}
+
+.stepItem {
+  line-height: 24px;
+  margin-bottom: 1.25rem;
+  display: list-item;
+}
+
+.linkParagraph {
+  margin: 0.5rem 0;
+  padding-left: 1.75rem;
+}
+
+@media (max-width: 700px) {
+  .linkParagraph {
+    padding: 0;
+  }
+}
+
+.linkToGuide {
+  color: white;
+  text-decoration: underline;
+}
+
+.collapseBtn {
+  background: url('../../ImageAssets/Close.svg') no-repeat center/auto;
+  position: absolute;
+  height: 1.5rem;
+  width: 1.5rem;
+  right: 0.5rem;
+  bottom: 1.25rem;
+  border: none;
+  cursor: pointer;
+}
