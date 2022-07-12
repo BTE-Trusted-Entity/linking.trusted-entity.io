@@ -44,5 +44,6 @@
 }
 
 .loader {
+  composes: linkingBtn;
   background: url('../../ImageAssets/oval.svg') no-repeat 98% 50%;
 }

@@ -1,7 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
 
-import classnames from 'classnames';
-
 import styles from './GettingSporran.module.css';
 
 import { useScrollIntoView } from '../../Hooks/useScrollIntoView';
@@ -21,15 +19,11 @@ export const GettingSporran = () => {
 
   return (
     <section
-      className={classnames(
-        expanded ? styles.containerExpanded : styles.container,
-      )}
+      className={expanded ? styles.containerExpanded : styles.container}
       ref={cardRef}
     >
       <h1
-        className={classnames(
-          expanded ? styles.headingExpanded : styles.heading,
-        )}
+        className={expanded ? styles.headingExpanded : styles.heading}
         onClick={handleExpand}
       >
         1. Get your Sporran wallet

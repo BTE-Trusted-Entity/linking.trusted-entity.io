@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import classnames from 'classnames';
-
 import styles from './SelectAccount.module.css';
 
 import { ReactComponent as ArrowDown } from '../../ImageAssets/bte_Triangle.svg';
@@ -28,23 +26,17 @@ export const SelectAccount = (props: Wallet) => {
   return (
     <div className={styles.container}>
       <div
-        className={classnames(
-          showOptions ? styles.selectContainerOpen : styles.selectContainer,
-        )}
+        className={
+          showOptions ? styles.selectContainerOpen : styles.selectContainer
+        }
         onClick={() => openOptionsMenu()}
       >
-        <div
-          className={classnames({
-            [styles.selection]: true,
-          })}
-        >
+        <div className={styles.selection}>
           {props.selected
             ? `${props.selected.meta.name} (${props.selected.meta.source})`
             : 'Choose Account Name'}
           <ArrowDown
-            className={classnames(
-              showOptions ? styles.arrowRotate : styles.arrow,
-            )}
+            className={showOptions ? styles.arrowRotate : styles.arrow}
           />
         </div>
       </div>

@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { web3FromAddress } from '@polkadot/extension-dapp';
 import { SubmittableExtrinsic } from '@polkadot/api/types';
 
-import classnames from 'classnames';
-
 import styles from './LinkingButton.module.css';
 
 import {
@@ -72,10 +70,7 @@ export const LinkingButton = (props: Wallet) => {
   return (
     <div className={styles.container}>
       <button
-        className={classnames({
-          [styles.linkingBtn]: true,
-          [styles.loader]: linking,
-        })}
+        className={linking ? styles.loader : styles.linkingBtn}
         disabled={!props.did || !props.linkingAccount || !props.payerAccount}
         onClick={() => handleLinking()}
       >

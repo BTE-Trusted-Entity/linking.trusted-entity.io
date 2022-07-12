@@ -1,7 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
 
-import classnames from 'classnames';
-
 import styles from './Linking.module.css';
 
 import { SelectAccount } from '../SelectAccount/SelectAccount';
@@ -53,15 +51,11 @@ export const Linking = () => {
 
   return (
     <section
-      className={classnames(
-        expanded ? styles.containerExpanded : styles.container,
-      )}
+      className={expanded ? styles.containerExpanded : styles.container}
       ref={cardRef}
     >
       <h1
-        className={classnames(
-          expanded ? styles.headingExpanded : styles.heading,
-        )}
+        className={expanded ? styles.headingExpanded : styles.heading}
         onClick={handleExpand}
       >
         Link your web3name and your account address
@@ -95,9 +89,9 @@ export const Linking = () => {
             <li className={styles.stepItem}>
               Click “Connect to wallet”
               <button
-                className={classnames(
-                  loadingWallets ? styles.connectBtnLoader : styles.connectBtn,
-                )}
+                className={
+                  loadingWallets ? styles.connectBtnLoader : styles.connectBtn
+                }
                 disabled={accounts.length > 0}
                 onClick={() => loadWalletAccounts()}
               >
