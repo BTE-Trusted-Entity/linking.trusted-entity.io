@@ -53,7 +53,7 @@ export const Footer = () => {
             >
               Tech Support
             </a>{' '}
-            and click on &quotContact Us&quot
+            and click on &quot;Contact Us&quot;
           </p>
 
           <p className={styles.spacedLine}>
