@@ -99,6 +99,8 @@ export const LinkingButton = (props: Wallet) => {
     );
   };
   const handleLinking = async () => {
+    setLinkingStep(1);
+
     if (!props.did || !props.linkingAccount || !props.payerAccount) {
       return;
     }
