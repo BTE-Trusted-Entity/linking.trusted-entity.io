@@ -1,0 +1,106 @@
+.modalContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(var(--color-shadow-rgb) / 10%);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+
+.modal {
+  max-width: calc(380rem / 16);
+  width: 80%;
+  background-color: var(--color-emerald);
+  box-shadow: 0 6px 8px 0 rgb(var(--color-shadow-rgb/25%));
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.heading {
+  color: white;
+  font-size: calc(28rem / 16);
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: calc(42rem / 16);
+  margin-top: calc(30rem / 16);
+  display: flex;
+  justify-content: center;
+}
+
+.modalText {
+  color: white;
+  font-size: 1rem;
+  letter-spacing: 0.1px;
+  line-height: calc(17rem / 16);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+.status {
+  margin-top: calc(10rem / 16);
+}
+
+.btn {
+  display: inline-flex;
+  color: white;
+  margin: 1.5rem 0;
+  width: 80%;
+  height: calc(50rem / 16);
+  border-radius: 15px;
+  border: 1px solid white;
+  box-shadow: 0 6px 8px 0 rgb(0 0 0/25%);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: calc(20rem / 16);
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  background: var(--color-olive);
+}
+
+.btnDisabled {
+  composes: btn;
+  color: rgb(255 255 255 /30%);
+  background: var(--color-olive);
+  border: 1px solid var(--color-wall-green);
+  cursor: none;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.step {
+  color: white;
+  position: absolute;
+  font-size: calc(20rem / 16);
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: calc(42rem / 16);
+}
+
+.closeBtn {
+  position: absolute;
+  background: url('../../ImageAssets/icon_close.svg') no-repeat;
+  right: calc(10rem / 16);
+  top: calc(10rem / 16);
+  height: calc(30rem / 16);
+  width: calc(30rem / 16);
+  border: none;
+  cursor: pointer;
+}
