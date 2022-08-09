@@ -13,12 +13,8 @@ import { KeypairType } from '@polkadot/util-crypto/types';
 
 import { hexToU8a, u8aToHex } from '@polkadot/util';
 import { wrapBytes } from '@polkadot/extension-dapp/wrapBytes';
-import { encodeAddress, signatureVerify } from '@polkadot/util-crypto';
-import {
-  web3Accounts,
-  web3Enable,
-  web3FromAddress,
-} from '@polkadot/extension-dapp';
+import { signatureVerify } from '@polkadot/util-crypto';
+import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 
 type AccountAddress = string;
 type SignatureType = MultiSignature['type'];
@@ -39,7 +35,7 @@ export const connect = async () => {
   });
 };
 
-const getApi = async (): Promise<ApiPromise> => {
+export const getApi = async (): Promise<ApiPromise> => {
   return await connect();
 };
 
@@ -60,52 +56,6 @@ export const getAccounts = async () => {
   return { filteredAccounts, allAccounts };
 };
 
-export const linkDidWithAccount = async (
-  linkingAccount: InjectedAccount,
-  payerAccount: InjectedAccount,
-  did: string,
-) => {
-  const api = await getApi();
-  const ss58Prefix = api.registry.chainSS58;
-  const payerAddress = payerAccount.address;
-  const encodedAccountAddresses = encodeAddress(
-    linkingAccount.address,
-    ss58Prefix,
-  );
-  const injector = await web3FromAddress(encodedAccountAddresses);
-  const didID = did.split(':').pop();
-  if (!didID) throw Error('DID Address Undefined');
-  const extrinsic = await authorizeLinkWithAccount(
-    api,
-    encodedAccountAddresses,
-    didID,
-    async (payload, address) => {
-      if (!injector.signer.signRaw)
-        throw Error("Extension doesn't support signRaw");
-      const result = await injector.signer.signRaw({
-        data: payload,
-        address,
-        type: 'bytes',
-      });
-      return result.signature;
-    },
-  );
-  const signedOutputFromSporran =
-    await window.kilt.sporran.signExtrinsicWithDid(
-      extrinsic.toHex(),
-      payerAddress,
-    );
-
-  const genericExtrinsic = api.createType(
-    'Extrinsic',
-    signedOutputFromSporran.signed,
-  );
-  const submittableExtrinsic = api.tx.did.submitDidCall(
-    genericExtrinsic.args[0],
-    genericExtrinsic.args[1],
-  );
-  return { payerAddress, submittableExtrinsic };
-};
 function getMultiSignatureTypeFromKeypairType(
   keypairType: KeypairType,
 ): SignatureType {

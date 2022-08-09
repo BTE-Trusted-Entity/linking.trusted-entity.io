@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>7A735903-7731-4D46-B316-D3D7BE956636</title>
+    <g id="Linking-Process" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Linking-process-11" transform="translate(-685.000000, -382.000000)">
+            <g id="Pop-up" transform="translate(530.000000, 205.000000)">
+                <g id="icon_error" transform="translate(155.000000, 177.000000)">
+                    <g id="dark/ok" transform="translate(5.000000, 5.500000)">
+                        <circle id="Oval" fill="#8B1D00" cx="30" cy="30" r="30"></circle>
+                        <g id="Group" transform="translate(27.000000, 17.000000)" fill="#FFFFFF">
+                            <rect id="Rectangle" x="0" y="0" width="6" height="17" rx="3"></rect>
+                            <circle id="Oval" cx="3" cy="23" r="3"></circle>
+                        </g>
+                    </g>
+                    <path d="M35,63 C19.536,63 7,50.464 7,35 C7,19.536 19.536,7 35,7 C50.464,7 63,19.536 63,35 C63,50.464 50.464,63 35,63 M35,0 C15.67,0 0,15.67 0,35 C0,54.33 15.67,70 35,70 C54.33,70 70,54.33 70,35 C70,15.67 54.33,0 35,0" id="Fill-1" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
