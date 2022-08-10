@@ -199,7 +199,7 @@ export const Terms = () => {
             asserted directly against them. The liability limitations resulting
             from the two preceding paragraphs do not apply insofar as BTE
             fraudulently concealed the defect or assumed a guarantee for the
-            quality of DIDsign.
+            quality of the Software
           </p>
           <p>
             Liability for culpable injury to life, limb and health and liability
@@ -346,8 +346,8 @@ export const Terms = () => {
           <p>
             Disclaimer: The Liability of the B.T.E. BOTLabs Trusted Entity GmbH
             (hereinafter referred to as “BTE”) is limited according to these
-            Terms and Conditions for DIDsign as provided under
-            https://didsign.io/.
+            Terms and Conditions for Link Addresses Website as provided under
+            https://web3name.trusted-entity.io/.
           </p>
 
           <p>(BSD 4-Clause)</p>
