@@ -47,13 +47,6 @@
   }
 }
 
-.kiltLogo {
-  position: absolute;
-  top: 2rem;
-  right: 0;
-  height: 1.75rem;
-}
-
 .heading {
   width: 57%;
   min-width: 520px;

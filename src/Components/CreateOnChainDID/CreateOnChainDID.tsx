@@ -36,36 +36,41 @@ export const CreateOnChainDID = () => {
             When you upgrade to an on-chain DID, you can link multiple things to
             your DID including:
           </p>
-          <ul className={styles.bulletList}>
-            <li>Your unique web3name </li>
-            <li>
-              As many of your Polkadot ecosystem (and soon, Ethereum) addresses
-              that you wish
-            </li>
-            <li>
-              Any credentials you want to make public, such as social media
-              handles, GitHub and email addresses
-            </li>
-            <li>Communication endpoints, e.g., your website</li>
-          </ul>
-          <p>
-            Upgrading to an on-chain DID requires a deposit of 2 KILT and a
-            small transaction fee (around 0.0045 KILT).
-          </p>
-          <ol className={styles.stepsList}>
-            <li className={styles.stepItem}>Open your Sporran extension</li>
-            <li className={styles.stepItem}>Click “Upgrade to on-chain DID”</li>
-          </ol>
-          <p className={styles.linkParagraph}>
-            <a
-              className={styles.linkToGuide}
-              href="https://www.trusted-entity.io/assets/pdf/Upgrading-to-on-chain-DID.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Guide to upgrading your DID (PDF)
-            </a>
-          </p>
+          <div className={styles.indented}>
+            <ul className={styles.bulletList}>
+              <li>Your unique web3name </li>
+              <li>
+                As many of your Polkadot ecosystem (and soon, Ethereum)
+                addresses that you wish
+              </li>
+              <li>
+                Any credentials you want to make public, such as social media
+                handles, GitHub and email addresses
+              </li>
+              <li>Communication endpoints, e.g., your website</li>
+            </ul>
+            <p>
+              Upgrading to an on-chain DID requires a deposit of 2 KILT and a
+              small transaction fee (around 0.0045 KILT).
+            </p>
+            <p>To upgrade to an on-chain DID:</p>
+            <ol className={styles.stepsList}>
+              <li className={styles.stepItem}>Open your Sporran extension</li>
+              <li className={styles.stepItem}>
+                Click “Upgrade to on-chain DID”
+              </li>
+            </ol>
+            <p>
+              <a
+                className={styles.linkToGuide}
+                href="https://www.trusted-entity.io/assets/pdf/Upgrading-to-on-chain-DID.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Guide to upgrading your DID (PDF)
+              </a>
+            </p>
+          </div>
           <button
             className={styles.collapseBtn}
             onClick={() => setExpanded(false)}

@@ -7,9 +7,9 @@ declare const styles: {
   readonly subHeading: string;
   readonly stepsList: string;
   readonly stepItem: string;
-  readonly linkParagraph: string;
   readonly linkToGuide: string;
   readonly collapseBtn: string;
   readonly bulletList: string;
+  readonly indented: string;
 };
 export = styles;
