@@ -38,15 +38,6 @@ export const Footer = () => {
 
           <a
             className={styles.navLink}
-            href="https://github.com/BTE-Trusted-Entity/didsign"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-
-          <a
-            className={styles.navLink}
             href="https://support.kilt.io/support/home"
             target="_blank"
             rel="noreferrer"
