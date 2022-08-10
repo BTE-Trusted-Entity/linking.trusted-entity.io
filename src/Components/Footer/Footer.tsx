@@ -1,69 +1,63 @@
+import { NavLink } from 'react-router-dom';
+
 import styles from './Footer.module.css';
 
-import Privacy from '../../DocAssets/LinkAddressestoweb3nameWebsite_PrivacyPolicy_62022.docx.pdf';
-import Terms from '../../DocAssets/LinkAddressestoweb3nameWebsite_Terms_62022.pdf';
+import { paths } from '../../Utilts/paths';
 
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.content}>
-        <a
-          className={styles.anchor}
-          href={Terms}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Terms & Conditions for the Website to Link Addresses (PDF)
-        </a>
-        <a
-          className={styles.anchor}
-          href={Privacy}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Privacy Policy for the Website to Link Addresses (PDF)
-        </a>
+        <nav className={styles.navMenu}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles.navLinkActive : styles.navLink
+            }
+            to={paths.imprint}
+          >
+            Imprint
+          </NavLink>
 
-        <div className={styles.imprint}>
-          <h6 className={styles.imprintHeading}>Imprint</h6>
-          <p className={styles.imprintLine}>
-            B.T.E. BOTLabs Trusted Entity GmbH
-          </p>
-          <p className={styles.imprintLine}>Keithstraße 2-4</p>
-          <p className={styles.imprintLine}>10787 Berlin, Germany</p>
-          <p className={styles.imprintLine}>
-            Germany Commercial Court: Amtsgericht Charlottenburg in Berlin
-          </p>
-          <p className={styles.imprintLine}>Registration Number: HRB 231219B</p>
-          <p className={styles.imprintLine}>VAT No: DE 346528612</p>
-          <p className={styles.imprintLine}>Managing Director: Ingo Rübe</p>
-          <p className={styles.imprintLine}>
-            Contact:{' '}
-            <a className={styles.anchor} href="mailto:info@botlabs.org">
-              info@botlabs.org
-            </a>
-          </p>
-          <p className={styles.imprintLine}>
-            Or go to{' '}
-            <a
-              className={styles.anchor}
-              href="https://support.kilt.io/support/home"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Tech Support
-            </a>{' '}
-            and click on &quot;Contact Us&quot;
-          </p>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles.navLinkActive : styles.navLink
+            }
+            to={paths.terms}
+          >
+            Terms
+          </NavLink>
 
-          <p className={styles.spacedLine}>
-            Requirements according to § 5 TMG (Germany)
-          </p>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles.navLinkActive : styles.navLink
+            }
+            to={paths.privacy}
+          >
+            Privacy
+          </NavLink>
 
-          <p className={styles.spacedLine}>
-            &copy; 2022 B.T.E. BOTLabs Trusted Entity GmbH
-          </p>
-        </div>
+          <a
+            className={styles.navLink}
+            href="https://github.com/BTE-Trusted-Entity/didsign"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub
+          </a>
+
+          <a
+            className={styles.navLink}
+            href="https://support.kilt.io/support/home"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Support
+          </a>
+        </nav>
+
+        <p className={styles.copyright}>
+          © 2022 B.T.E. BOTLabs Trusted Entity GmbH
+        </p>
       </div>
     </footer>
   );

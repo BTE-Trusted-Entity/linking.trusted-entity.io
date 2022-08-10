@@ -36,24 +36,27 @@ export const ClaimWeb3name = () => {
             decentralized identifier (DID), which personalizes your digital
             identity.
           </p>
-          <p>
-            Upgrading to an on-chain DID requires a deposit of 2 KILT and a
-            small transaction fee (around 0.0045 KILT).
-          </p>
-          <ol className={styles.stepsList}>
-            <li className={styles.stepItem}>Open your Sporran extension</li>
-            <li className={styles.stepItem}>Click “Create web3name”</li>
-          </ol>
-          <p className={styles.linkParagraph}>
-            <a
-              className={styles.linkToGuide}
-              href="https://www.trusted-entity.io/assets/pdf/How_To_Guide_web3name_link_address_Full_May22.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Guide to claiming your web3name (PDF)
-            </a>
-          </p>
+          <div className={styles.indented}>
+            <p>
+              Claiming your web3name requires an on-chain DID (see above) and a
+              small transaction fee (around 0.0045 KILT).
+            </p>
+            <p>To claim your web3name:</p>
+            <ol className={styles.stepsList}>
+              <li className={styles.stepItem}>Open your Sporran extension</li>
+              <li className={styles.stepItem}>Click “Create web3name”</li>
+            </ol>
+            <p>
+              <a
+                className={styles.linkToGuide}
+                href="https://www.trusted-entity.io/assets/pdf/How_To_Guide_web3name_link_address_Full_May22.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Guide to claiming your web3name (PDF)
+              </a>
+            </p>
+          </div>
           <button
             className={styles.collapseBtn}
             onClick={() => setExpanded(false)}

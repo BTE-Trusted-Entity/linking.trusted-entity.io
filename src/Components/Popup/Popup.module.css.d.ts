@@ -3,12 +3,11 @@ declare const styles: {
   readonly modal: string;
   readonly heading: string;
   readonly modalText: string;
-  readonly loader: string;
-  readonly btn: string;
   readonly status: string;
+  readonly btn: string;
   readonly btnDisabled: string;
-  readonly step: string;
   readonly spinnerContainer: string;
+  readonly step: string;
   readonly closeBtn: string;
 };
 export = styles;

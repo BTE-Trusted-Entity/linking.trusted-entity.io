@@ -143,7 +143,7 @@ export const LinkingButton = (props: Wallet) => {
         disabled={!props.did || !props.linkingAccount || !props.payerAccount}
         onClick={() => handleLinking()}
       >
-        Link Did with account address
+        Link Did with account
       </button>
       {
         <LinkingModal

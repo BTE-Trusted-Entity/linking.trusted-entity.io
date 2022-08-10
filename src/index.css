@@ -54,6 +54,8 @@
   --color-burgundy: #411329;
   --color-pixel-red: #ba0021;
   --color-shadow-rgb: 0 0 0;
+  --color-white: #f3f3f3;
+  --color-line-rgb: 102 102 102;
 
   font-size: 16px;
   font-family:

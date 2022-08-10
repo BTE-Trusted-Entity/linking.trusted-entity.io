@@ -10,17 +10,14 @@ export const Main = () => {
     <main className={styles.container}>
       <div className={styles.content}>
         <p className={styles.topText}>
-          Linking your account addresses to your web3name and on-chain DID –
-          your unique decentralized identifier – makes it easier for others to
+          Linking your accounts with your web3name and on-chain DID – your
+          unique decentralized identifier – makes it easier for others to
           reference you.
         </p>
 
-        <p className={styles.text}>
-          <span className={styles.bold}>
-            Follow the steps below to link your web3name to your Polkadot
-            addresses{' '}
-          </span>
-          and (coming soon), your Ethereum addresses.
+        <p className={styles.boldText}>
+          Follow the steps below to link your web3name with your Polkadot
+          ecosystem accounts, and (coming soon) your Ethereum accounts.
         </p>
 
         <p className={styles.info}>

@@ -5,12 +5,13 @@ declare const styles: {
   readonly headingExpanded: string;
   readonly content: string;
   readonly subHeading: string;
-  readonly linkParagraph: string;
   readonly linkToGuide: string;
   readonly collapseBtn: string;
   readonly extensionWrapper: string;
+  readonly extension: string;
   readonly chromeExtension: string;
-  readonly hiddenLinkText: string;
   readonly firefoxExtension: string;
+  readonly hiddenLinkText: string;
+  readonly indented: string;
 };
 export = styles;
