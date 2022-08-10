@@ -1,7 +1,6 @@
 import styles from './Header.module.css';
 
 import BTE from '../../ImageAssets/bte_logo.png';
-import Kilt from '../../ImageAssets/kilt_logo_header.svg';
 
 export const Header = () => {
   return (
@@ -12,7 +11,6 @@ export const Header = () => {
           src={BTE}
           alt="Botlabs Trusted Entity logo"
         />
-        <img className={styles.kiltLogo} src={Kilt} alt="Built on KILT" />
         <h1 className={styles.heading}>
           <span>
             <span className={styles.textLarge}>link</span> your account

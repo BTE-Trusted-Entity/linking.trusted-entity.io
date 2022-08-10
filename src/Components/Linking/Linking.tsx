@@ -58,13 +58,13 @@ export const Linking = () => {
         className={expanded ? styles.headingExpanded : styles.heading}
         onClick={handleExpand}
       >
-        Link your web3name and your account address
+        Link your web3name and your account
       </h1>
 
       {expanded && (
         <div className={styles.content}>
           <p className={styles.subHeading}>
-            To link your web3name to your account address:
+            To link your web3name and DID to your account:
           </p>
           <ol className={styles.stepsList}>
             <li className={styles.stepItem}>Open your Sporran extension</li>
@@ -105,12 +105,12 @@ export const Linking = () => {
             </li>
 
             <li className={styles.stepItem}>
-              Click “Allow access” on each wallet{' '}
+              Click “Allow access” on each wallet
             </li>
 
             <li className={styles.stepItem}>
               Click the arrow next to “Choose Account Name” to open the dropdown
-              list. Choose the account address you wish to link to your web3name
+              list. Choose the account you wish to link to your web3name
               <SelectAccount
                 accounts={accounts}
                 selected={linkingAccount}
@@ -119,10 +119,10 @@ export const Linking = () => {
             </li>
 
             <li className={styles.stepItem}>
-              Choose the account address you wish to pay the transaction fees
-              from. (This may be a different account. Please ensure you choose a
-              wallet containing enough KILT to cover the transaction fee –
-              currently around 0.0045 KILT.)
+              Choose the account you wish to pay the transaction fees from (This
+              may be a different account. Please ensure you choose a wallet
+              containing enough KILT to cover the transaction fee – currently
+              around 0.0045 KILT.)
               <SelectPayer
                 accounts={filteredAccounts}
                 selected={payerAccount}
@@ -131,13 +131,13 @@ export const Linking = () => {
             </li>
 
             <li className={styles.stepItem}>
-              Click “Link DID With Account Address” (By clicking this button,
-              you accept the Terms and Conditions.)
+              Click “Link DID With Account” (By clicking this button, you accept
+              the Terms and Conditions.)
               <p className={styles.stepInfoImportant}>
-                Note, linking a DID/web3name with an account address is done on
-                the blockchain and therefore public and a permanent record. If
-                you want to keep your address and funds private, don’t link the
-                address to your DID.
+                Note, linking a DID/web3name with an account is done on the
+                blockchain and therefore public and a permanent record. If you
+                want to keep the account address and funds private, don’t link
+                the account to your DID.
               </p>
               <LinkingButton
                 linkingAccount={linkingAccount}
@@ -149,11 +149,8 @@ export const Linking = () => {
                 your password and click “Sign”.
               </p>
               <p className={styles.stepInfo}>
-                The extension of the account you are linking will pop up. Enter
-                your password for that account and click “Sign”.
-              </p>
-              <p className={styles.stepInfo}>
-                Sign the transaction from the payer account.
+                The extension of the account you are linking to will pop up.
+                Enter the password of that account and click “Sign”.
               </p>
             </li>
           </ol>

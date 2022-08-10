@@ -1,12 +1,12 @@
 declare const styles: {
-  readonly container: string;
   readonly selectContainer: string;
+  readonly selectContainerOpen: string;
+  readonly selection: string;
+  readonly optionBoxContainer: string;
   readonly optionsWrapper: string;
   readonly options: string;
-  readonly selection: string;
+  readonly container: string;
   readonly arrow: string;
   readonly arrowRotate: string;
-  readonly optionBoxContainer: string;
-  readonly selectContainerOpen: string;
 };
 export = styles;

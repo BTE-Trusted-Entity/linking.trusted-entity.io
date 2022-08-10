@@ -1,9 +1,8 @@
 declare const styles: {
   readonly header: string;
-  readonly heading: string;
-  readonly bteLogo: string;
-  readonly kiltLogo: string;
   readonly content: string;
+  readonly bteLogo: string;
+  readonly heading: string;
   readonly textLarge: string;
   readonly headingBottom: string;
 };

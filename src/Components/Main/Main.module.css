@@ -54,3 +54,8 @@
 .bold {
   font-weight: 700;
 }
+
+.boldText {
+  composes: text;
+  composes: bold;
+}

@@ -40,58 +40,60 @@ export const GettingSporran = () => {
             desktop only.)
           </p>
 
-          <div className={styles.extensionWrapper}>
-            <a
-              className={styles.chromeExtension}
-              href="https://chrome.google.com/webstore/detail/djdnajgjcbjhhbdblkegbcgodlkkfhcl"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className={styles.hiddenLinkText}>Chrome Extension</span>
-            </a>
+          <div className={styles.indented}>
+            <div className={styles.extensionWrapper}>
+              <a
+                className={styles.chromeExtension}
+                href="https://chrome.google.com/webstore/detail/djdnajgjcbjhhbdblkegbcgodlkkfhcl"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className={styles.hiddenLinkText}>Chrome Extension</span>
+              </a>
 
-            <a
-              className={styles.firefoxExtension}
-              href="https://addons.mozilla.org/firefox/addon/sporran/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className={styles.hiddenLinkText}>Firefox Extension</span>
-            </a>
+              <a
+                className={styles.firefoxExtension}
+                href="https://addons.mozilla.org/firefox/addon/sporran/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className={styles.hiddenLinkText}>Firefox Extension</span>
+              </a>
+            </div>
+
+            <p>
+              <a
+                className={styles.linkToGuide}
+                href="https://www.trusted-entity.io/assets/pdf/Create-KILT-Sporran-Identity.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Guide to downloading Sporran (PDF)
+              </a>
+            </p>
+
+            <p>
+              <a
+                className={styles.linkToGuide}
+                href="https://www.sporran.org"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Read additional information on Sporran.org
+              </a>
+            </p>
+
+            <p>
+              <a
+                className={styles.linkToGuide}
+                href="https://www.sporran.org/terms.html"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Sporran Terms & Conditions
+              </a>
+            </p>
           </div>
-
-          <p className={styles.linkParagraph}>
-            <a
-              className={styles.linkToGuide}
-              href="https://www.trusted-entity.io/assets/pdf/Create-KILT-Sporran-Identity.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Guide to downloading Sporran (PDF)
-            </a>
-          </p>
-
-          <p className={styles.linkParagraph}>
-            <a
-              className={styles.linkToGuide}
-              href="https://www.sporran.org"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Read additional information on Sporran.org
-            </a>
-          </p>
-
-          <p className={styles.linkParagraph}>
-            <a
-              className={styles.linkToGuide}
-              href="https://www.sporran.org/terms.html"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Sporran Terms & Conditions
-            </a>
-          </p>
 
           <button
             className={styles.collapseBtn}
