@@ -9,11 +9,8 @@ import { paths } from '../../Utilts/paths';
 import { Imprint } from '../Imprint/Imprint';
 import { Terms } from '../Terms/Terms';
 import { Privacy } from '../Privacy/Privacy';
-import { useScrollToTop } from '../../Hooks/useScrollToTop';
 
 export const App = () => {
-  useScrollToTop();
-
   return (
     <div className={styles.body}>
       <Header />

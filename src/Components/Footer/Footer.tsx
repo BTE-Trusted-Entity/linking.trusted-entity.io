@@ -22,6 +22,7 @@ export const Footer = () => {
             className={({ isActive }) =>
               isActive ? styles.navLinkActive : styles.navLink
             }
+            onClick={() => window.scroll(0, 0)}
             to={paths.terms}
           >
             Terms
@@ -31,6 +32,7 @@ export const Footer = () => {
             className={({ isActive }) =>
               isActive ? styles.navLinkActive : styles.navLink
             }
+            onClick={() => window.scroll(0, 0)}
             to={paths.privacy}
           >
             Privacy
