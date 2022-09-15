@@ -88,11 +88,11 @@ export const LinkingButton = (props: Wallet) => {
     return extrinsic.signAndSend(
       payerAddress,
       { signer: injector.signer },
-      (result) => {
-        if (result.status.isFinalized) {
+      ({ status, dispatchError }) => {
+        if (status.isFinalized && !dispatchError) {
           setLinkingStatus('success');
         }
-        if (result.status.isFinalityTimeout) {
+        if (dispatchError) {
           setLinkingStatus('error');
         }
       },
