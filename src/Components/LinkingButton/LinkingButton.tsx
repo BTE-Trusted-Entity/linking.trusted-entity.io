@@ -65,6 +65,7 @@ export const LinkingButton = (props: Wallet) => {
       await window.kilt.sporran.signExtrinsicWithDid(
         extrinsic.toHex(),
         payerAddress,
+        did,
       );
 
     const genericExtrinsic = api.createType(
