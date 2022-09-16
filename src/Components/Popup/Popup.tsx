@@ -58,7 +58,7 @@ interface LoadingContentsProps {
 function LoadingContents({ linkingStep }: LoadingContentsProps) {
   const linkingMessage = {
     1: 'The extension of the account you are linking to will pop up. Enter the password of that account and click “Sign”',
-    2: 'Enter your password in Sporran and click “Sign”',
+    2: 'Select the identity in Sporran containing the DID that you copied and pasted earlier. Enter your password and click “Sign”',
     3: 'Sign the transaction from the chosen payer account.',
     4: 'Your request is being processed. Please leave this tab open until the transaction is complete.',
   };
