@@ -25,7 +25,6 @@
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
-    "@parcel/reporter-bundle-buddy": "^2.7.0",
     "@types/react": "^18.0.19",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
