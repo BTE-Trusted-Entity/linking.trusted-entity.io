@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 
-import styles from './Linking.module.css';
+import * as styles from './Linking.module.css';
 
 import { SelectAccount } from '../SelectAccount/SelectAccount';
 import { SelectPayer } from '../SelectPayer/SelectPayer';

@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
-import styles from './SelectPayer.module.css';
+import * as styles from './SelectPayer.module.css';
 
-import { ReactComponent as ArrowDown } from '../../ImageAssets/bte_Triangle.svg';
 import { InjectedAccount } from '../../Utilts/linking-helpers';
 
 interface Wallet {
@@ -35,9 +34,6 @@ export const SelectPayer = (props: Wallet) => {
           {props.selected
             ? `${props.selected.meta.name} (${props.selected.meta.source})`
             : 'Choose Payer Account'}
-          <ArrowDown
-            className={showOptions ? styles.arrowRotate : styles.arrow}
-          />
         </div>
       </div>
       {showOptions && (

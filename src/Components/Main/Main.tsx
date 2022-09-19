@@ -1,4 +1,4 @@
-import styles from './Main.module.css';
+import * as styles from './Main.module.css';
 
 import { Linking } from '../Linking/Linking';
 import { GettingSporran } from '../GettingSporran/GettingSporran';
