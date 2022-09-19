@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import styles from './App.module.css';
+import * as styles from './App.module.css';
 
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';

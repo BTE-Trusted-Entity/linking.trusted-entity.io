@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 
-import styles from './GettingSporran.module.css';
+import * as styles from './GettingSporran.module.css';
 
 import { useScrollIntoView } from '../../Hooks/useScrollIntoView';
 

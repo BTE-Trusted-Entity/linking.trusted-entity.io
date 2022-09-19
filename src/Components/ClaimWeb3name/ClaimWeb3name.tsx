@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 
-import styles from './ClaimWeb3name.module.css';
+import * as styles from './ClaimWeb3name.module.css';
 
 import { useScrollIntoView } from '../../Hooks/useScrollIntoView';
 

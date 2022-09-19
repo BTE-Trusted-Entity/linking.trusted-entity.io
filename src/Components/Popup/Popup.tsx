@@ -1,12 +1,7 @@
 import { Fragment } from 'react';
 
-import styles from './Popup.module.css';
+import * as styles from './Popup.module.css';
 
-import { ReactComponent as SuccessSVG } from '../../ImageAssets/icon_ok.svg';
-
-import { ReactComponent as ErrorSVG } from '../../ImageAssets/icon_error.svg';
-
-import { ReactComponent as Spinner } from '../../ImageAssets/puff.svg';
 import { LinkingSteps } from '../LinkingButton/LinkingButton';
 
 interface ErrorContentsProps {
@@ -16,11 +11,10 @@ interface ErrorContentsProps {
 function ErrorContents({ onClose }: ErrorContentsProps) {
   return (
     <Fragment>
-      <p className={styles.modalText}>
+      <p className={styles.errorText}>
         Oops!
         <br /> Click “Try Again” or reload the page or restart your browser.
       </p>
-      <ErrorSVG className={styles.status} />
       <button className={styles.btn} onClick={onClose}>
         Try again
       </button>
@@ -36,10 +30,9 @@ interface SuccessContentsProps {
 function SuccessContents({ onSuccess, onClose }: SuccessContentsProps) {
   return (
     <Fragment>
-      <p className={styles.modalText}>
+      <p className={styles.successText}>
         Your account is now linked to searches of your DID/web3name on w3n.id
       </p>
-      <SuccessSVG className={styles.status} />
       <button className={styles.btn} onClick={onSuccess}>
         CHECK IT NOW
       </button>
@@ -67,7 +60,6 @@ function LoadingContents({ linkingStep }: LoadingContentsProps) {
     <Fragment>
       <p className={styles.modalText}>{linkingMessage[linkingStep]}</p>
       <div className={styles.spinnerContainer}>
-        <Spinner />
         {linkingStep !== 4 && <p className={styles.step}>{linkingStep}</p>}
       </div>
       <button className={styles.btnDisabled}>CHECK IT NOW</button>
