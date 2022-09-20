@@ -145,11 +145,17 @@ export const Linking = () => {
                 payerAccount={payerAccount}
               />
               <p className={styles.stepInfo}>
-                The extension of the account you are linking will pop up. Enter your password for that account and click “Sign”.
+                The extension of the account you are linking will pop up. Enter
+                your password for that account and click “Sign”.
               </p>
               <p className={styles.stepInfo}>
-                Sporran will then open and ask you to sign the linking. Enter your password and click “Sign”. 
-                Note, if you have more than one Sporran account, make sure you are signing from the account with the DID you entered previously.
+                Sporran will then open and ask you to sign the linking. Enter
+                your password and click “Sign”. Note, if you have more than one
+                Sporran account, make sure you are signing from the account with
+                the DID you entered previously.
+              </p>
+              <p className={styles.stepInfo}>
+                Sign the transaction from the payer account.
               </p>
             </li>
           </ol>
