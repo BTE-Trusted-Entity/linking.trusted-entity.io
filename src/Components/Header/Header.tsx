@@ -1,4 +1,4 @@
-import * as styles from './Header.module.css';
+import styles from './Header.module.css';
 
 import BTE from '../../ImageAssets/bte_logo.png';
 

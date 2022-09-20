@@ -16,7 +16,7 @@
   max-width: calc(380rem / 16);
   width: 80%;
   background-color: var(--color-emerald);
-  box-shadow: 0 6px 8px 0 rgb(var(--color-shadow-rgb) / 25%);
+  box-shadow: 0 6px 8px 0 rgb(var(--color-shadow-rgb/25%));
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -44,18 +44,6 @@
   display: flex;
   justify-content: center;
   width: 70%;
-}
-
-.errorText {
-  composes: modalText;
-  padding-bottom: 6rem;
-  background: url('../../ImageAssets/icon_error.svg') no-repeat bottom;
-}
-
-.successText {
-  composes: modalText;
-  padding-bottom: 6rem;
-  background: url('../../ImageAssets/icon_ok.svg') no-repeat bottom;
 }
 
 .status {
@@ -95,14 +83,11 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 100%;
-  height: calc(82rem / 16);
-  background: url('../../ImageAssets/puff.svg') no-repeat center;
 }
 
 .step {
-  margin: 0;
   color: white;
+  position: absolute;
   font-size: calc(20rem / 16);
   font-weight: 300;
   letter-spacing: 0;

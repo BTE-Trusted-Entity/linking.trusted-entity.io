@@ -2,49 +2,54 @@
   "name": "web3name-promo",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
+  "dependencies": {
+    "@craco/craco": "^6.4.3",
+    "@polkadot/api": "^9.2.3",
+    "@polkadot/extension-dapp": "^0.44.4",
+    "@polkadot/types": "^9.2.3",
+    "@polkadot/util": "^10.1.6",
+    "@polkadot/util-crypto": "^10.1.6",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^17.0.20",
+    "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.24",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "ky": "^0.30.0",
+    "process": "^0.11.10",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.0",
+    "stream-browserify": "^3.0.0",
+    "stylelint": "^14.9.1",
+    "stylelint-config-css-modules": "^4.1.0",
+    "stylelint-config-standard": "^26.0.0",
+    "typescript": "^4.4.2",
+    "web-vitals": "^2.1.0"
+  },
   "scripts": {
-    "dev": "parcel --open",
-    "build": "parcel build --reporter @parcel/reporter-bundle-buddy",
-    "check": "tsc --noEmit",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "lint": "yarn run lint-css && yarn run lint-js",
     "lint-js": "eslint --max-warnings 0 --config ./.eslintrc.json \"src/**/*.ts*\"",
     "lint-css": "stylelint --fix \"src/**/*.css\"",
     "css": "tcm --pattern 'src/**/*.module.css' && eslint --fix --config ./.eslintrc.json \"src/**/*.css.d.ts\"",
     "prettify": "prettier --write \"src/**/*.ts*\""
   },
-  "dependencies": {
-    "@polkadot/api": "^9.2.3",
-    "@polkadot/extension-dapp": "^0.44.4",
-    "@polkadot/types": "^9.2.3",
-    "@polkadot/util": "^10.1.6",
-    "@polkadot/util-crypto": "^10.1.6",
-    "ky": "^0.30.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.3.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.19",
-    "@types/react-dom": "^18.0.6",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "@typescript-eslint/parser": "^5.36.2",
-    "buffer": "^6.0.3",
-    "eslint": "^8.23.1",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.8",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "parcel": "^2.7.0",
-    "prettier": "2.6.1",
-    "process": "^0.11.10",
-    "stylelint": "^14.11.0",
-    "stylelint-config-css-modules": "^4.1.0",
-    "stylelint-config-standard": "^28.0.0",
-    "typed-css-modules": "^0.7.2",
-    "typescript": "^4.8.3",
-    "typescript-plugin-css-modules": "^3.4.0"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -58,11 +63,7 @@
       "last 1 safari version"
     ]
   },
-  "targets": {
-    "default": {
-      "source": "src/index.html",
-      "distDir": "build",
-      "context": "browser"
-    }
+  "devDependencies": {
+    "prettier": "2.6.1"
   }
 }

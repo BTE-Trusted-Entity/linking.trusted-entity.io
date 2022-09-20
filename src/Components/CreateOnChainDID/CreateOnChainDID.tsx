@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 
-import * as styles from './CreateOnChainDID.module.css';
+import styles from './CreateOnChainDID.module.css';
 
 import { useScrollIntoView } from '../../Hooks/useScrollIntoView';
 

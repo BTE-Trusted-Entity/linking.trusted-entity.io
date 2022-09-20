@@ -1,4 +1,4 @@
-import * as styles from './Maintenance.module.css';
+import styles from './Maintenance.module.css';
 
 export function Maintenance() {
   return (

@@ -5,7 +5,7 @@ import { SubmittableExtrinsic } from '@polkadot/api/types';
 
 import { encodeAddress } from '@polkadot/util-crypto';
 
-import * as styles from './LinkingButton.module.css';
+import styles from './LinkingButton.module.css';
 
 import {
   authorizeLinkWithAccount,
@@ -92,7 +92,7 @@ export const LinkingButton = (props: Wallet) => {
         if (status.isFinalized && !dispatchError) {
           setLinkingStatus('success');
         }
-        if (status.isFinalityTimeout || dispatchError) {
+        if (dispatchError) {
           setLinkingStatus('error');
         }
       },

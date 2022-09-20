@@ -19,8 +19,5 @@ jobs:
       - name: Run linter
         run: yarn lint
 
-      - name: Run type checks
-        run: yarn run check
-
       - name: Build code
         run: yarn build
