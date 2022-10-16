@@ -14,11 +14,11 @@
     "prettify": "prettier --write \"src/**/*.ts*\""
   },
   "dependencies": {
-    "@polkadot/api": "^9.2.3",
-    "@polkadot/extension-dapp": "^0.44.4",
-    "@polkadot/types": "^9.2.3",
-    "@polkadot/util": "^10.1.6",
-    "@polkadot/util-crypto": "^10.1.6",
+    "@polkadot/api": "^9.5.2",
+    "@polkadot/extension-dapp": "^0.44.6",
+    "@polkadot/types": "^9.5.2",
+    "@polkadot/util": "^10.1.11",
+    "@polkadot/util-crypto": "^10.1.11",
     "ky": "^0.30.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
