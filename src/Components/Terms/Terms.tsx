@@ -14,7 +14,7 @@ export const Terms = () => {
 
           <p>
             For the Website to Link Addresses to web3name (the
-            “web3name.trusted-entity.io” or the “Link Addresses Website” or
+            “linking.trusted-entity.io” or the “Link Addresses Website” or
             “Website”) by B.T.E. BOTLabs Trusted Entity GmbH (hereinafter
             referred to as “BTE”, “us”, “we” or “our”) a website with software
             as provided under linking.trusted-entity.io (the “Software”) and
@@ -213,7 +213,7 @@ export const Terms = () => {
 
           <p>
             The following risk information contains a list of risks associated
-            with the use of the web3name.trusted-entity.io Website for creating
+            with the use of the linking.trusted-entity.io Website for creating
             on-chain DIDs, and web3names and linking account addresses. The list
             is not exhaustive. It is not excluded that further unknown or
             unpredictable risks exist.
@@ -240,7 +240,7 @@ export const Terms = () => {
           <p>
             Your on-chain DID and web3name are typically written on the
             blockchain. Also, service endpoints used to provide additional
-            information are outside of this web3name.trusted-entity.io Website
+            information are outside of this linking.trusted-entity.io Website
             and outside your wallet and its functionalities. Errors,
             dysfunctionalities, including failure of the KILT blockchain or the
             technical ecosystem in which it lives may adversely effect the
@@ -261,7 +261,7 @@ export const Terms = () => {
           <p>
             You acknowledge and agree that we have no support, service level, or
             other obligations like these hereunder. Furthermore, you acknowledge
-            and agree that changes in the web3name.trusted-entity.io Website,
+            and agree that changes in the linking.trusted-entity.io Website, the
             the on-chain DID and/or web3name or their usage in the ecosystem
             will from time to time occur and that they might at some point of
             time not work and not be supported anymore.
@@ -347,7 +347,7 @@ export const Terms = () => {
             Disclaimer: The Liability of the B.T.E. BOTLabs Trusted Entity GmbH
             (hereinafter referred to as “BTE”) is limited according to these
             Terms and Conditions for Link Addresses Website as provided under
-            https://web3name.trusted-entity.io/.
+            https://linking.trusted-entity.io/.
           </p>
 
           <p>(BSD 4-Clause)</p>
