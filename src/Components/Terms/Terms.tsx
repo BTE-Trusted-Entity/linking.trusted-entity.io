@@ -15,10 +15,10 @@ export const Terms = () => {
           <p>
             For the Website to Link Addresses to web3name (the
             “linking.trusted-entity.io” or the “Link Addresses Website” or
-            “Website”) by BOTLabs GmbH (hereinafter
-            referred to as “BOTLabs”, “us”, “we” or “our”) a website with software
-            as provided under linking.trusted-entity.io (the “Software”) and
-            defined below these Terms and Conditions shall apply.
+            “Website”) by BOTLabs GmbH (hereinafter referred to as “BOTLabs”,
+            “us”, “we” or “our”) a website with software as provided under
+            linking.trusted-entity.io (the “Software”) and defined below these
+            Terms and Conditions shall apply.
           </p>
           <p>
             PLEASE READ THE TERMS AND CONDITIONS CAREFULLY TO ENSURE THAT YOU
@@ -182,16 +182,16 @@ export const Terms = () => {
 
           <p>
             BOTLabs is liable for damages that are based on an intentional or
-            grossly negligent breach of duty by BOTLabs, its legal representatives
-            or various agents.
+            grossly negligent breach of duty by BOTLabs, its legal
+            representatives or various agents.
           </p>
           <p>
-            In the event of a breach of essential contractual duties, BOTLabs shall
-            only be liable for the contractually typical, foreseeable damage if
-            this was simply cause by negligence. Significant contractual
-            obligations are those whose fulfilment enables the proper execution
-            of the contract in the first place and whose compliance you can
-            regularly rely on.
+            In the event of a breach of essential contractual duties, BOTLabs
+            shall only be liable for the contractually typical, foreseeable
+            damage if this was simply cause by negligence. Significant
+            contractual obligations are those whose fulfilment enables the
+            proper execution of the contract in the first place and whose
+            compliance you can regularly rely on.
           </p>
           <p>
             The limitation of the two preceding paragraphs also apply to the
@@ -288,9 +288,9 @@ export const Terms = () => {
           </h2>
 
           <p>
-            BOTLabs reserves the right to change the Software, the Website and these
-            Terms and Conditions as well as the commercial and non-commercial
-            conditions for its usage.
+            BOTLabs reserves the right to change the Software, the Website and
+            these Terms and Conditions as well as the commercial and
+            non-commercial conditions for its usage.
           </p>
           <p>
             Such changes will be made via uploading new or changed Terms and
@@ -304,10 +304,7 @@ export const Terms = () => {
         <section>
           <h2 className={styles.sectionHeading}>License to the Website </h2>
 
-          <p>
-            Copyright (c) 2021-2022, BOTLabs GmbH. All
-            rights reserved.
-          </p>
+          <p>Copyright (c) 2021-2022, BOTLabs GmbH. All rights reserved.</p>
         </section>
 
         <section>
@@ -344,9 +341,9 @@ export const Terms = () => {
           </ul>
 
           <p>
-            Disclaimer: The Liability of BOTLabs GmbH
-            (hereinafter referred to as “BOTLabs”) is limited according to these
-            Terms and Conditions for Link Addresses Website as provided under
+            Disclaimer: The Liability of BOTLabs GmbH (hereinafter referred to
+            as “BOTLabs”) is limited according to these Terms and Conditions for
+            Link Addresses Website as provided under
             https://linking.trusted-entity.io/.
           </p>
 
