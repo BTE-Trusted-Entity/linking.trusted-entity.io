@@ -61,21 +61,13 @@ export const LinkingButton = (props: Wallet) => {
       },
     );
     setLinkingStep(2);
-    const signedOutputFromExtension =
-      await window.kilt.sporran.signExtrinsicWithDid(
-        extrinsic.toHex(),
-        payerAddress,
-      );
+    const { signed } = await window.kilt.sporran.signExtrinsicWithDid(
+      extrinsic.toHex(),
+      payerAddress,
+    );
 
-    const genericExtrinsic = api.createType(
-      'Extrinsic',
-      signedOutputFromExtension.signed,
-    );
+    const submittableExtrinsic = api.tx(signed);
     setLinkingStep(3);
-    const submittableExtrinsic = api.tx.did.submitDidCall(
-      genericExtrinsic.args[0],
-      genericExtrinsic.args[1],
-    );
 
     return { payerAddress, submittableExtrinsic };
   };
