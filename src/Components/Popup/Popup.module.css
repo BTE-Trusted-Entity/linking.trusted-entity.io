@@ -90,14 +90,32 @@
   cursor: none;
 }
 
-.spinnerContainer {
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.stepContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 100%;
   height: calc(82rem / 16);
-  background: url('../../ImageAssets/puff.svg') no-repeat center;
+}
+
+.stepContainer::before {
+  content: '';
+  position: absolute;
+  width: calc(70rem / 16);
+  height: calc(70rem / 16);
+  background: url('../../ImageAssets/spinner.svg') no-repeat center/contain;
+  animation: rotation 1.5s infinite linear;
 }
 
 .step {
