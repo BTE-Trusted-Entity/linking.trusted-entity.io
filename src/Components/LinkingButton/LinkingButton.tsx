@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import { web3FromAddress } from '@polkadot/extension-dapp';
+import { web3FromSource } from '@polkadot/extension-dapp';
 import { SubmittableExtrinsic } from '@polkadot/api/types';
 
 import { encodeAddress } from '@polkadot/util-crypto';
@@ -37,12 +37,11 @@ export const LinkingButton = (props: Wallet) => {
   ) => {
     const api = await getApi();
     const ss58Prefix = api.registry.chainSS58;
-    const payerAddress = payerAccount.address;
     const encodedAccountAddresses = encodeAddress(
       linkingAccount.address,
       ss58Prefix,
     );
-    const injector = await web3FromAddress(encodedAccountAddresses);
+    const injector = await web3FromSource(linkingAccount.meta.source);
     const didID = did.split(':').pop();
     if (!didID) throw Error('DID Address Undefined');
     const extrinsic = await authorizeLinkWithAccount(
@@ -63,22 +62,22 @@ export const LinkingButton = (props: Wallet) => {
     setLinkingStep(2);
     const { signed } = await window.kilt.sporran.signExtrinsicWithDid(
       extrinsic.toHex(),
-      payerAddress,
+      payerAccount.address,
     );
 
     const submittableExtrinsic = api.tx(signed);
     setLinkingStep(3);
 
-    return { payerAddress, submittableExtrinsic };
+    return { payerAccount, submittableExtrinsic };
   };
 
   const submitDidCall = async (
-    payerAddress: string,
+    payerAccount: InjectedAccount,
     extrinsic: SubmittableExtrinsic<'promise'>,
   ) => {
-    const injector = await web3FromAddress(payerAddress);
+    const injector = await web3FromSource(payerAccount.meta.source);
     return extrinsic.signAndSend(
-      payerAddress,
+      payerAccount.address,
       { signer: injector.signer },
       ({ status, dispatchError }) => {
         if (status.isFinalized && !dispatchError) {
@@ -109,7 +108,7 @@ export const LinkingButton = (props: Wallet) => {
         props.payerAccount,
         props.did,
       );
-      await submitDidCall(result.payerAddress, result.submittableExtrinsic);
+      await submitDidCall(result.payerAccount, result.submittableExtrinsic);
       setLinkingStep(4);
     } catch {
       setLinkingStatus('error');
