@@ -36,6 +36,13 @@ export const LinkingButton = (props: Wallet) => {
     did: string,
   ) => {
     const api = await getApi();
+
+    api.once('disconnected', () =>
+      setLinkingStatus((current) =>
+        current === 'linking' ? 'error' : current,
+      ),
+    );
+
     const ss58Prefix = api.registry.chainSS58;
     const encodedAccountAddresses = encodeAddress(
       linkingAccount.address,
