@@ -9,8 +9,8 @@ export const Privacy = () => {
           <p>
             We are very delighted that you have shown interest in our
             enterprise. Data protection is of a particularly high priority for
-            the management of the B.T.E. BOTLabs Trusted Entity GmbH. The use of
-            the Internet pages of the B.T.E. BOTLabs Trusted Entity GmbH is
+            the management of the BOTLabs GmbH. The use of
+            the Internet pages of the BOTLabs GmbH is
             possible without any indication of personal data; however, if a data
             subject wants to use special enterprise services via our website,
             processing of personal data could become necessary. If the
@@ -23,7 +23,7 @@ export const Privacy = () => {
             address, or telephone number of a data subject shall always be in
             line with the General Data Protection Regulation (GDPR), and in
             accordance with the country-specific data protection regulations
-            applicable to the B.T.E. BOTLabs Trusted Entity GmbH. By means of
+            applicable to the BOTLabs GmbH. By means of
             this data protection declaration, our enterprise would like to
             inform the general public of the nature, scope, and purpose of the
             personal data we collect, use and process. Furthermore, data
@@ -31,7 +31,7 @@ export const Privacy = () => {
             of the rights to which they are entitled.
           </p>
           <p>
-            As the controller, the B.T.E. BOTLabs Trusted Entity GmbH has
+            As the controller, the BOTLabs GmbH has
             implemented numerous technical and organizational measures to ensure
             the most complete protection of personal data processed through this
             website. However, Internetbased data transmissions may in principle
@@ -44,7 +44,7 @@ export const Privacy = () => {
         <section>
           <h2 className={styles.sectionHeading}>1. Definitions</h2>
           <p>
-            The data protection declaration of the B.T.E. BOTLabs Trusted Entity
+            The data protection declaration of the BOTLabs
             GmbH is based on the terms used by the European legislator for the
             adoption of the General Data Protection Regulation (GDPR). Our data
             protection declaration should be legible and understandable for the
@@ -192,7 +192,7 @@ export const Privacy = () => {
             states of the European Union and other provisions related to data
             protection is:
           </p>
-          <p>B.T.E. BOTLabs Trusted Entity GmbH</p>
+          <p>BOTLabs GmbH</p>
           <p>Keithstr. 2-4</p>
           <p>10787 Berlin</p>
           <p>Germany</p>
@@ -227,7 +227,7 @@ export const Privacy = () => {
             3. Collection of general data and information
           </h2>
           <p>
-            The website of the B.T.E. BOTLabs Trusted Entity GmbH collects a
+            The website of the BOTLabs GmbH collects a
             series of general data and information when a data subject or
             automated system calls up the website. This general data and
             information are stored in the server log files. Collected may be (1)
@@ -241,15 +241,15 @@ export const Privacy = () => {
             information technology systems.
           </p>
           <p>
-            When using these general data and information, the B.T.E. BOTLabs
-            Trusted Entity GmbH does not draw any conclusions about the data
+            When using these general data and information, the 
+            BOTLabs GmbH does not draw any conclusions about the data
             subject. Rather, this information is needed to (1) deliver the
             content of our website correctly, (2) optimize the content of our
             website as well as its advertisement, (3) ensure the long-term
             viability of our information technology systems and website
             technology, and (4) provide law enforcement authorities with the
             information necessary for criminal prosecution in case of a
-            cyber-attack. Therefore, the B.T.E. BOTLabs Trusted Entity GmbH
+            cyber-attack. Therefore, the BOTLabs GmbH
             analyzes anonymously collected data and information statistically,
             with the aim of increasing the data protection and data security of
             our enterprise, and to ensure an optimal level of protection for the
@@ -417,9 +417,8 @@ export const Privacy = () => {
               <p>
                 If one of the aforementioned reasons applies, and a data subject
                 wishes to request the erasure of personal data stored by the
-                B.T.E. BOTLabs Trusted Entity GmbH, he or she may, at any time,
-                contact any employee of the controller. An employee of B.T.E.
-                BOTLabs Trusted Entity GmbH shall promptly ensure that the
+                BOTLabs GmbH, he or she may, at any time,
+                contact any employee of the controller. An employee of BOTLabs GmbH shall promptly ensure that the
                 erasure request is complied with immediately.
               </p>
               <p>
@@ -431,7 +430,7 @@ export const Privacy = () => {
                 personal data that the data subject has requested erasure by
                 such controllers of any links to, or copy or replication of,
                 those personal data, as far as processing is not required. An
-                employee of the B.T.E. BOTLabs Trusted Entity GmbH will arrange
+                employee of the BOTLabs GmbH will arrange
                 the necessary measures in individual cases.
               </p>
             </li>
@@ -471,9 +470,9 @@ export const Privacy = () => {
               <p>
                 If one of the aforementioned conditions is met, and a data
                 subject wishes to request the restriction of the processing of
-                personal data stored by the B.T.E. BOTLabs Trusted Entity GmbH,
+                personal data stored by the BOTLabs GmbH,
                 he or she may at any time contact any employee of the
-                controller. The employee of the B.T.E. BOTLabs Trusted Entity
+                controller. The employee of the BOTLabs
                 GmbH will arrange the restriction of the processing.
               </p>
             </li>
@@ -506,8 +505,7 @@ export const Privacy = () => {
               </p>
               <p>
                 In order to assert the right to data portability, the data
-                subject may at any time contact any employee of the B.T.E.
-                BOTLabs Trusted Entity GmbH.
+                subject may at any time contact any employee of the BOTLabs GmbH.
               </p>
             </li>
             <li>
@@ -521,7 +519,7 @@ export const Privacy = () => {
                 based on these provisions.
               </p>
               <p>
-                The B.T.E. BOTLabs Trusted Entity GmbH shall no longer process
+                The BOTLabs GmbH shall no longer process
                 the personal data in the event of the objection, unless we can
                 demonstrate compelling legitimate grounds for the processing
                 which override the interests, rights and freedoms of the data
@@ -529,21 +527,19 @@ export const Privacy = () => {
                 claims.
               </p>
               <p>
-                If the B.T.E. BOTLabs Trusted Entity GmbH processes personal
+                If the BOTLabs GmbH processes personal
                 data for direct marketing purposes, the data subject shall have
                 the right to object at any time to processing of personal data
                 concerning him or her for such marketing. This applies to
                 profiling to the extent that it is related to such direct
-                marketing. If the data subject objects to the B.T.E. BOTLabs
-                Trusted Entity GmbH to the processing for direct marketing
-                purposes, the B.T.E. BOTLabs Trusted Entity GmbH will no longer
+                marketing. If the data subject objects to the BOTLabs GmbH to the processing for direct marketing
+                purposes, the BOTLabs GmbH will no longer
                 process the personal data for these purposes.
               </p>
               <p>
                 In addition, the data subject has the right, on grounds relating
                 to his or her particular situation, to object to processing of
-                personal data concerning him or her by the B.T.E. BOTLabs
-                Trusted Entity GmbH for scientific or historical research
+                personal data concerning him or her by the BOTLabs GmbH for scientific or historical research
                 purposes, or for statistical purposes pursuant to Article 89(1)
                 of the GDPR, unless the processing is necessary for the
                 performance of a task carried out for reasons of public
@@ -551,7 +547,7 @@ export const Privacy = () => {
               </p>
               <p>
                 In order to exercise the right to object, the data subject may
-                contact any employee of the B.T.E. BOTLabs Trusted Entity GmbH.
+                contact any employee of the BOTLabs GmbH.
                 In addition, the data subject is free in the context of the use
                 of information society services, and notwithstanding Directive
                 2002/58/EC, to use his or her right to object by automated means
@@ -580,7 +576,7 @@ export const Privacy = () => {
                 If the decision (1) is necessary for entering into, or the
                 performance of, a contract between the data subject and a data
                 controller, or (2) it is based on the data subject’s explicit
-                consent, the B.T.E. BOTLabs Trusted Entity GmbH shall implement
+                consent, the BOTLabs GmbH shall implement
                 suitable measures to safeguard the data subject’s rights and
                 freedoms and legitimate interests, at least the right to obtain
                 human intervention on the part of the controller, to express his
@@ -589,7 +585,7 @@ export const Privacy = () => {
               <p>
                 If the data subject wishes to exercise the rights concerning
                 automated individual decision-making, he or she may, at any
-                time, contact any employee of the B.T.E. BOTLabs Trusted Entity
+                time, contact any employee of the BOTLabs
                 GmbH.
               </p>
             </li>
@@ -605,7 +601,7 @@ export const Privacy = () => {
               <p>
                 If the data subject wishes to exercise the right to withdraw the
                 consent, he or she may, at any time, contact any employee of the
-                B.T.E. BOTLabs Trusted Entity GmbH.
+                BOTLabs GmbH.
               </p>
             </li>
           </ul>
