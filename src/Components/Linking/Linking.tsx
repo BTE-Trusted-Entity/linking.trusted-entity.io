@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
+import { DidUri } from '@kiltprotocol/sdk-js';
 
 import * as styles from './Linking.module.css';
 
@@ -29,7 +30,7 @@ export const Linking = () => {
   const [linkingAccount, setLinkingAccount] = useState<InjectedAccount>();
   const [payerAccount, setPayerAccount] = useState<InjectedAccount>();
 
-  const [did, setDid] = useState<string>('');
+  const [did, setDid] = useState<DidUri>();
   const [loadingWallets, setLoadingWallets] = useState<boolean>(false);
   const loadWalletAccounts = async () => {
     if (accounts.length) return;
