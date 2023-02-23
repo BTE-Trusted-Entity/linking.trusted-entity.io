@@ -22,7 +22,7 @@ export async function getApi() {
 }
 
 async function getWeb3Accounts() {
-  await web3Enable('Linking by BTE');
+  await web3Enable('Linking by BOTLabs');
   return web3Accounts();
 }
 
