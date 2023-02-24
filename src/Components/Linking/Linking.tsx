@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
+import { DidUri } from '@kiltprotocol/sdk-js';
 
 import * as styles from './Linking.module.css';
 
@@ -29,7 +30,7 @@ export const Linking = () => {
   const [linkingAccount, setLinkingAccount] = useState<InjectedAccount>();
   const [payerAccount, setPayerAccount] = useState<InjectedAccount>();
 
-  const [did, setDid] = useState<string>('');
+  const [did, setDid] = useState<DidUri>();
   const [loadingWallets, setLoadingWallets] = useState<boolean>(false);
   const loadWalletAccounts = async () => {
     if (accounts.length) return;
@@ -69,7 +70,7 @@ export const Linking = () => {
           <ol className={styles.stepsList}>
             <li className={styles.stepItem}>Open your Sporran extension</li>
 
-            <li className={styles.stepItem}>Click “Manage on-chain DID” </li>
+            <li className={styles.stepItem}>Click “Manage on-chain DID”</li>
 
             <li className={styles.stepItem}>
               Click the clipboard icon to the right of your DID to copy it
@@ -81,7 +82,9 @@ export const Linking = () => {
                 <input
                   className={styles.input}
                   placeholder="Enter DID"
-                  onInput={(e) => setDid((e.target as HTMLInputElement).value)}
+                  onInput={(event) => {
+                    setDid(event.currentTarget.value as DidUri);
+                  }}
                 />
               </div>
             </li>
