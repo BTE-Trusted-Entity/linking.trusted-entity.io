@@ -5,7 +5,7 @@ declare global {
       sporran: {
         signExtrinsicWithDid(
           extrinsic: HexString,
-          signer: string,
+          submitter: string,
         ): Promise<{ signed: HexString; didKeyUri: string }>;
       };
     };

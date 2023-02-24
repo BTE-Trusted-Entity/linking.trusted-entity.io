@@ -43,11 +43,7 @@ export function LinkingButton({ did, linkingAccount, payerAccount }: Props) {
         ),
       );
 
-      const associateTx = await getAssociateTx(
-        linkingAccount,
-        payerAccount,
-        did,
-      );
+      const associateTx = await getAssociateTx(linkingAccount, did);
       setLinkingStep(2);
 
       const { signed } = await window.kilt.sporran.signExtrinsicWithDid(

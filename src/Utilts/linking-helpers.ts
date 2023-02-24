@@ -40,24 +40,22 @@ export async function getAccounts() {
 
 export async function getAssociateTx(
   linkingAccount: InjectedAccount,
-  payerAccount: InjectedAccount,
   did: DidUri,
 ) {
-  const encodedAccountAddresses = Utils.Crypto.encodeAddress(
+  const address = Utils.Crypto.encodeAddress(
     linkingAccount.address,
     Utils.ss58Format,
   );
   const { signer } = await web3FromSource(linkingAccount.meta.source);
 
   const args = await Did.associateAccountToChainArgs(
-    encodedAccountAddresses,
+    address,
     did,
     async (data) => {
       if (!signer.signRaw) {
         throw Error('Extension doesn’t support signRaw');
       }
 
-      const { address } = payerAccount;
       const type = 'bytes';
       const { signature } = await signer.signRaw({ data, address, type });
 
