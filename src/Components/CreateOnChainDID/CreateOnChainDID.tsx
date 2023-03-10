@@ -63,7 +63,7 @@ export const CreateOnChainDID = () => {
             <p>
               <a
                 className={styles.linkToGuide}
-                href="https://www.trusted-entity.io/assets/pdf/Upgrading-to-on-chain-DID.pdf"
+                href="https://kilt-protocol.org/files/How-to-Guide-Get-Your-DID.pdf"
                 target="_blank"
                 rel="noreferrer"
               >

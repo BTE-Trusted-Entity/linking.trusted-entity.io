@@ -49,7 +49,7 @@ export const ClaimWeb3name = () => {
             <p>
               <a
                 className={styles.linkToGuide}
-                href="https://www.trusted-entity.io/assets/pdf/How_To_Guide_web3name_link_address_Full_May22.pdf"
+                href="https://kilt-protocol.org/files/How-to-Guide-Get-Your-web3name.pdf"
                 target="_blank"
                 rel="noreferrer"
               >
