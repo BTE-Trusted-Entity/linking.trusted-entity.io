@@ -1,9 +1,7 @@
 .header {
   width: 100%;
   min-height: calc(410rem / 16);
-  background:
-    url('../../ImageAssets/header_bg.png') no-repeat
-    center/cover;
+  background: url('../../ImageAssets/header_bg.png') no-repeat center/cover;
   display: flex;
   place-content: center;
 }
