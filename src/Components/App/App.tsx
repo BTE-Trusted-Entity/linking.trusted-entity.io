@@ -19,7 +19,7 @@ export const App = () => {
         <Route
           path={paths.home}
           element={
-            process.env.REACT_APP_MAINTENANCE === 'true' ? (
+            import.meta.env.VITE_MAINTENANCE === 'true' ? (
               <Maintenance />
             ) : (
               <Main />

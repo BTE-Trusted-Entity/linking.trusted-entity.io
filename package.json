@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "parcel --open",
-    "build": "parcel build",
+    "dev": "vite",
+    "build": "vite build",
     "check": "tsc --noEmit",
     "test-size": "bundlewatch --config bundlewatch.config.json",
     "lint": "yarn run lint-css --formatter github && yarn run lint-js",
@@ -28,8 +28,10 @@
     "@types/react-dom": "^18.2.1",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
+    "@vitejs/plugin-react": "^3.1.0",
     "buffer": "^6.0.3",
     "bundlewatch": "^0.3.3",
+    "cbor-web": "^8.1.0",
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
@@ -46,7 +48,8 @@
     "stylelint-config-standard": "^33.0.0",
     "typed-css-modules": "^0.7.2",
     "typescript": "^5.0.4",
-    "typescript-plugin-css-modules": "^5.0.1"
+    "typescript-plugin-css-modules": "^5.0.1",
+    "vite": "^4.3.3"
   },
   "browserslist": {
     "production": [

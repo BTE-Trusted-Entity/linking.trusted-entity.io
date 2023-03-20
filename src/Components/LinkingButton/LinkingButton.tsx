@@ -75,7 +75,7 @@ export function LinkingButton({ did, linkingAccount, payerAccount }: Props) {
     if (!linkingAccount) throw new Error('No linking account');
 
     window.open(
-      `${process.env.REACT_APP_W3NID_ENDPOINT}/${linkingAccount.address}`,
+      `${import.meta.env.VITE_W3NID_ENDPOINT}/${linkingAccount.address}`,
     );
     setLinkingStatus(undefined);
     setLinkingStep(1);

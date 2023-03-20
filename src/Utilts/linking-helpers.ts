@@ -22,7 +22,7 @@ export type InjectedAccount = Awaited<
 >[number];
 
 export async function getApi() {
-  return await connect(process.env.REACT_APP_CHAIN_ENDPOINT as string);
+  return await connect(import.meta.env.VITE_CHAIN_ENDPOINT as string);
 }
 
 async function getWeb3Accounts() {
