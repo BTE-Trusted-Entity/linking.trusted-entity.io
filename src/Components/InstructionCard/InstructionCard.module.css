@@ -42,7 +42,7 @@
   padding: 0 1.25rem 2.25rem;
 }
 
-@media (max-width: 500px) {
+@media (width <= 500px) {
   .content {
     padding-bottom: 3.25rem;
   }
@@ -87,7 +87,7 @@
   padding-left: 1.75rem;
 }
 
-@media (max-width: 700px) {
+@media (width <= 700px) {
   .indented {
     padding: 0;
   }
