@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DidUri } from '@kiltprotocol/sdk-js';
 
 import * as styles from './Linking.module.css';
@@ -56,25 +56,33 @@ export const Linking = () => {
     setLinkingAccount(undefined);
   }, []);
 
+  useEffect(() => {
+    window.ethereum.on('accountsChanged', handleEthereumAccountChanged);
+
+    return () =>
+      window.ethereum.removeListener(
+        'accountsChanged',
+        handleEthereumAccountChanged,
+      );
+  }, [handleEthereumAccountChanged]);
+
   const handleConnect = useCallback(async () => {
     if (linkableAccounts.length) return;
     setError(null);
     setLoadingWallets(true);
 
-    const { substrateAccounts, kiltAccounts } = await getSubstrateAccounts();
+    const { allAccounts, kiltAccounts } = await getSubstrateAccounts();
 
-    setSubstrateAccounts(substrateAccounts);
+    setSubstrateAccounts(allAccounts);
     setKiltAccounts(kiltAccounts);
 
     try {
-      window.ethereum.on('accountsChanged', handleEthereumAccountChanged);
-
       const ethereumAccounts = await window.ethereum.request({
         method: 'eth_requestAccounts',
       });
       handleEthereumAccountChanged(ethereumAccounts);
     } catch {
-      if (!substrateAccounts.length) {
+      if (!allAccounts.length) {
         setError('No wallets found');
       }
     }

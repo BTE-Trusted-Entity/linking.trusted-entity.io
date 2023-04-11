@@ -31,15 +31,15 @@ async function getWeb3Accounts() {
 }
 
 export async function getSubstrateAccounts() {
-  const substrateAccounts = await getWeb3Accounts();
+  const allAccounts = await getWeb3Accounts();
   const api = await getApi();
   const genesisHash = api.genesisHash.toHex();
-  const kiltAccounts = substrateAccounts.filter(
+  const kiltAccounts = allAccounts.filter(
     (account) =>
       !account.meta.genesisHash || account.meta.genesisHash === genesisHash,
   );
   api.disconnect();
-  return { substrateAccounts, kiltAccounts };
+  return { allAccounts, kiltAccounts };
 }
 
 async function getLinkingArguments(
