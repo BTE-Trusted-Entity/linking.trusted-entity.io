@@ -4,22 +4,22 @@ import * as styles from './SelectAccount.module.css';
 
 import { InjectedAccount } from '../../Utilts/linking-helpers';
 
-interface Wallet {
+interface Props {
   accounts: InjectedAccount[];
   onSelect: React.Dispatch<React.SetStateAction<InjectedAccount | undefined>>;
   selected?: InjectedAccount;
 }
 
-export const SelectAccount = (props: Wallet) => {
+export const SelectAccount = ({ accounts, onSelect, selected }: Props) => {
   const [showOptions, setShowOptions] = useState(false);
 
   const openOptionsMenu = async () => {
-    if (!props.accounts.length) return;
+    if (!accounts.length) return;
     if (showOptions) setShowOptions(false);
     else setShowOptions(true);
   };
   const selectOptions = (account: InjectedAccount) => {
-    props.onSelect(account);
+    onSelect(account);
     setShowOptions(false);
   };
   return (
@@ -31,21 +31,23 @@ export const SelectAccount = (props: Wallet) => {
         onClick={() => openOptionsMenu()}
       >
         <div className={styles.selection}>
-          {props.selected
-            ? `${props.selected.meta.name} (${props.selected.meta.source})`
+          {selected
+            ? `${selected.meta.name || selected.address} (${
+                selected.meta.source
+              })`
             : 'Choose Account Name'}
         </div>
       </div>
       {showOptions && (
         <div className={styles.optionBoxContainer}>
-          {props.accounts.map((account) => (
+          {accounts.map((account) => (
             <div
               className={styles.optionsWrapper}
               key={account.address}
               onClick={() => selectOptions(account)}
             >
               <div className={styles.options}>
-                {account.meta.name} ({account.meta.source})
+                {account.meta.name || account.address} ({account.meta.source})
               </div>
             </div>
           ))}

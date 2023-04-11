@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { DidUri } from '@kiltprotocol/sdk-js';
 
 import * as styles from './Linking.module.css';
@@ -9,7 +9,12 @@ import { LinkingButton } from '../LinkingButton/LinkingButton';
 
 import { useScrollIntoView } from '../../Hooks/useScrollIntoView';
 
-import { getAccounts, InjectedAccount } from '../../Utilts/linking-helpers';
+import {
+  getSubstrateAccounts,
+  InjectedAccount,
+} from '../../Utilts/linking-helpers';
+
+export const ETHEREUM_WALLET = 'MetaMask';
 
 export const Linking = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -21,31 +26,61 @@ export const Linking = () => {
     setExpanded(true);
   }, [expanded]);
 
-  const [accounts, setAccounts] = useState<InjectedAccount[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [filteredAccounts, setFilteredAccounts] = useState<InjectedAccount[]>(
+
+  const [did, setDid] = useState<DidUri>();
+
+  const [ethereumAccounts, setEthereumAccounts] = useState<InjectedAccount[]>(
     [],
   );
+  const [substrateAccounts, setSubstrateAccounts] = useState<InjectedAccount[]>(
+    [],
+  );
+  const [kiltAccounts, setKiltAccounts] = useState<InjectedAccount[]>([]);
+
+  const linkableAccounts = useMemo(
+    () => [...ethereumAccounts, ...substrateAccounts],
+    [ethereumAccounts, substrateAccounts],
+  );
+
+  const [loadingWallets, setLoadingWallets] = useState<boolean>(false);
 
   const [linkingAccount, setLinkingAccount] = useState<InjectedAccount>();
   const [payerAccount, setPayerAccount] = useState<InjectedAccount>();
 
-  const [did, setDid] = useState<DidUri>();
-  const [loadingWallets, setLoadingWallets] = useState<boolean>(false);
-  const loadWalletAccounts = async () => {
-    if (accounts.length) return;
+  const handleEthereumAccountChanged = useCallback((accounts: string[]) => {
+    // MetaMask currently only injects an array of one account
+    setEthereumAccounts([
+      { address: accounts[0], meta: { source: ETHEREUM_WALLET } },
+    ]);
+    setLinkingAccount(undefined);
+  }, []);
+
+  const handleConnect = useCallback(async () => {
+    if (linkableAccounts.length) return;
     setError(null);
     setLoadingWallets(true);
-    const { allAccounts, filteredAccounts } = await getAccounts();
-    if (!allAccounts.length) {
-      setError('No wallets found');
-      setLoadingWallets(false);
-      return;
+
+    const { substrateAccounts, kiltAccounts } = await getSubstrateAccounts();
+
+    setSubstrateAccounts(substrateAccounts);
+    setKiltAccounts(kiltAccounts);
+
+    try {
+      window.ethereum.on('accountsChanged', handleEthereumAccountChanged);
+
+      const ethereumAccounts = await window.ethereum.request({
+        method: 'eth_requestAccounts',
+      });
+      handleEthereumAccountChanged(ethereumAccounts);
+    } catch {
+      if (!substrateAccounts.length) {
+        setError('No wallets found');
+      }
     }
-    setAccounts(allAccounts);
-    setFilteredAccounts(filteredAccounts);
+
     setLoadingWallets(false);
-  };
+  }, [linkableAccounts, handleEthereumAccountChanged]);
 
   const cardRef = useRef<HTMLDivElement>(null);
   useScrollIntoView(expanded, cardRef);
@@ -95,10 +130,12 @@ export const Linking = () => {
                 className={
                   loadingWallets ? styles.connectBtnLoader : styles.connectBtn
                 }
-                disabled={accounts.length > 0}
-                onClick={() => loadWalletAccounts()}
+                disabled={linkableAccounts.length > 0}
+                onClick={handleConnect}
               >
-                {accounts.length > 0 ? 'Wallets Loaded' : 'Connect To Wallet'}
+                {linkableAccounts.length > 0
+                  ? 'Wallets Loaded'
+                  : 'Connect To Wallet'}
               </button>
               {error && <p className={styles.error}>{error}</p>}
               <p className={styles.stepInfo}>
@@ -115,7 +152,7 @@ export const Linking = () => {
               Click the arrow next to “Choose Account Name” to open the dropdown
               list. Choose the account you wish to link to your web3name
               <SelectAccount
-                accounts={accounts}
+                accounts={linkableAccounts}
                 selected={linkingAccount}
                 onSelect={setLinkingAccount}
               />
@@ -127,7 +164,7 @@ export const Linking = () => {
               containing enough KILT to cover the transaction fee – currently
               around 0.0045 KILT.)
               <SelectPayer
-                accounts={filteredAccounts}
+                accounts={kiltAccounts}
                 selected={payerAccount}
                 onSelect={setPayerAccount}
               />

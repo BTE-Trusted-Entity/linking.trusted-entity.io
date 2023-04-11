@@ -13,6 +13,10 @@ import {
   Utils,
 } from '@kiltprotocol/sdk-js';
 
+import { hexToU8a, u8aToString } from '@polkadot/util';
+
+import { ETHEREUM_WALLET } from '../Components/Linking/Linking';
+
 export type InjectedAccount = Awaited<
   ReturnType<typeof getWeb3Accounts>
 >[number];
@@ -26,45 +30,71 @@ async function getWeb3Accounts() {
   return web3Accounts();
 }
 
-export async function getAccounts() {
-  const allAccounts = await getWeb3Accounts();
+export async function getSubstrateAccounts() {
+  const substrateAccounts = await getWeb3Accounts();
   const api = await getApi();
   const genesisHash = api.genesisHash.toHex();
-  const filteredAccounts = allAccounts.filter(
+  const kiltAccounts = substrateAccounts.filter(
     (account) =>
       !account.meta.genesisHash || account.meta.genesisHash === genesisHash,
   );
   api.disconnect();
-  return { filteredAccounts, allAccounts };
+  return { substrateAccounts, kiltAccounts };
 }
 
-export async function getAssociateTx(
+async function getLinkingArguments(
   linkingAccount: InjectedAccount,
   did: DidUri,
 ) {
+  if (linkingAccount.meta.source === ETHEREUM_WALLET) {
+    const api = ConfigService.get('api');
+    const blockNo = await api.query.system.number();
+
+    const validTill = blockNo.addn(300);
+
+    const challenge = u8aToString(
+      await Did.getLinkingChallenge(did, validTill),
+    );
+
+    const signature = await window.ethereum.request({
+      method: 'personal_sign',
+      params: [challenge, linkingAccount.address],
+    });
+
+    return await Did.getLinkingArguments(
+      linkingAccount.address,
+      validTill,
+      hexToU8a(signature),
+      'ethereum',
+    );
+  }
+
   const address = Utils.Crypto.encodeAddress(
     linkingAccount.address,
     Utils.ss58Format,
   );
   const { signer } = await web3FromSource(linkingAccount.meta.source);
 
-  const args = await Did.associateAccountToChainArgs(
-    address,
-    did,
-    async (data) => {
-      if (!signer.signRaw) {
-        throw Error('Extension doesn’t support signRaw');
-      }
+  return await Did.associateAccountToChainArgs(address, did, async (data) => {
+    if (!signer.signRaw) {
+      throw Error('Extension doesn’t support signRaw');
+    }
 
-      const type = 'bytes';
-      const { signature } = await signer.signRaw({ data, address, type });
+    const type = 'bytes';
+    const { signature } = await signer.signRaw({ data, address, type });
 
-      return Utils.Crypto.coToUInt8(signature);
-    },
-  );
+    return Utils.Crypto.coToUInt8(signature);
+  });
+}
+
+export async function getAssociateTx(
+  linkingAccount: InjectedAccount,
+  did: DidUri,
+) {
+  const linkingArguments = await getLinkingArguments(linkingAccount, did);
 
   const api = ConfigService.get('api');
-  return api.tx.didLookup.associateAccount(...args);
+  return api.tx.didLookup.associateAccount(...linkingArguments);
 }
 
 export async function submitCall(
