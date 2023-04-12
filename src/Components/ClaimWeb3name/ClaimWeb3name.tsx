@@ -38,8 +38,10 @@ export const ClaimWeb3name = () => {
           </p>
           <div className={styles.indented}>
             <p>
-              Claiming your web3name requires a DID (see above) and a small
-              transaction fee (around 0.0045 KILT).
+              You can pay for your web3name with KILT Coins (a deposit of 0.1181
+              KILT and a transaction fee of around 0.0047 KILT) or using the
+              Checkout Service and paying via Paypal (a nonrefundable service
+              fee of EUR 1.20 including VAT).
             </p>
             <p>To claim your web3name:</p>
             <ol className={styles.stepsList}>

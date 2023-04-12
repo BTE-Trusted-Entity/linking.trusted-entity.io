@@ -33,25 +33,26 @@ export const CreateOnChainDID = () => {
           <p className={styles.subHeading}>
             Your decentralized Identifier (DID) is a unique set of numbers and
             letters that represents your identity, like a digital fingerprint.
-            When you create a DID, you can link multiple things to your DID
-            including:
+            You can link multiple things to your DID including:
           </p>
           <div className={styles.indented}>
             <ul className={styles.bulletList}>
               <li>Your unique web3name </li>
               <li>
-                As many of your Polkadot ecosystem (and soon, Ethereum)
-                addresses that you wish
+                As many of your Polkadot ecosystem and Ethereum addresses that
+                you wish
               </li>
               <li>
                 Any credentials you want to make public, such as social media
                 handles, GitHub and email addresses
               </li>
-              <li>Communication endpoints, e.g., your website</li>
+              <li>Service endpoints, e.g., your website</li>
             </ul>
             <p>
-              Creating a DID requires a deposit of 2 KILT and a small
-              transaction fee (around 0.0045 KILT).
+              You can pay for your DID with KILT Coins (a deposit of around 2
+              KILT and a transaction fee of around 0.0047 KILT) or using the
+              Checkout Service and paying via Paypal (a nonrefundable service
+              fee of EUR 4.00 including VAT).
             </p>
             <p>To create a DID:</p>
             <ol className={styles.stepsList}>
