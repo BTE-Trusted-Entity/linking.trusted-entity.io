@@ -113,7 +113,7 @@ export const Linking = () => {
           <ol className={styles.stepsList}>
             <li className={styles.stepItem}>Open your Sporran extension</li>
 
-            <li className={styles.stepItem}>Click “Manage on-chain DID”</li>
+            <li className={styles.stepItem}>Click “Manage DID”</li>
 
             <li className={styles.stepItem}>
               Click the clipboard icon to the right of your DID to copy it
@@ -148,7 +148,7 @@ export const Linking = () => {
               {error && <p className={styles.error}>{error}</p>}
               <p className={styles.stepInfo}>
                 This triggers pop-ups to request access to your Polkadot-enabled
-                extensions, including Sporran.
+                extensions, including Sporran, and to your MetaMask.
               </p>
             </li>
 
@@ -167,10 +167,10 @@ export const Linking = () => {
             </li>
 
             <li className={styles.stepItem}>
-              Choose the account you wish to pay the transaction fees from (This
-              may be a different account. Please ensure you choose a wallet
-              containing enough KILT to cover the transaction fee – currently
-              around 0.0045 KILT.)
+              Choose the KILT account you wish to pay the transaction fees from
+              (This may be a different account. Please ensure you choose a
+              wallet containing enough KILT to cover the transaction fee –
+              currently around 0.0045 KILT.)
               <SelectPayer
                 accounts={kiltAccounts}
                 selected={payerAccount}
@@ -194,7 +194,7 @@ export const Linking = () => {
               />
               <p className={styles.stepInfo}>
                 The extension of the account you are linking will pop up. Enter
-                your password for that account and click “Sign”.
+                your password as requested and click “Sign”.
               </p>
               <p className={styles.stepInfo}>
                 Sporran will then open and ask you to sign the linking. Enter

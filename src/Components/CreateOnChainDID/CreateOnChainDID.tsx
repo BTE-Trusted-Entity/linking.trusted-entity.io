@@ -26,15 +26,15 @@ export const CreateOnChainDID = () => {
         className={expanded ? styles.headingExpanded : styles.heading}
         onClick={handleExpand}
       >
-        2. Create your on-chain DID
+        2. Create your DID
       </h1>
       {expanded && (
         <div className={styles.content}>
           <p className={styles.subHeading}>
             Your decentralized Identifier (DID) is a unique set of numbers and
             letters that represents your identity, like a digital fingerprint.
-            When you upgrade to an on-chain DID, you can link multiple things to
-            your DID including:
+            When you create a DID, you can link multiple things to your DID
+            including:
           </p>
           <div className={styles.indented}>
             <ul className={styles.bulletList}>
@@ -50,15 +50,13 @@ export const CreateOnChainDID = () => {
               <li>Communication endpoints, e.g., your website</li>
             </ul>
             <p>
-              Upgrading to an on-chain DID requires a deposit of 2 KILT and a
-              small transaction fee (around 0.0045 KILT).
+              Creating a DID requires a deposit of 2 KILT and a small
+              transaction fee (around 0.0045 KILT).
             </p>
-            <p>To upgrade to an on-chain DID:</p>
+            <p>To create a DID:</p>
             <ol className={styles.stepsList}>
               <li className={styles.stepItem}>Open your Sporran extension</li>
-              <li className={styles.stepItem}>
-                Click “Upgrade to on-chain DID”
-              </li>
+              <li className={styles.stepItem}>Click “Get your DID”</li>
             </ol>
             <p>
               <a
@@ -67,7 +65,7 @@ export const CreateOnChainDID = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                Guide to upgrading your DID (PDF)
+                Guide to getting your DID (PDF)
               </a>
             </p>
           </div>
