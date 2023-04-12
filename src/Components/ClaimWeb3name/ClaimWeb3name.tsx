@@ -32,14 +32,14 @@ export const ClaimWeb3name = () => {
       {expanded && (
         <div className={styles.content}>
           <p className={styles.subHeading}>
-            Your web3name is a custom name you create to represent your on-chain
+            Your web3name is a custom name you create to represent your
             decentralized identifier (DID), which personalizes your digital
             identity.
           </p>
           <div className={styles.indented}>
             <p>
-              Claiming your web3name requires an on-chain DID (see above) and a
-              small transaction fee (around 0.0045 KILT).
+              Claiming your web3name requires a DID (see above) and a small
+              transaction fee (around 0.0045 KILT).
             </p>
             <p>To claim your web3name:</p>
             <ol className={styles.stepsList}>
