@@ -57,17 +57,17 @@ export const Linking = () => {
   }, []);
 
   useEffect(() => {
-    window.ethereum.on('accountsChanged', handleEthereumAccountChanged);
+    window.ethereum?.on('accountsChanged', handleEthereumAccountChanged);
 
     return () =>
-      window.ethereum.removeListener(
+      window.ethereum?.removeListener(
         'accountsChanged',
         handleEthereumAccountChanged,
       );
   }, [handleEthereumAccountChanged]);
 
   const handleConnect = useCallback(async () => {
-    if (linkableAccounts.length) return;
+    if (loadingWallets) return;
     setError(null);
     setLoadingWallets(true);
 
@@ -77,7 +77,7 @@ export const Linking = () => {
     setKiltAccounts(kiltAccounts);
 
     try {
-      const ethereumAccounts = await window.ethereum.request({
+      const ethereumAccounts = await window.ethereum?.request({
         method: 'eth_requestAccounts',
       });
       handleEthereumAccountChanged(ethereumAccounts);
@@ -88,7 +88,7 @@ export const Linking = () => {
     }
 
     setLoadingWallets(false);
-  }, [linkableAccounts, handleEthereumAccountChanged]);
+  }, [loadingWallets, handleEthereumAccountChanged]);
 
   const cardRef = useRef<HTMLDivElement>(null);
   useScrollIntoView(expanded, cardRef);
@@ -138,10 +138,10 @@ export const Linking = () => {
                 className={
                   loadingWallets ? styles.connectBtnLoader : styles.connectBtn
                 }
-                disabled={linkableAccounts.length > 0}
+                disabled={!loadingWallets && linkableAccounts.length > 0}
                 onClick={handleConnect}
               >
-                {linkableAccounts.length > 0
+                {!loadingWallets && linkableAccounts.length > 0
                   ? 'Wallets Loaded'
                   : 'Connect To Wallet'}
               </button>
