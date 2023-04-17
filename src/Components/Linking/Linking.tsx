@@ -1,4 +1,5 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { DidUri } from '@kiltprotocol/sdk-js';
 
 import * as styles from './Linking.module.css';
 
@@ -8,7 +9,12 @@ import { LinkingButton } from '../LinkingButton/LinkingButton';
 
 import { useScrollIntoView } from '../../Hooks/useScrollIntoView';
 
-import { getAccounts, InjectedAccount } from '../../Utilts/linking-helpers';
+import {
+  getSubstrateAccounts,
+  InjectedAccount,
+} from '../../Utilts/linking-helpers';
+
+export const ETHEREUM_WALLET = 'MetaMask';
 
 export const Linking = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -20,31 +26,69 @@ export const Linking = () => {
     setExpanded(true);
   }, [expanded]);
 
-  const [accounts, setAccounts] = useState<InjectedAccount[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [filteredAccounts, setFilteredAccounts] = useState<InjectedAccount[]>(
+
+  const [did, setDid] = useState<DidUri>();
+
+  const [ethereumAccounts, setEthereumAccounts] = useState<InjectedAccount[]>(
     [],
   );
+  const [substrateAccounts, setSubstrateAccounts] = useState<InjectedAccount[]>(
+    [],
+  );
+  const [kiltAccounts, setKiltAccounts] = useState<InjectedAccount[]>([]);
+
+  const linkableAccounts = useMemo(
+    () => [...ethereumAccounts, ...substrateAccounts],
+    [ethereumAccounts, substrateAccounts],
+  );
+
+  const [loadingWallets, setLoadingWallets] = useState<boolean>(false);
 
   const [linkingAccount, setLinkingAccount] = useState<InjectedAccount>();
   const [payerAccount, setPayerAccount] = useState<InjectedAccount>();
 
-  const [did, setDid] = useState<string>('');
-  const [loadingWallets, setLoadingWallets] = useState<boolean>(false);
-  const loadWalletAccounts = async () => {
-    if (accounts.length) return;
+  const handleEthereumAccountChanged = useCallback((accounts: string[]) => {
+    // MetaMask currently only injects an array of one account
+    setEthereumAccounts([
+      { address: accounts[0], meta: { source: ETHEREUM_WALLET } },
+    ]);
+    setLinkingAccount(undefined);
+  }, []);
+
+  useEffect(() => {
+    window.ethereum?.on('accountsChanged', handleEthereumAccountChanged);
+
+    return () =>
+      window.ethereum?.removeListener(
+        'accountsChanged',
+        handleEthereumAccountChanged,
+      );
+  }, [handleEthereumAccountChanged]);
+
+  const handleConnect = useCallback(async () => {
+    if (loadingWallets) return;
     setError(null);
     setLoadingWallets(true);
-    const { allAccounts, filteredAccounts } = await getAccounts();
-    if (!allAccounts.length) {
-      setError('No wallets found');
-      setLoadingWallets(false);
-      return;
+
+    const { allAccounts, kiltAccounts } = await getSubstrateAccounts();
+
+    setSubstrateAccounts(allAccounts);
+    setKiltAccounts(kiltAccounts);
+
+    try {
+      const ethereumAccounts = await window.ethereum?.request({
+        method: 'eth_requestAccounts',
+      });
+      handleEthereumAccountChanged(ethereumAccounts);
+    } catch {
+      if (!allAccounts.length) {
+        setError('No wallets found');
+      }
     }
-    setAccounts(allAccounts);
-    setFilteredAccounts(filteredAccounts);
+
     setLoadingWallets(false);
-  };
+  }, [loadingWallets, handleEthereumAccountChanged]);
 
   const cardRef = useRef<HTMLDivElement>(null);
   useScrollIntoView(expanded, cardRef);
@@ -69,7 +113,7 @@ export const Linking = () => {
           <ol className={styles.stepsList}>
             <li className={styles.stepItem}>Open your Sporran extension</li>
 
-            <li className={styles.stepItem}>Click “Manage on-chain DID” </li>
+            <li className={styles.stepItem}>Click “Manage DID”</li>
 
             <li className={styles.stepItem}>
               Click the clipboard icon to the right of your DID to copy it
@@ -81,7 +125,9 @@ export const Linking = () => {
                 <input
                   className={styles.input}
                   placeholder="Enter DID"
-                  onInput={(e) => setDid((e.target as HTMLInputElement).value)}
+                  onInput={(event) => {
+                    setDid(event.currentTarget.value as DidUri);
+                  }}
                 />
               </div>
             </li>
@@ -92,15 +138,17 @@ export const Linking = () => {
                 className={
                   loadingWallets ? styles.connectBtnLoader : styles.connectBtn
                 }
-                disabled={accounts.length > 0}
-                onClick={() => loadWalletAccounts()}
+                disabled={!loadingWallets && linkableAccounts.length > 0}
+                onClick={handleConnect}
               >
-                {accounts.length > 0 ? 'Wallets Loaded' : 'Connect To Wallet'}
+                {!loadingWallets && linkableAccounts.length > 0
+                  ? 'Wallets Loaded'
+                  : 'Connect To Wallet'}
               </button>
               {error && <p className={styles.error}>{error}</p>}
               <p className={styles.stepInfo}>
                 This triggers pop-ups to request access to your Polkadot-enabled
-                extensions, including Sporran.
+                extensions, including Sporran, and to your MetaMask.
               </p>
             </li>
 
@@ -112,19 +160,19 @@ export const Linking = () => {
               Click the arrow next to “Choose Account Name” to open the dropdown
               list. Choose the account you wish to link to your web3name
               <SelectAccount
-                accounts={accounts}
+                accounts={linkableAccounts}
                 selected={linkingAccount}
                 onSelect={setLinkingAccount}
               />
             </li>
 
             <li className={styles.stepItem}>
-              Choose the account you wish to pay the transaction fees from (This
-              may be a different account. Please ensure you choose a wallet
-              containing enough KILT to cover the transaction fee – currently
-              around 0.0045 KILT.)
+              Choose the KILT account you wish to pay the transaction fees from
+              (This may be a different account. Please ensure you choose a
+              wallet containing enough KILT to cover the transaction fee –
+              currently around 0.0045 KILT.)
               <SelectPayer
-                accounts={filteredAccounts}
+                accounts={kiltAccounts}
                 selected={payerAccount}
                 onSelect={setPayerAccount}
               />
@@ -146,7 +194,7 @@ export const Linking = () => {
               />
               <p className={styles.stepInfo}>
                 The extension of the account you are linking will pop up. Enter
-                your password for that account and click “Sign”.
+                your password as requested and click “Sign”.
               </p>
               <p className={styles.stepInfo}>
                 Sporran will then open and ask you to sign the linking. Enter

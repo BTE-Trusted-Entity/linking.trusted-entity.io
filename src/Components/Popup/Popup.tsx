@@ -59,7 +59,7 @@ function LoadingContents({ linkingStep }: LoadingContentsProps) {
   return (
     <Fragment>
       <p className={styles.modalText}>{linkingMessage[linkingStep]}</p>
-      <div className={styles.spinnerContainer}>
+      <div className={styles.stepContainer}>
         {linkingStep !== 4 && <p className={styles.step}>{linkingStep}</p>}
       </div>
       <button className={styles.btnDisabled}>CHECK IT NOW</button>

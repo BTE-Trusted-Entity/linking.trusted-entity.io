@@ -32,14 +32,16 @@ export const ClaimWeb3name = () => {
       {expanded && (
         <div className={styles.content}>
           <p className={styles.subHeading}>
-            Your web3name is a custom name you create to represent your on-chain
+            Your web3name is a custom name you create to represent your
             decentralized identifier (DID), which personalizes your digital
             identity.
           </p>
           <div className={styles.indented}>
             <p>
-              Claiming your web3name requires an on-chain DID (see above) and a
-              small transaction fee (around 0.0045 KILT).
+              You can pay for your web3name with KILT Coins (a deposit of 0.1181
+              KILT and a transaction fee of around 0.0047 KILT) or using the
+              Checkout Service and paying via Paypal (a nonrefundable service
+              fee of EUR 1.20 including VAT).
             </p>
             <p>To claim your web3name:</p>
             <ol className={styles.stepsList}>
@@ -49,7 +51,7 @@ export const ClaimWeb3name = () => {
             <p>
               <a
                 className={styles.linkToGuide}
-                href="https://www.trusted-entity.io/assets/pdf/How_To_Guide_web3name_link_address_Full_May22.pdf"
+                href="https://kilt-protocol.org/files/How-to-Guide-Get-Your-web3name.pdf"
                 target="_blank"
                 rel="noreferrer"
               >

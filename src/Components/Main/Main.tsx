@@ -10,27 +10,28 @@ export const Main = () => {
     <main className={styles.container}>
       <div className={styles.content}>
         <p className={styles.topText}>
-          Linking your accounts with your web3name and on-chain DID – your
-          unique decentralized identifier – makes it easier for others to
-          reference you.
+          Linking your accounts with your web3name and DID – your unique
+          decentralized identifier – makes it easier for others to reference
+          you.
         </p>
 
         <p className={styles.boldText}>
           Follow the steps below to link your web3name with your Polkadot
-          ecosystem accounts, and (coming soon) your Ethereum accounts.
+          ecosystem and Ethereum addresses.
         </p>
 
         <p className={styles.info}>
-          Before linking you need a Sporran wallet, an on-chain DID and a
-          web3name. If you don’t already have them, scroll{' '}
-          <a href="#instructions">down</a> for instructions on setting them up.
+          Before linking you need a Sporran wallet, DID and a web3name. If you
+          don’t already have them, scroll <a href="#instructions">down</a> for
+          instructions on setting them up. You will also need a MetaMask wallet
+          to link Ethereum addresses.
         </p>
 
         <Linking />
 
         <h2 className={styles.instructions} id="instructions">
           <span className={styles.bold}>Instructions</span> on how to get your
-          Sporran, on-chain DID and your web3name:
+          Sporran, DID and web3name:
         </h2>
         <GettingSporran />
         <CreateOnChainDID />

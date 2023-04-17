@@ -24,7 +24,6 @@
   background: var(--color-olive);
   opacity: 0.6;
   border: 1px solid var(--color-wall-green);
-  cursor: none;
 }
 
 .container {

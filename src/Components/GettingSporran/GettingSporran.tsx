@@ -64,7 +64,7 @@ export const GettingSporran = () => {
             <p>
               <a
                 className={styles.linkToGuide}
-                href="https://www.trusted-entity.io/assets/pdf/Create-KILT-Sporran-Identity.pdf"
+                href="https://kilt-protocol.org/files/How-to-Guide-Create-Sporran-Wallet.pdf"
                 target="_blank"
                 rel="noreferrer"
               >

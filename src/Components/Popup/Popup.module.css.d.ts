@@ -8,7 +8,8 @@ declare const styles: {
   readonly status: string;
   readonly btn: string;
   readonly btnDisabled: string;
-  readonly spinnerContainer: string;
+  readonly stepContainer: string;
+  readonly rotation: string;
   readonly step: string;
   readonly closeBtn: string;
 };
