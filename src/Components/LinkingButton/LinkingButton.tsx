@@ -10,6 +10,7 @@ import {
   submitCall,
 } from '../../Utilts/linking-helpers';
 import { LinkingModal } from '../Popup/Popup';
+import { SignExtrinsicWithDid } from '../../Utilts/types';
 
 export type LinkingSteps = 1 | 2 | 3 | 4;
 
@@ -26,41 +27,49 @@ export function LinkingButton({ did, linkingAccount, payerAccount }: Props) {
 
   const [linkingStep, setLinkingStep] = useState<LinkingSteps>(1);
 
-  const handleLinking = useCallback(async () => {
-    try {
-      if (!did || !linkingAccount || !payerAccount) {
-        return;
+  const handleLinking = useCallback(
+    async (signExtrinsicWithDid: SignExtrinsicWithDid) => {
+      try {
+        if (!did || !linkingAccount || !payerAccount) {
+          return;
+        }
+        Did.validateUri(did, 'Did');
+
+        setLinkingStatus('linking');
+        setLinkingStep(1);
+
+        const api = await getApi();
+        api.once('disconnected', () =>
+          setLinkingStatus((current) =>
+            current === 'linking' ? 'error' : current,
+          ),
+        );
+
+        const associateTx = await getAssociateTx(linkingAccount, did);
+        setLinkingStep(2);
+
+        const { signed } = await signExtrinsicWithDid(
+          associateTx.toHex(),
+          payerAccount.address,
+        );
+        setLinkingStep(3);
+
+        await submitCall(payerAccount, api.tx(signed));
+
+        setLinkingStatus('success');
+        setLinkingStep(4);
+      } catch (error) {
+        console.error(error);
+        setLinkingStatus('error');
       }
-      Did.validateUri(did, 'Did');
+    },
+    [did, linkingAccount, payerAccount],
+  );
 
-      setLinkingStatus('linking');
-      setLinkingStep(1);
-
-      const api = await getApi();
-      api.once('disconnected', () =>
-        setLinkingStatus((current) =>
-          current === 'linking' ? 'error' : current,
-        ),
-      );
-
-      const associateTx = await getAssociateTx(linkingAccount, did);
-      setLinkingStep(2);
-
-      const { signed } = await window.kilt.sporran.signExtrinsicWithDid(
-        associateTx.toHex(),
-        payerAccount.address,
-      );
-      setLinkingStep(3);
-
-      await submitCall(payerAccount, api.tx(signed));
-
-      setLinkingStatus('success');
-      setLinkingStep(4);
-    } catch (error) {
-      console.error(error);
-      setLinkingStatus('error');
-    }
-  }, [did, linkingAccount, payerAccount]);
+  const handleNoWallet = useCallback(() => {
+    setLinkingStatus('error');
+  }, []);
+  const fakeWallet = { key: 'fake', name: 'Fake', handleClick: handleNoWallet };
 
   const handleSuccess = useCallback(() => {
     if (!linkingAccount) throw new Error('No linking account');
@@ -72,15 +81,29 @@ export function LinkingButton({ did, linkingAccount, payerAccount }: Props) {
     setLinkingStep(1);
   }, [linkingAccount]);
 
+  const capableWallets = [...Object.entries(window.kilt)]
+    .filter(([key]) => window.kilt[key].signExtrinsicWithDid)
+    .map(([key, { name = key, signExtrinsicWithDid }]) => ({
+      key,
+      name,
+      handleClick: () => handleLinking(signExtrinsicWithDid),
+    }));
+  const buttons = capableWallets.length > 0 ? capableWallets : [fakeWallet];
+
   return (
     <div className={styles.container}>
-      <button
-        className={styles.linkingBtn}
-        disabled={!did || !linkingAccount || !payerAccount}
-        onClick={handleLinking}
-      >
-        Link DID with account
-      </button>
+      {buttons.map(({ key, name, handleClick }) => (
+        <button
+          key={key}
+          className={styles.linkingBtn}
+          disabled={!did || !linkingAccount || !payerAccount}
+          onClick={handleClick}
+        >
+          {capableWallets.length === 1
+            ? 'Link DID with account'
+            : `Link ${name} DID with account`}
+        </button>
+      ))}
 
       <LinkingModal
         linkingStatus={linkingStatus}
