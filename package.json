@@ -17,7 +17,7 @@
   "dependencies": {
     "@kiltprotocol/sdk-js": "^0.32.1",
     "@polkadot/extension-dapp": "^0.44.9",
-    "@polkadot/util": "^10.4.2",
+    "@polkadot/util": "^12.2.2",
     "ky": "^0.33.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
