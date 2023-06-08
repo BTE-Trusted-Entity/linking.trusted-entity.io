@@ -15,9 +15,9 @@
     "prettify": "prettier --write \"src/**/*.ts*\" \"src/**/*.css*\""
   },
   "dependencies": {
-    "@kiltprotocol/sdk-js": "^0.32.1",
-    "@polkadot/extension-dapp": "^0.44.9",
-    "@polkadot/util": "^10.4.2",
+    "@kiltprotocol/sdk-js": "^0.33.0",
+    "@polkadot/extension-dapp": "^0.46.4",
+    "@polkadot/util": "^12.2.2",
     "ky": "^0.33.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,7 +40,6 @@
     "parcel": "^2.7.0",
     "prettier": "2.8.8",
     "process": "^0.11.10",
-    "stream-browserify": "^3.0.0",
     "stylelint": "^15.7.0",
     "stylelint-config-css-modules": "^4.2.0",
     "stylelint-config-standard": "^33.0.0",
