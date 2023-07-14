@@ -4,6 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import { App } from './Components/App/App';
+import { checkTestEnvironment } from './Utilts/checkTestEnvironment';
+
+checkTestEnvironment();
 
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Root not found');
