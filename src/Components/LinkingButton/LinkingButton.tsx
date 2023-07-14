@@ -8,9 +8,9 @@ import {
   getAssociateTx,
   InjectedAccount,
   submitCall,
-} from '../../Utilts/linking-helpers';
+} from '../../Utils/linking-helpers';
 import { LinkingModal } from '../Popup/Popup';
-import { SignExtrinsicWithDid } from '../../Utilts/types';
+import { SignExtrinsicWithDid } from '../../Utils/types';
 
 export type LinkingSteps = 1 | 2 | 3 | 4;
 

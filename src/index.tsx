@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import { App } from './Components/App/App';
-import { checkTestEnvironment } from './Utilts/checkTestEnvironment';
+import { checkTestEnvironment } from './Utils/checkTestEnvironment';
 
 checkTestEnvironment();
 

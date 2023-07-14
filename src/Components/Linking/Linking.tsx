@@ -12,7 +12,7 @@ import { useScrollIntoView } from '../../Hooks/useScrollIntoView';
 import {
   getSubstrateAccounts,
   InjectedAccount,
-} from '../../Utilts/linking-helpers';
+} from '../../Utils/linking-helpers';
 
 export const ETHEREUM_WALLET = 'MetaMask';
 
