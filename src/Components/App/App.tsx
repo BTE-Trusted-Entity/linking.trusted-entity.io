@@ -4,7 +4,7 @@ import * as styles from './App.module.css';
 
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
-import { paths } from '../../Utilts/paths';
+import { paths } from '../../Utils/paths';
 import { Imprint } from '../Imprint/Imprint';
 import { Terms } from '../Terms/Terms';
 import { Privacy } from '../Privacy/Privacy';

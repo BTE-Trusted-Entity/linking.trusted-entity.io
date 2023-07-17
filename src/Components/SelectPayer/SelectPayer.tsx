@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import * as styles from './SelectPayer.module.css';
 
-import { InjectedAccount } from '../../Utilts/linking-helpers';
+import { InjectedAccount } from '../../Utils/linking-helpers';
 
 interface Wallet {
   accounts: InjectedAccount[];

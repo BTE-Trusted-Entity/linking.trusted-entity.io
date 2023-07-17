@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 import * as styles from './Footer.module.css';
 
-import { paths } from '../../Utilts/paths';
+import { paths } from '../../Utils/paths';
 
 export const Footer = () => {
   return (
