@@ -9,7 +9,7 @@ export const Header = () => {
         <img
           className={styles.bteLogo}
           src={BTE}
-          alt="Botlabs Trusted Entity logo"
+          alt="KILT Foundation Entity logo"
         />
         <h1 className={styles.heading}>
           <span>

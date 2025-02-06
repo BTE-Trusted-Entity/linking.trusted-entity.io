@@ -26,7 +26,7 @@ export async function getApi() {
 }
 
 async function getWeb3Accounts() {
-  await web3Enable('Linking by BOTLabs');
+  await web3Enable('Linking by KILT Foundation');
   return web3Accounts();
 }
 
